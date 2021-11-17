@@ -1,0 +1,36 @@
+body {
+    text-align: right;
+    direction: rtl;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-right: 3%;
+
+    background: rgb(238,174,202);
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+}
+h3.head {
+    text-decoration: underline;
+    font-weight: bold;
+    color: tomato;
+    text-shadow: 6px 6px 0px rgba(159, 185, 156, 0.842);
+    margin-top: 3%;
+}
+
+h1.spacing {
+    color: blue;
+    letter-spacing: 15px;
+    font-size: 330%;
+}
+span.h1_span {
+    color: black;
+    font-weight: normal;
+    font-size: 30%;
+    letter-spacing: 3px;
+}
+ul {
+    /* list-style-position: inside; */
+    list-style: square inside url("small-gaben.png");
+}
+
+table, th, td {
+  border: 1px solid black;
+}
