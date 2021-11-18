@@ -1,13 +1,5 @@
-body {font-family: sans-serif;}
 h1 {font-size: 60px;}
 p {font-size: 14px;}
-.navbar {padding: 10px;}
-.navbarSearchButton {margin: 10px;}
-.navbarSearchForm {
-    position: relative;
-    display: flex;
-    margin-left: auto;
-}
 #headContainer {
     display: flex;
     flex-wrap: wrap;
