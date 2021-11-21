@@ -5,7 +5,7 @@ let p1Var1 = 10;
 let p1Var2 = 20;
 let p1Var3 = 30;
 console.log(p1Var1, p1Var2, p1Var3);
-console.log("averege of three: " + (p1Var1+p1Var2+p1Var3)/3);
+console.log("Multi: " + p1Var1 * p1Var2 * p1Var3);
 
 
 // practice 2 || Swaping between two variables
