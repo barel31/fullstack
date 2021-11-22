@@ -1,4 +1,4 @@
-// // practice 1 || Multi 3 variables
+// practice 1 || Multi 3 variables
 console.log("-------------------------------------------");
 console.log("practice 1 || Multi 3 variables");
 let p1Var1 = 10;

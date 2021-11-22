@@ -1,0 +1,17 @@
+.mainContainer {
+    text-align: center;
+}
+.box {
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+    border-bottom: 1px solid black;
+
+    background-color: beige;
+    padding: 20px;
+    
+    font-size: 1.2em;
+    /* font-size: 21px; */
+}
