@@ -1,17 +1,23 @@
 .mainContainer {
     text-align: center;
 }
-.box {
-
+.middleContainer {
     display: flex;
-    flex-direction: column;
     flex-wrap: wrap;
-
+    justify-content: space-around;
+}
+.box {
     border-bottom: 1px solid black;
-
     background-color: beige;
     padding: 20px;
-    
     font-size: 1.2em;
-    /* font-size: 21px; */
+}
+
+@media (min-width: 768px) {
+    .middleContainer {
+        flex-wrap: nowrap;
+    }
+    .box {
+        border-bottom: none;
+    }
 }
