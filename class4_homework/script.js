@@ -27,7 +27,10 @@ console.log("-------------------------------------------");
 console.log("practice 3 || Replace space with asterisk");
 let p3Var1 = "Barel Shraga";
 console.log(p3Var1);
-console.log(p3Var1.replace(' ', '*'));
+// console.log(p3Var1.replace(' ', '*'));
+let space = p3Var1.indexOf(' ');
+let replaced = p3Var1.slice(0, space) + '*' + p3Var1.slice(space+1);
+console.log(replaced);
 
 
 // practice 4 || Exponent
