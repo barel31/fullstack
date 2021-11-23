@@ -27,14 +27,13 @@ body {
 .checkbox-margin-down {
     position: relative;
     top: 1px;
-    /* margin-right: 10px; */
 }
 .checkbox-text {
     font-size: 15px;
 }
 .input-align {
-    height: 35px;
-    width: 340px;
+    height: 30px;
+    width: 315px;
     
     margin: 10px;
     margin-bottom: 20px;

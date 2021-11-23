@@ -1,11 +1,10 @@
 body {
-    /* background-color: steelblue; */
     font-family: sans-serif;
 }
 .container {
     background-color: steelblue;
     
-    height: 530px;
+    height: 580px;
     width: 480px;
 
     margin: auto;
@@ -18,7 +17,7 @@ body {
     background-color: white;
 
     margin: auto;
-    top: 3.5%;
+    top: 4%;
 
     border-radius: 1%;
     box-shadow: 1px 1px 3px;
@@ -37,13 +36,13 @@ hr {
 }
 input {
     border: 0;
-    margin: 10px;
+    margin: 8px;
     background-color: rgba(212, 212, 212, 0.322);
     height: 35px;
     padding: 10px;
 }
 .inline_input {
-    width: 172px;
+    width: 156px;
     margin-right: auto;
 }
 #submit {
