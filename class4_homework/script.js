@@ -131,10 +131,10 @@ console.log("My name is", firstName, lastName, "my age is", age);
 
 console.log("-------------------------------------------");
 console.log("practice extra 4 || Alert 2 string");
-let firstStr = "First string here";
-let secondStr = "Second string here";
-// alert(firstStr);
-// alert(secondStr);
+let firstStr = "This is the first string";
+let secondStr = "This is the second string";
+alert(firstStr);
+alert(secondStr);
 
 console.log("-------------------------------------------");
 console.log("practice extra 5 || Alert 2 string");
