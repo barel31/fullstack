@@ -1,4 +1,3 @@
-// practice 1 || Multi 3 variables
 console.log("-------------------------------------------");
 console.log("practice 1 || Multi 3 variables");
 let p1Var1 = 10;
@@ -110,8 +109,8 @@ console.log("------------- More practice 1 -------------");
 console.log("-------------------------------------------");
 console.log("practice extra 1 || Find index of chars b, e in abcdegh");
 let str = 'abcdefgh';
-console.log('Index of "a": ' + str.indexOf('b'));
-console.log('Index of "b": ' + str.indexOf('e'));
+console.log('Index of "b": ' + str.indexOf('b'));
+console.log('Index of "e": ' + str.indexOf('e'));
 
 
 console.log("-------------------------------------------");
@@ -137,7 +136,7 @@ alert(firstStr);
 alert(secondStr);
 
 console.log("-------------------------------------------");
-console.log("practice extra 5 || Alert 2 string");
+console.log("practice extra 5 || Lower case to upper case");
 let lowerCaseStr = "case";
 console.log(lowerCaseStr);
 console.log(lowerCaseStr.toUpperCase());
