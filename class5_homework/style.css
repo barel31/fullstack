@@ -25,25 +25,10 @@
     margin-top: 50px;
 }
 
-/* section {
-    justify-content: center;
-    padding: 0;
-    margin: 0;
-} */
-
-#list_p { margin-bottom: 0; }
-#button { margin-left: auto; }
-
 .calcInput {
     padding: 10px;
     background-color: steelblue;
 }
-
-/* input[type="submit"] {
-    padding: 30px;
-
-    align-self: baseline;
-} */
 
 #labelCurrencyType {
     position: relative;
@@ -51,3 +36,15 @@
     top: 40px;
     left: 10px;
 }
+
+#list_p { margin-bottom: 0; }
+#button { margin-left: auto; }
+input:disabled { background-color: red; }
+#currencyDisabled::before { content: "(Disabled) "; }
+
+
+/* input[type="submit"] {
+    padding: 30px;
+
+    align-self: baseline;
+} */

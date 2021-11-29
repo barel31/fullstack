@@ -105,6 +105,10 @@ function Calculator() {
     }
 
     let multi = Number(document.getElementById("currencyType").value);
+    if(multi == 0) {
+        alert("Choose currency!")
+        return;
+    }
 
-    alert(amount*multi);
+    alert("Result: " + amount*multi);
 }
