@@ -104,13 +104,13 @@ function Calculator() {
         return;
     }
     let multiElement = document.getElementById("currencyType");
-    let multiNum = Number(multiElement.value.substr(0, multiElement.value.length-1));
-    if(!multiNum) {
+    let multi = Number(multiElement.value.substr(0, multiElement.value.length-1));
+    if(!multi) {
         alert("Choose currency!");
         return;
     }
 
     let sign = multiElement.value.substr(multiElement.value.length-1);
-    let result = "Result: " + parseFloat((amount/multiNum).toFixed(3)) + sign;
-    document.getElementById("result").innerHTML = result;
+    let result = amount + "₪ is " + parseFloat((amount/multi).toFixed(3)) + sign;
+    document.getElementById("innerResult").innerHTML = result;
 }
