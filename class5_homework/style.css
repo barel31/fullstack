@@ -4,12 +4,13 @@
     display: flex;
     flex-flow: column nowrap;
 
-    width: 550px;
-    height: 335px;
+    width: 25rem;
+    height: 25rem;
+
     border: 1px solid green;
 
-    padding: 20px;
-    margin: 30px auto;
+    padding: 2rem;
+    margin: 1rem auto;
     
     text-align: center;
 }
@@ -22,20 +23,17 @@
 }
 
 .content_bottom {
-    display: inline-flex;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
     margin-top: 50px;
+    align-self: center;
+    flex-direction: column;
 }
 
-.calcInput {
+.amount {
     padding: 10px;
     background-color: steelblue;
-}
-
-#labelCurrencyType {
-    position: relative;
-    display: inline-flex;
-    top: 40px;
-    left: 10px;
 }
 
 .validity {
@@ -47,7 +45,6 @@ input:invalid+span:after {
     content: '✖';
     padding: 0 5px 0 5px;
 }
-
 input:valid+span:after {
     position: absolute;
     content: '✓';
@@ -65,13 +62,10 @@ input:valid+span:after {
     height: 40px;
 }
 #innerResult {
-    /* text-align: center; */
-    /* align-content: center; */
     font-size: 30px;
     margin: auto;
 }
 
-#list_p { margin-bottom: 0; }
-#button { margin-left: auto; }
-input[disabled] { background-color: FC5185; }
-#currencyDisabled::before { content: "(Disabled) "; }
+#button { margin: 1rem auto; display: block;}
+/* input[disabled] { background-color: FC5185; } */
+/* #currencyDisabled::before { content: "(Disabled) "; } */
