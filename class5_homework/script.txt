@@ -25,31 +25,13 @@ function Func2(str1, str2, str3, str4) {
 
     return count;
 }
-function Func2Alt(array) {
-    let count = 0;
-    for(let i = 0; i < array.length; i++) {
-        if(array[i].length > 3) {
-            count++;
-        }
-    }
-
-    return count;
-}
 
 function Func3() {
     let input = document.getElementById("input").value;
 
-    // let index = input.indexOf('A');
-    // while(index != -1) {
-    //     let code = input.charCodeAt(index);
-    //     let lower = String.fromCharCode(code+32);
-    //     input = input.substr(0, index) + lower + input.substr(index+1);
-    //     index = input.indexOf('A');
-    // }
-    for(let c = 0; c < input.length; c++) {
-        if(input[c] == 'A') {
-            input = input.substr(0, c) + 'a' + input.substr(c+1);
-        }
+    let index = input.indexOf('A');
+    if(index != -1) {
+        input = input.substr(0, index) + 'a' + input.substr(index+1);
     }
     console.log(input);
 }
@@ -99,18 +81,16 @@ function Func6(str) {
 
 function Calculator() {
     let amount = Number(document.getElementById("amount").value);
-    if(!amount) {
+    if(amount == 0) {
         alert("Invalid number!");
         return;
     }
-    let multiElement = document.getElementById("currencyType");
-    let multiNum = Number(multiElement.value.substr(0, multiElement.value.length-1));
-    if(!multiNum) {
-        alert("Choose currency!");
+
+    let multi = Number(document.getElementById("currencyType").value);
+    if(multi == 0) {
+        alert("Choose currency!")
         return;
     }
 
-    let sign = multiElement.value.substr(multiElement.value.length-1);
-    let result = "Result: " + parseFloat((amount/multiNum).toFixed(3)) + sign;
-    document.getElementById("result").innerHTML = result;
+    alert("Result: " + amount*multi);
 }
