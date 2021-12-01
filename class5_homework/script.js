@@ -111,6 +111,6 @@ function Calculator() {
     }
 
     let sign = multiElement.value.substr(multiElement.value.length-1);
-    let result = amount + "₪ is " + parseFloat((amount/multi).toFixed(3)) + sign;
-    document.getElementById("innerResult").innerHTML = result;
+    let result = amount + "₪ = " + parseFloat((amount/multi).toFixed(3)) + sign;
+    document.getElementById("innerResult").innerHTML = result + "<br>(1" + sign + " = " + multi + "₪)";
 }
