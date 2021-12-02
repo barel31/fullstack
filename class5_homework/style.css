@@ -65,7 +65,11 @@ input:valid+span:after {
     font-size: 30px;
     margin: auto;
 }
+#button {
+    margin: 1rem auto;
+    display: block;
+}
 
-#button { margin: 1rem auto; display: block;}
+
 /* input[disabled] { background-color: FC5185; } */
 /* #currencyDisabled::before { content: "(Disabled) "; } */
