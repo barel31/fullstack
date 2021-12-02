@@ -100,7 +100,8 @@
 function Calculator() {
     let amount = Number(document.getElementById("amount").value);
     if(!amount) {
-        alert("Invalid number!");
+        // alert("Invalid number!");
+        document.getElementById("innerResult").innerHTML = '';
         return;
     }
     let multiElement = document.getElementById("currencyType");
@@ -114,3 +115,5 @@ function Calculator() {
     let result = amount + "₪ = " + parseFloat((amount/multi).toFixed(3)) + sign;
     document.getElementById("innerResult").innerHTML = result + "<br>(1" + sign + " = " + multi + "₪)";
 }
+
+// TODO - Find an API that will pull currency in real time.
