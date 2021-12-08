@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta charset='UTF-8' />
+        <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+        <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+        <title>Simple Calculator</title>
+        <link rel='stylesheet' href='style.css' />
+        <link rel='shortcut icon' href='Wineass-Ios7-Redesign-Calculator.ico' type='image/x-icon'>
+    </head>
+    <body>
+        <!-- practice 4 -->
+        <p>pratice 4: </p>
+        <input id='input' type='number'>
+        <button onclick='p4()'>click</button>
+
+        <!-- Simple Calculator -->
+
+        <div class='container'>
+            <h3>Simple Calculator</h3>
+            <div class='InputRow'>
+                <input type='text' name='' id='calcInput' />
+            </div>
+            <div class='Row'>
+                <button value='1' onclick='Btn(this.value)' class='BtnNum'>1</button>
+                <button value='2' onclick='Btn(this.value)' class='BtnNum'>2</button>
+                <button value='3' onclick='Btn(this.value)' class='BtnNum'>3</button>
+                <button value='+' onclick='Btn(this.value)' class='Btn'>+</button>
+            </div>
+            <div class='Row'>
+                <button value='4' onclick='Btn(this.value)' class='BtnNum'>4</button>
+                <button value='5' onclick='Btn(this.value)' class='BtnNum'>5</button>
+                <button value='6' onclick='Btn(this.value)' class='BtnNum'>6</button>
+                <button value='-' onclick='Btn(this.value)' class='Btn'>-</button>
+            </div>
+            <div class='Row'>
+                <button value='7' onclick='Btn(this.value)' class='BtnNum'>7</button>
+                <button value='8' onclick='Btn(this.value)' class='BtnNum'>8</button>
+                <button value='9' onclick='Btn(this.value)' class='BtnNum'>9</button>
+                <button value='*' onclick='Btn(this.value)' class='Btn'>*</button>
+            </div>
+            <div class='Row'>
+                <button value='C' onclick='Btn(this.value)' class='BtnNum'>C</button>
+                <button value='0' onclick='Btn(this.value)' class='BtnNum'>0</button>
+                <button value='=' onclick='Btn(this.value)' class='Btn'>=</button>
+                <button value='/' onclick='Btn(this.value)' class='Btn'>/</button>
+            </div>
+        </div>
+
+        <script src='script.js'></script>
+        <script src='calc.js'></script>
+    </body>
+</html>
