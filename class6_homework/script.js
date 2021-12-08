@@ -83,7 +83,7 @@ function p5(str) {
                 end = buffer.slice(j + 1);
 
                 buffer = start + swap1 + swap2 + end;
-                // str = str.substr(0, j - 1) + str[j] + str[i] + str.substr(j+1);
+                // str = str.substring(0, j - 1) + str[j] + str[i] + str.substr(j+1);
             }
             if (j > 1000) {
                 console.log("Infinity loop :(");
@@ -94,11 +94,8 @@ function p5(str) {
 
     return buffer;
 }
+
+
 // TODO
 // Find a way to swap chars.
 // console.log(p5("4321")); // fcab -> abcf
-
-
-function Calculator() {
-    let input1 = document.getElementById("Btn1").value;
-}
