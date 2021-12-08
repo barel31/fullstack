@@ -26,7 +26,7 @@ function Update(equal = false) {
         const math = output.substr(0, output.length - 1).split(action); // Split str by action
         console.log(math);
 
-        // Math action
+        // Handling math
         if (action == "+") {
             output += Number(math[0]) + Number(math[1]);
         } else if (action == "-") {
@@ -37,12 +37,12 @@ function Update(equal = false) {
             output += Number(math[0]) / Number(math[1]);
         }
 
-        // Validation
         if (output.indexOf("NaN") == -1 && math.length == 2) {
+            // Valid
             outputElement.value = output;
             output = "";
         } else {
-            // Not valid
+            // Invalid
             outputElement.value = "ERROR";
             output = "";
         }
