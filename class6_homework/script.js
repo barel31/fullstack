@@ -70,32 +70,20 @@ function p4a(substr, str) {
 // console.log(p4a("test", "testtttttesst"));
 
 function p5(str) {
-    let buffer = str;
-    let swap1, swap2, start, end;
-
-    debugger;
+    let array = str.split(""),
+        tmp;
     for (let i = 0; i < str.length; i++) {
-        for (let j = 0; j < str.length; j++) {
-            if (buffer[i] > buffer[j]) {
-                swap1 = buffer[j];
-                swap2 = buffer[i];
-                start = buffer.slice(0, j - 1);
-                end = buffer.slice(j + 1);
-
-                buffer = start + swap1 + swap2 + end;
-                // str = str.substring(0, j - 1) + str[j] + str[i] + str.substr(j+1);
-            }
-            if (j > 1000) {
-                console.log("Infinity loop :(");
-                return str;
+        for (let j = i + 1; j < str.length; j++) {
+            if (array[i] > array[j]) {
+                tmp = array[i];
+                array[i] = array[j];
+                array[j] = tmp;
             }
         }
     }
-
-    return buffer;
+    return array.join("");
 }
-
 
 // TODO
 // Find a way to swap chars.
-// console.log(p5("4321")); // fcab -> abcf
+console.log(p5("4321")); // fcab -> abcf
