@@ -84,6 +84,4 @@ function p5(str) {
     return array.join("");
 }
 
-// TODO
-// Find a way to swap chars.
-console.log(p5("4321")); // fcab -> abcf
+console.log(p5("fcab")); // fcab -> abcf
