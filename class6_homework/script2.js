@@ -1,7 +1,8 @@
 function p1(num) {
-    for (let i = 0; i < num; i++) {
+    // debugger
+    while(num) {
         let last = num % 10;
-        let first = getFirstDigit(num);
+        let first = get_first_digit(num);
 
         if (last != first[1]) {
             return false;
@@ -11,19 +12,20 @@ function p1(num) {
             remove *= 10;
         }
         num -= remove; // remove first digit
-        num = Math.floor(num / 10); // remove last digit
+        num = num / 10 | 0; // remove last digit
     }
 
     return true;
 }
-function getFirstDigit(num) {
+function get_first_digit(num) {
     let count = 0;
     while (num >= 10) {
-        num = num / 10;
+        num = num / 10 | 0;
         count++;
     }
-    return [count, Math.floor(num)];
+    return [count, num];
 }
+console.log(p1(1012211));
 // console.log(p1(112211));
 // console.log(p1(849210));
 // console.log(p1(44566544));
@@ -67,7 +69,7 @@ function is_contain_alpha(str) {
     }
     return false;
 }
-// console.log(p2("barel@1sdasd.cm"));
+console.log(p2("barel@1sdasd.com"));
 
 function p3(date, num) {
     let day = "",
@@ -129,11 +131,11 @@ function p4(num) {
     for (let i = 0; i < num - 2; i++) {
         if (i) {
             middle += "\n";
-        }
+        }   
         middle += "*" + space.slice(1) + "*";
     }
 
-    if (num > 2) {
+    if (num > 1) {
         console.log(
             num + "\n" + firstAndLast + "\n" + middle + "\n" + firstAndLast
         );
@@ -141,20 +143,20 @@ function p4(num) {
         console.log(num + "\n" + firstAndLast);
     }
 }
-// p4(1);
-// p4(2);
-// p4(3);
-// p4(4);
-// p4(5);
-// p4(6);
-// p4(7);
-// p4(8);
-// p4(9);
-// p4(10);
-// p4(20);
-// p4(30);
+p4(1);
+p4(2);
+p4(3);
+p4(4);
+p4(5);
+p4(6);
+p4(7);
+p4(8);
+p4(9);
+p4(10);
+p4(20);
+p4(30);
 
-// BARMUDA meshulash
+// BARMUDA meshulash mistake.OLD
 // function p5(num) {
 //     let firstAndLast = '*', middle = '', space = '';
 
@@ -175,25 +177,36 @@ function p4(num) {
 //         console.log(firstAndLast+'\n'+middle);
 //     }
 // }
-
 function p5(num) {
-    let last = '\n', spaces = '', first='';
-    for(let i = 1; i < num/2; i++) {
-        first += ' ';
-    }
-    first += '*'
+    let last = "",
+        spaces = "",
+        middle = "",
+        first = "";
 
-    for(let i = 1; i <= num; i++) {
-
-        last += '*'
+    last += "\n";
+    for (let i = 1; i <= num; i++) {
+        last += "*";
     }
-    for(let i = 1; i <= num; i++) {
-        spaces += ' ';
-        for(let j = num/2; j > 0; j--) {
-            spaces += '*'
+
+    for (let i = 1; i < num / 2; i++) {
+        first += " ";
+    }
+    first += "*";
+
+    for (let i = 1; i <= num; i++) {
+        for (let j = num / 2; j > 0; j--) {
+            spaces += " ";
         }
-        spaces += '*\n'
+        spaces += "*";
+        for (let j = num / 2; j > 0; j--) {
+            spaces += " ";
+        }
+        spaces += "\n";
     }
-    console.log(first+spaces+last);
+    console.log(first + spaces + last);
 }
-p5(5);
+// p5(6);
+
+//   *
+//  * *
+// *****
