@@ -17,7 +17,6 @@ function Btn(val) {
 function clear() {
     output = '';
     action = '';
-    inputIndex = 0;
 }
 
 // Update output
