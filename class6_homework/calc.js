@@ -1,67 +1,61 @@
-let output = "";
-let calc, action;
-// X = '', Y = '';
+let output = '', action = '';
+let calc, ;
 
 function Btn(val) {
     output += val;
     console.log(val);
 
-    if (val == "C") {
-        output = "";
-    } else if (val != "=" && !Number(val)) {
-        action = val;
+    if (val == 'C') {
+        clear();
+    } else if (val != '=' && !Number(val)) {
+        action += val;
     }
 
-    Update(val == "=" ? true : false);
+    Update(val == '=');
+}
+
+function clear() {
+    output = '';
+    action = '';
+    inputIndex = 0;
 }
 
 // Update output
-function Update(equal = false) {
-    let outputElement = document.getElementById("calcInput");
+function Update(equal = false) { // TODO - think of a way to make order of operations.
+    let outputElement = document.getElementById('calcInput');
     outputElement.value = output;
-
     // Button equal pressed
     if (equal) {
-        // const math = output.split(/[-+*/=]/); // find a way to skip regex from first char
-        const math = output.substr(0, output.length - 1).split(action); // Split str by action
+        debugger
+        // const math = output.split(/[-+*/=]/);
+        // find a way to skip regex from first char,
+        // it's doesn't makes error tho.
+        const math = output.substring(0, output.length - 1).split(/[-+*/=]/); // Split str by regex action
         console.log(math);
-
+        console.log(action);
         // Handling math
-        if (action == "+") {
-            output += Number(math[0]) + Number(math[1]);
-        } else if (action == "-") {
-            output += Number(math[0]) - Number(math[1]);
-        } else if (action == "*") {
-            output += Number(math[0]) * Number(math[1]);
-        } else {
-            output += Number(math[0]) / Number(math[1]);
+        let res = Number(math[0]);
+        for(let i = 0; i < action.length; i++) {
+            if (action[i] == '+') {
+                res += Number(math[i+1]);
+            } else if (action[i] == '-') {
+                res -= Number(math[i+1]);
+            } else if (action[i] == '*') {
+                res *= Number(math[i+1]);
+            } else {
+                res /= Number(math[i+1]);
+            }
         }
+        output += res;
 
-        if (output.indexOf("NaN") == -1 && math.length == 2) {
+        if (output.indexOf('NaN') == -1/* && math.length == 2*/) {
             // Valid
             outputElement.value = output;
-            output = "";
+            clear()
         } else {
             // Invalid
-            outputElement.value = "ERROR";
-            output = "";
+            outputElement.value = 'ERROR';
+            clear()
         }
     }
 }
-
-// for (let i = 0; i < output.length; i++) {
-//     if (output[i] < '9' && output[i] > '0') {
-//         continue;
-//     }
-//     if (
-//         (output[i] != '/' &&
-//             output[i] != '-' &&
-//             output[i] != '+' &&
-//             output[i] != '*' &&
-//             output[i] != '=') ||
-//         (output[i] == '=' && i && !Number.isInteger(output[i-1]))
-//     ) {
-//         output = '';
-//         return (outputElement.value = 'ERROR');
-//     }
-// }
