@@ -27,7 +27,7 @@ function Update(equal = false) {
     outputElement.value = output;
     // Button equal pressed
     if (equal) {
-        debugger;
+        // debugger;
         // const math = output.split(/[-+*/=]/);
         // find a way to skip regex from first char,
         // it's doesn't makes error tho.
