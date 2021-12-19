@@ -26,7 +26,6 @@ console.log(q2([232,24,34,1234,1243,4,1,2134,45]));
 
 function q3(arr, arr2) {
     let arr3 = [];
-
     for (let i = 0; i < arr.length; i++) {
         for (let j = 0; j < arr2.length; j++) {
             if (arr[i] == arr2[j]) {
@@ -52,7 +51,6 @@ function q3(arr, arr2) {
 
 function q4(mat) {
     let counter = 0;
-
     for (let i = 0; i < mat.length; i++) {
         for (let j = 0; j < mat[i].length; j++) {
             let num = mat[i][j];
@@ -76,7 +74,6 @@ function q4(mat) {
 
 function q5(mat) {
     let counter = 0;
-
     for (let i = 0; i < mat.length; i++) {
         for (let j = 0; j < mat[i].length; j++) {
             if (mat[i][j] >= "A" && mat[i][j] <= "Z") {
@@ -119,8 +116,10 @@ function q6(mat) {
 // );
 
 function q7(mat) {
-    let flag = true;
     for (let i = 0; i < 9; i++) {
+        if(mat[i].length < 9) {
+            return false;
+        }
         let arr = [];
         for (let j = 0; j < 9; j++) {
             arr.push(mat[i][j]);
@@ -130,11 +129,10 @@ function q7(mat) {
             sum += arr[j];
         }
         if (sum != 45) {
-            flag = false;
-            break;
+            return true;
         }
     }
-    return flag;
+    return false;
 }
 // console.log(q7([
 //     [1,2,3,4,5,6,7,8,9],
