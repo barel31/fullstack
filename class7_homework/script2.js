@@ -12,7 +12,7 @@ function q1(mat) {
 
 function q2(arr) {
     for (let i = 0; i < arr.length; i++) {
-        for (let j = i + 1; j < arr.length-i; j++) {
+        for (let j = i + 1; j < arr.length - 1 - i; j++) {
             if (arr[i] > arr[j]) {
                 let temp = arr[i];
                 arr[i] = arr[j];
@@ -22,7 +22,7 @@ function q2(arr) {
     }
     return arr;
 }
-console.log(q2([232,24,34,1234,1243,4,1,2134,45]));
+// console.log(q2([232,24,34,1234,1243,4,1,2134,45]));
 
 function q3(arr, arr2) {
     let arr3 = [];
@@ -95,12 +95,18 @@ function q6(mat) {
             if (
                 (i && mat[i - 1][j]) ||
                 (j && mat[i][j - 1]) ||
-                (j <= mat.length - 2 && mat[i][j + 1]) ||
-                (i <= mat.length - 2 && mat[i + 1][j])
+                (i && j && mat[i - 1][j - 1]) ||
+                (j < mat[i].length && mat[i][j + 1]) ||
+                (i < mat.length && mat[i + 1][j]) ||
+                (i < mat.length && j <= mat.length - 2 && mat[i + 1][j + 1]) ||
+                (i < mat.length && j && mat[i + 1][j - 1]) ||
+                (j < mat[i].length && i && mat[i - 1][j + 1])
             ) {
+                // not a valid island
                 continue;
             }
             counter++;
+            console.log(i, j);
         }
     }
     return counter;
@@ -108,40 +114,50 @@ function q6(mat) {
 // console.log(
 //     q6([
 //         [0, 0, 0, 1, 0, 0, 0],
-//         [1, 0, 0, 0, 0, 0, 1],
-//         [0, 0, 0, 0, 1, 0, 0],
-//         [1, 0, 0, 0, 0, 0, 1],
+//         [1, 0, 0, 0, 0, 1, 0],
+//         [0, 1, 0, 0, 0, 0, 0],
+//         [0, 0, 0, 0, 0, 0, 0],
 //         [0, 1, 1, 0, 0, 0, 0],
 //     ])
 // );
 
 function q7(mat) {
     for (let i = 0; i < 9; i++) {
-        if(mat[i].length < 9) {
+        if (mat[i].length < 9) {
             return false;
         }
-        let arr = [];
-        for (let j = 0; j < 9; j++) {
-            arr.push(mat[i][j]);
-        }
-        let sum = 0;
+        // let arr = [];
+        // for (let j = 0; j < 9; j++) {
+        //     arr.push(mat[i][j]);
+        // }
+        let arr = mat[i];
         for (let j = 0; j < arr.length; j++) {
-            sum += arr[j];
+            for (let k = j + 1; k < arr.length - 1 - i; k++) {
+                if (arr[j] > arr[k]) {
+                    let temp = arr[j];
+                    arr[j] = arr[k];
+                    arr[k] = temp;
+                }
+            }
         }
-        if (sum != 45) {
-            return true;
+        for (let j = 0, n = 1; j < arr.length; j++, n++) {
+            if (arr[j] != n) {
+                return false;
+            }
         }
     }
-    return false;
+    return true;
 }
-// console.log(q7([
-//     [1,2,3,4,5,6,7,8,9],
-//     [1,2,3,4,5,6,7,8,9],
-//     [1,2,3,4,5,6,7,8,9],
-//     [1,2,3,4,5,6,7,8,9],
-//     [1,2,3,4,5,6,7,8,9],
-//     [1,2,6,4,5,3,7,8,9],
-//     [1,2,3,4,5,6,7,8,9],
-//     [1,2,3,4,5,6,7,8,9],
-//     [1,2,3,4,5,6,7,8,9]
-// ]));
+// console.log(
+//     q7([
+//         [1, 2, 3, 4, 5, 6, 7, 8, 9],
+//         [1, 2, 3, 4, 5, 6, 7, 8, 9],
+//         [1, 2, 3, 4, 5, 6, 7, 8, 9],
+//         [1, 2, 3, 4, 5, 6, 7, 8, 9],
+//         [1, 2, 3, 4, 5, 6, 7, 8, 9],
+//         [1, 2, 3, 4, 5, 6, 7, 8, 9],
+//         [1, 2, 3, 4, 5, 6, 7, 8, 9],
+//         [1, 2, 3, 4, 5, 6, 7, 8, 9],
+//         [1, 2, 3, 4, 5, 6, 7, 8, 9],
+//     ])
+// );
