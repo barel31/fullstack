@@ -46,6 +46,7 @@ function q4(mat) {
     return counter;
 }
 console.log(q4([1,2,[55,2],214,[55],[213,123,213]]));
+
 function q5(mat) {
     let sum = 0;
     for(let i = 0; i < mat.length; i++) {
