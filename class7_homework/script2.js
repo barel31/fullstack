@@ -38,7 +38,7 @@ function q3(arr, arr2) {
                     }
                 }
                 if (!flag) {
-                    arr3.push(arr[i]);
+                    arr3.push(arr[i]);    
                 }
             }
         }
@@ -130,6 +130,7 @@ function q7(mat) {
         // for (let j = 0; j < 9; j++) {
         //     arr.push(mat[i][j]);
         // }
+        // faster, make a pointer
         let arr = mat[i];
         for (let j = 0; j < arr.length; j++) {
             for (let k = j + 1; k < arr.length - 1 - i; k++) {
@@ -161,3 +162,70 @@ function q7(mat) {
 //         [1, 2, 3, 4, 5, 6, 7, 8, 9],
 //     ])
 // );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function fibonacciGenerator (n) {
+    //Do NOT change any of the code above 👆
+
+    //Write your code here:
+    if(n === 1) {
+        return [0];
+    } else if(n === 2) {
+        return [0, 1];
+    }
+    var arr = [0, 1];
+    var x = 0;
+    var y = 1;
+    for (var i = 2; i < n; i++) {
+        var z = x+y;
+        x = y;
+        y = z;
+        arr.push(z);
+    }
+    return arr;
+    
+    
+    
+    
+    
+    //Return an array of fibonacci numbers starting from 0.
+    
+//Do NOT change any of the code below 👇
+}
+
+console.log(fibonacciGenerator(9999));
