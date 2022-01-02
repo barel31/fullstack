@@ -23,9 +23,6 @@ body {
     width: 200px;
     border: 10px solid black;
     border-radius: 20%;
-    font-size: 5em;
-    font-family: "Press Start 2P", cursive;
-    padding-top: .5rem;
 }
 
 .game-over {
