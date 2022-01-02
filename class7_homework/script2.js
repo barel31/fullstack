@@ -83,7 +83,7 @@ function q5(mat) {
     }
     return counter;
 }
-
+ 
 function q6(mat) {
     let counter = 0;
     for (let i = 0; i < mat.length; i++) {
@@ -199,33 +199,33 @@ function q7(mat) {
 
 
 
-function fibonacciGenerator (n) {
-    //Do NOT change any of the code above 👆
+// function fibonacciGenerator (n) {
+//     //Do NOT change any of the code above 👆
 
-    //Write your code here:
-    if(n === 1) {
-        return [0];
-    } else if(n === 2) {
-        return [0, 1];
-    }
-    var arr = [0, 1];
-    var x = 0;
-    var y = 1;
-    for (var i = 2; i < n; i++) {
-        var z = x+y;
-        x = y;
-        y = z;
-        arr.push(z);
-    }
-    return arr;
+//     //Write your code here:
+//     if(n === 1) {
+//         return [0];
+//     } else if(n === 2) {
+//         return [0, 1];
+//     }
+//     var arr = [0, 1];
+//     var x = 0;
+//     var y = 1;
+//     for (var i = 2; i < n; i++) {
+//         var z = x+y;
+//         x = y;
+//         y = z;
+//         arr.push(z);
+//     }
+//     return arr;
     
     
     
     
     
-    //Return an array of fibonacci numbers starting from 0.
+//     //Return an array of fibonacci numbers starting from 0.
     
-//Do NOT change any of the code below 👇
-}
+// //Do NOT change any of the code below 👇
+// }
 
-console.log(fibonacciGenerator(9999));
+// console.log(fibonacciGenerator(9999));
