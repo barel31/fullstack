@@ -1,0 +1,45 @@
+body {
+    background-color: #e45853;
+    align-items: center;
+
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+h1 {
+    font-family: 'Lato', sans-serif;
+}
+
+#container {
+    margin: auto;
+    text-align: center;
+}
+
+#board {
+    margin: 0 auto;
+    height: 50%;
+    width: 50%;
+    background-color: white;
+    font-size: 0;
+}
+
+#board input[type = 'number'] {
+    text-align: center;
+    height: 2rem;
+    width: 2rem;
+    font-size: 2.0rem;
+}
+
+
+/* Remove Arrows from number inputs */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}

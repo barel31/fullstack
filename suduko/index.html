@@ -15,16 +15,9 @@
             crossorigin="anonymous"
         />
 
-        <!-- Favicon -->
         <link rel="shortcut icon" href="images/icon.png" type="image/x-icon" />
-
-        <!-- Google font: Lato -->
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,700&display=swap" rel="stylesheet" />
-
-        <!-- Custom styles for this template -->
-        <link href="style.css" rel="stylesheet" />
+        <link href="css/signin.css" rel="stylesheet" />
     </head>
     <body class="text-center">
         <main class="form-signin">
@@ -36,11 +29,18 @@
                 <label for="floatingName">Name</label>
             </div>
             <div class="form-floating">
-                <input name="password" type="password" class="form-control no-shadow" id="floatingPassword" placeholder="Password" required/>
+                <input
+                    name="password"
+                    type="password"
+                    class="form-control no-shadow"
+                    id="floatingPassword"
+                    placeholder="Password"
+                    required
+                />
                 <label for="floatingPassword">Password</label>
             </div>
-            <button class="w-100 btn btn-lg btn-primary" type="submit" onclick='signIn()'>Sign In</button>
-            <h3 id='pMessage'></h3>
+            <button class="w-100 btn btn-lg btn-primary" type="submit" onclick="signIn()">Sign In</button>
+            <p id="pMessage"></p>
             <p class="footer mt-5 mb-3">&copy; Barel Shraga & Anton</p>
         </main>
 
