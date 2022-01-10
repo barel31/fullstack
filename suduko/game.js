@@ -21,16 +21,13 @@ function initBoard() {
             board.appendChild(ele);
 
             if(j % 3 === 0) {
-                group++;
+                group++;    
             }
             if(j % 9 === 0) {
-                let br = document.createElement('br')
-                board.appendChild(br)
+                let br = document.createElement('br');
+                board.appendChild(br);
                 groupBackup = group;
                 group -= 3;
-            }
-            if(j === 9 && i % 3 === 0) {
-                group++ 
             }
         }
         if(i % 3 === 0) {
@@ -41,6 +38,14 @@ function initBoard() {
 
 function finish() {
     // Check if board has completed
+
+    // Checks groups
+    for(let j = 1; j <= 9; j++) {
+        let inputs = document.querySelectorAll('.group'+j);
+        for(let i = 1; i <= 9; i++) {
+            
+        }
+    }
 }
 
 function restart() {
