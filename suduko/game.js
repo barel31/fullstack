@@ -48,6 +48,28 @@ function finish() {
     }
 }
 
+function isArrayNested(arr, arr2) {
+    let arr3 = [];
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = 0; j < arr2.length; j++) {
+            if (arr[i] == arr2[j]) {
+                let flag = false;
+                for (let k = 0; k < arr3.length; k++) {
+                    // check if arr3 contain the new value
+                    if (arr3[k] == arr[i]) {
+                        flag = true;
+                        break;
+                    }
+                }
+                if (!flag) {
+                    arr3.push(arr[i]);    
+                }
+            }
+        }
+    }
+    return arr3;
+}
+
 function restart() {
     // Initilize restart
 
