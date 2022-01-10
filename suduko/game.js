@@ -42,32 +42,34 @@ function finish() {
     // Checks groups
     for(let j = 1; j <= 9; j++) {
         let inputs = document.querySelectorAll('.group'+j);
-        for(let i = 1; i <= 9; i++) {
-            
+        let inputsValues =  [];
+        for(let i = 0; i < 9; i++) {
+            inputsValues.push(inputs[i].value);
+        }
+
+
+        let check = isArrayNested(inputsValues, ['1','2','3','4','5','6','7','8','9']);
+        console.log(inputsValues);
+        if(check) {
+            console.log('group'+j + ' good');
+        }
+        else {
+            console.log('group'+j + ' wrong');
+
         }
     }
 }
 
 function isArrayNested(arr, arr2) {
-    let arr3 = [];
+    // debugger 
     for (let i = 0; i < arr.length; i++) {
-        for (let j = 0; j < arr2.length; j++) {
-            if (arr[i] == arr2[j]) {
-                let flag = false;
-                for (let k = 0; k < arr3.length; k++) {
-                    // check if arr3 contain the new value
-                    if (arr3[k] == arr[i]) {
-                        flag = true;
-                        break;
-                    }
-                }
-                if (!flag) {
-                    arr3.push(arr[i]);    
-                }
-            }
+        if (arr[i] == arr2[i]) {
+            continue;                                       
+        } else {
+            return false;
         }
     }
-    return arr3;
+    return true;
 }
 
 function restart() {
