@@ -9,9 +9,9 @@ function initBoard() {
             ele = document.createElement('input');
             ele.setAttribute('name', 'input_' + i + '_' + j);
             ele.setAttribute('id', 'input_' + i + '_' + j);
-            ele.setAttribute('type', 'number');
-            ele.setAttribute('min', '1');
-            ele.setAttribute('max', '9');
+            ele.setAttribute('type', 'text');
+            ele.setAttribute('maxlength', '1');
+            ele.setAttribute('oninput', "this.value=this.value.replace(/[^0-9]/g,'');");
             board.appendChild(ele);
         }
     }
