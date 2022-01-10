@@ -27,9 +27,8 @@ h1 {
     text-align: center;
     height: 2rem;
     width: 2rem;
-    font-size: 2.0rem;
+    font-size: 2rem;
 }
-
 
 /* Remove Arrows from number inputs */
 /* Chrome, Safari, Edge, Opera */
@@ -42,4 +41,13 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
+}
+
+
+.border-right-bottom {
+    border: 2px solid black;
+}
+
+.input {
+    display:inline-flex;
 }
