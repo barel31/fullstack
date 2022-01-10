@@ -51,3 +51,31 @@ input[type=number] {
 .input {
     display:inline-flex;
 }
+
+.group1 {
+    background-color: red;
+}
+.group2 {
+    background-color: blue;
+}
+.group3 {
+    background-color: brown
+}
+.group4 {
+    background-color:chartreuse;
+}
+.group5 {
+    background-color:cornflowerblue;
+}
+.group6 {
+    background-color:darkgreen;
+}
+.group7 {
+    background-color:darkseagreen;
+}
+.group8 {
+    background-color:deeppink;
+}
+.group9 {
+    background-color:deepskyblue;
+}
