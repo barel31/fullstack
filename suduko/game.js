@@ -6,7 +6,7 @@ function initBoard() {
 
     let ele;
     let group = 1;
-    let group2 = 1;
+    let groupBackup;
     for(let i = 1; i <= 9; i++) {
         for(let j = 1; j <= 9; j++) {
 
@@ -17,7 +17,7 @@ function initBoard() {
             ele.setAttribute('name', 'input_' + i + '_' + j);
             ele.setAttribute('type', 'text');
             ele.setAttribute('maxlength', '1');
-            // ele.setAttribute('oninput', "this.value=this.value.replace(/[^1-9]/g,'');"); // 1-9 only
+            ele.setAttribute('oninput', "this.value=this.value.replace(/[^1-9]/g,'');"); // 1-9 only
             board.appendChild(ele);
 
             if(j % 3 === 0) {
@@ -26,7 +26,7 @@ function initBoard() {
             if(j % 9 === 0) {
                 let br = document.createElement('br')
                 board.appendChild(br)
-                group2 = group;
+                groupBackup = group;
                 group -= 3;
             }
             if(j === 9 && i % 3 === 0) {
@@ -34,7 +34,7 @@ function initBoard() {
             }
         }
         if(i % 3 === 0) {
-            group = group2;
+            group = groupBackup;
         }
     }
 }
