@@ -18,13 +18,16 @@ function signIn() {
         ele.setAttribute('style', 'color: red');
         ele.innerHTML = 'The password is incorrent.';
     } else {
-        ele.style.color = 'green';
-        ele.innerHTML = 'Successfully logged in. redirecting...';
+    // ele.style.color = 'green';
+    // ele.innerHTML = 'Successfully logged in. redirecting...';
+
+    document.getElementById('loader').innerHTML += 
+    '<div class="loadingio-spinner-cube-2zx4f3ctido"><div class="ldio-1pkt0oqav2x"><div></div><div></div><div></div><div></div></div></div>';
 
         setTimeout(function () {
-            window.location.href = 'game.html';
-        }, 2000);
+        window.location.href = 'game.html';
+    }, 2000);
 
-        logged = true;
-    }
+    logged = true;
+}
 }

@@ -1,6 +1,7 @@
 html,
 body {
     height: 100%;
+    font-family: 'Lato', sans-serif;
 }
 
 body {
@@ -47,7 +48,6 @@ body {
 /* Header Font */
 h1.h3 {
     color: #891204;
-    font-family: 'Lato', sans-serif;
 }
 
 /* Sign in button */
@@ -81,4 +81,10 @@ img.mb-4 {
 	.bd-placeholder-img-lg {
 		font-size: 3.5rem;
 	}
+}
+
+#loader {
+    position: relative;
+    right: 30px;
+    bottom: 100px;
 }

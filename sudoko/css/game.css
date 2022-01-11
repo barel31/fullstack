@@ -20,7 +20,6 @@ h1 {
     height: 50%;
     width: 50%;
     background-color: white;
-    font-size: 0;
 }
 
 #board input[type = 'text'] {
@@ -30,52 +29,35 @@ h1 {
     font-size: 2rem;
 }
 
-/* Remove Arrows from number inputs */
-/* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-/* Firefox */
-input[type=number] {
-  -moz-appearance: textfield;
-}
-
 
 .border-right-bottom {
     border: 2px solid black;
 }
 
-.input {
-    display:inline-flex;
-}
-
-.group1 {
+.group-1 {
     background-color: red;
 }
-.group2 {
+.group-2 {
     background-color: blue;
 }
-.group3 {
+.group-3 {
     background-color: brown
 }
-.group4 {
+.group-4 {
     background-color:chartreuse;
 }
-.group5 {
+.group-5 {
     background-color:cornflowerblue;
 }
-.group6 {
+.group-6 {
     background-color:darkgreen;
 }
-.group7 {
+.group-7 {
     background-color:darkseagreen;
 }
-.group8 {
+.group-8 {
     background-color:deeppink;
 }
-.group9 {
+.group-9 {
     background-color:deepskyblue;
 }
