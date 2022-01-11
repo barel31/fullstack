@@ -4,7 +4,7 @@ body {
 
     padding-top: 40px;
     padding-bottom: 40px;
-    
+
     font-family: 'Lato', sans-serif;
 }
 
@@ -20,7 +20,7 @@ body {
     background-color: white;
 }
 
-#board input[type = 'text'] {
+#board input[type='text'] {
     text-align: center;
     height: 2rem;
     width: 2rem;
@@ -34,27 +34,31 @@ body {
     background-color: blue;
 }
 .group-3 {
-    background-color: brown
+    background-color: brown;
 }
 .group-4 {
-    background-color:chartreuse;
+    background-color: chartreuse;
 }
 .group-5 {
-    background-color:cornflowerblue;
+    background-color: cornflowerblue;
 }
 .group-6 {
-    background-color:darkgreen;
+    background-color: darkgreen;
 }
 .group-7 {
-    background-color:darkseagreen;
+    background-color: darkseagreen;
 }
 .group-8 {
-    background-color:deeppink;
+    background-color: deeppink;
 }
 .group-9 {
-    background-color:deepskyblue;
+    background-color: deepskyblue;
 }
 
 img {
-    width: 20%;
+    width: 10%;
+}
+.input {
+    color: black;
+    border: 1px solid black; 
 }

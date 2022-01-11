@@ -1,4 +1,6 @@
-const ARRAY_1_9 = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
+const EASY = 60;
+const MEDIUM = 40;
+const HARD = 20;
 
 initBoard();
 
@@ -7,9 +9,8 @@ function initBoard() {
     // debugger
     let board = document.getElementById('board');
 
-    let ele;
+    let ele, groupBackup;
     let group = 1;
-    let groupBackup;
     for (let i = 1; i <= 9; i++) {
         for (let j = 1; j <= 9; j++) {
             ele = document.createElement('input');
@@ -38,6 +39,31 @@ function initBoard() {
             group = groupBackup;
         }
     }
+
+    randomizeInputs(EASY);
+}
+
+function randomizeInputs(number) {
+    let inputs = document.getElementsByClassName('input');
+    let indexRandomNumbers = [];
+    for (i = 0; i < number; i++) {
+        
+        // Randomize index of input no repeat.
+        let rndIndex = Math.floor(Math.random() * 80) + 1;
+        while(indexRandomNumbers.includes(rndIndex)) {
+            rndIndex = Math.floor(Math.random() * 80) + 1;
+            
+        }
+        console.log(rndIndex);
+        indexRandomNumbers.push(rndIndex);
+        
+        let classList = inputs[rndIndex].classList.toString().split(' ');
+        console.log(classList[1]);
+
+        inputs[rndIndex].value = Math.floor(Math.random() * 9) + 1;
+        inputs[rndIndex].setAttribute('disabled' , "")
+    }
+
 }
 
 function finish() {
@@ -47,8 +73,7 @@ function finish() {
     let successGrpCount = 0;
     for (let j = 1; j <= 9; j++) {
         let inputs = document.getElementsByClassName('group-' + j);
-        let inputsValues = [];
-        if (checkInputs(inputs) === 0) {
+        if (checkInputs(inputs)) {
             console.log('group-' + j + ' good');
             successGrpCount++;
         } else {
@@ -61,11 +86,11 @@ function finish() {
     let successColCount = 0;
     for (let j = 1; j <= 9; j++) {
         let inputs = document.getElementsByClassName('col-' + j);
-        if (checkInputs(inputs) === 0) {
-            console.log('col-' + j + ' good');
+        if (checkInputs(inputs)) {
+            // console.log('col-' + j + ' good');
             successColCount++;
         } else {
-            console.log('col-' + j + ' wrong');
+            // console.log('col-' + j + ' wrong');
         }
     }
 
@@ -73,7 +98,7 @@ function finish() {
     let successRowCount = 0;
     for (let j = 1; j <= 9; j++) {
         let inputs = document.getElementsByClassName('row-' + j);
-        if (checkInputs(inputs) === 0) {
+        if (checkInputs(inputs)) {
             console.log('row-' + j + ' good');
             successRowCount++;
         } else {
@@ -86,8 +111,8 @@ function checkInputs(inputs) {
     // Check inputs (array)
     // Return number of how much validations have been failed.
 
-    let failCount = 0;
-    
+    let success = false;
+
     // Get values of all inputs
     let inputsValues = [];
     for (let i = 0; i < 9; i++) {
@@ -96,18 +121,16 @@ function checkInputs(inputs) {
     // Sort the array before check
     inputsValues.sort();
     // Check if sorted array equal to array 1-9
-    if (!isArraysEqual(inputsValues, ARRAY_1_9)) {
-        failCount++;
+    if (isArraysEqual(inputsValues)) {
+        success = true;
     }
 
-    return failCount;
+    return success;
 }
-function isArraysEqual(arr, arr2) {
+function isArraysEqual(arr) {
     for (let i = 0; i < arr.length; i++) {
-        for (let j = 0; j < arr2.length; j++) {
-            if (arr[i] != arr2[i]) {
-                return false;
-            }
+        if (arr[i] != i + 1) {
+            return false;
         }
     }
     return true;
@@ -119,5 +142,8 @@ function restart() {
     let inputs = document.querySelectorAll('.input');
     for (let i = 0; i < 81; i++) {
         inputs[i].value = '';
+        inputs[i].removeAttribute('disabled');
     }
+
+    randomizeInputs(HARD);
 }
