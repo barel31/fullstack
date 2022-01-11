@@ -15,8 +15,8 @@ function initBoard() {
             ele = document.createElement('input');
             ele.classList.add('input');
             ele.classList.add('group-' + group);
-            ele.classList.add('row-'+i);
-            ele.classList.add('col-'+j);
+            ele.classList.add('row-' + i);
+            ele.classList.add('col-' + j);
             ele.setAttribute('name', 'input_' + i + '_' + j);
             ele.setAttribute('type', 'text');
             ele.setAttribute('maxlength', '1');
@@ -29,7 +29,7 @@ function initBoard() {
             if (j % 9 === 0) {
                 let br = document.createElement('br');
                 board.appendChild(br);
-                
+
                 groupBackup = group;
                 group -= 3;
             }
@@ -48,40 +48,36 @@ function finish() {
     for (let j = 1; j <= 9; j++) {
         let inputs = document.getElementsByClassName('group-' + j);
         let inputsValues = [];
-        for (let i = 0; i < 9; i++) {
-            inputsValues.push(inputs[i].value);
-        }
         if (checkInputs(inputs) === 0) {
-            console.log('group' + j + ' good');
+            console.log('group-' + j + ' good');
             successGrpCount++;
         } else {
-            console.log('group' + j + ' wrong');
+            console.log('group-' + j + ' wrong');
         }
-
     }
     // if(successGrpCount === 9) {}
 
     // Check columns
     let successColCount = 0;
-    for (let i = 1; i <= 9; i++) {
-        let inputs = document.getElementsByClassName('col-'+i);
+    for (let j = 1; j <= 9; j++) {
+        let inputs = document.getElementsByClassName('col-' + j);
         if (checkInputs(inputs) === 0) {
-            console.log('col' + j + ' good');
+            console.log('col-' + j + ' good');
             successColCount++;
         } else {
-            console.log('col' + j + ' wrong');
+            console.log('col-' + j + ' wrong');
         }
     }
 
     // Check Rows
     let successRowCount = 0;
-    for (let i = 1; i <= 9; i++) {
-        let inputs = document.getElementsByClassName('row-'+i);
+    for (let j = 1; j <= 9; j++) {
+        let inputs = document.getElementsByClassName('row-' + j);
         if (checkInputs(inputs) === 0) {
-            console.log('row' + j + ' good');
+            console.log('row-' + j + ' good');
             successRowCount++;
         } else {
-            console.log('row' + j + ' wrong');
+            console.log('row-' + j + ' wrong');
         }
     }
 }
@@ -91,7 +87,8 @@ function checkInputs(inputs) {
     // Return number of how much validations have been failed.
 
     let failCount = 0;
-
+    
+    // Get values of all inputs
     let inputsValues = [];
     for (let i = 0; i < 9; i++) {
         inputsValues.push(inputs[i].value);
@@ -99,10 +96,10 @@ function checkInputs(inputs) {
     // Sort the array before check
     inputsValues.sort();
     // Check if sorted array equal to array 1-9
-    if (isArraysEqual(inputsValues, ARRAY_1_9)) {
+    if (!isArraysEqual(inputsValues, ARRAY_1_9)) {
         failCount++;
-    } else {
     }
+
     return failCount;
 }
 function isArraysEqual(arr, arr2) {
