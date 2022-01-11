@@ -61,7 +61,7 @@ function randomizeInputs(number) {
         console.log(classList[1]);
 
         inputs[rndIndex].value = Math.floor(Math.random() * 9) + 1;
-        inputs[rndIndex].disabled = true;
+        inputs[rndIndex].setAttribute('disabled' , "")
     }
 
 }
@@ -142,7 +142,7 @@ function restart() {
     let inputs = document.querySelectorAll('.input');
     for (let i = 0; i < 81; i++) {
         inputs[i].value = '';
-        inputs[i].disabled = false;
+        inputs[i].removeAttribute('disabled');
     }
 
     randomizeInputs(HARD);
