@@ -121,13 +121,13 @@ function checkInputs(inputs) {
     // Sort the array before check
     inputsValues.sort();
     // Check if sorted array equal to array 1-9
-    if (isArraysEqual(inputsValues)) {
+    if (isArrayValid(inputsValues)) {
         success = true;
     }
 
     return success;
 }
-function isArraysEqual(arr) {
+function isArrayValid(arr) {
     for (let i = 0; i < arr.length; i++) {
         if (arr[i] != i + 1) {
             return false;
@@ -138,7 +138,6 @@ function isArraysEqual(arr) {
 
 function restart() {
     // Initilize restart
-
     let inputs = document.querySelectorAll('.input');
     for (let i = 0; i < 81; i++) {
         inputs[i].value = '';
