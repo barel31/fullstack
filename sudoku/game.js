@@ -146,3 +146,4 @@ function restart() {
 
     randomizeInputs(HARD);
 }
+test``
