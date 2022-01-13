@@ -13,11 +13,11 @@ function initBoard() {
     let group = 1;
     for (let i = 1; i <= 9; i++) {
         for (let j = 1; j <= 9; j++) {
-            ele = $('<input>').
-            addClass('input group-' + group + ' row-' + i + ' col-' + j).
-            attr('name', 'input_' + i + '_' + j).
-            attr('type', 'text').
-            attr('maxlength', '1');
+            ele = $('<input>')
+                .addClass('input group-' + group + ' row-' + i + ' col-' + j)
+                .attr('name', 'input_' + i + '_' + j)
+                .attr('type', 'text')
+                .attr('maxlength', '1');
             board.append(ele);
 
             if (j % 3 === 0) {
@@ -39,7 +39,6 @@ function initBoard() {
 }
 
 function randomizeInputs(number) {
-
     function randomNumber(to) {
         return Math.floor(Math.random() * to);
     }
@@ -64,15 +63,15 @@ function randomizeInputs(number) {
     }
 }
 
-$('#finish').on('click', function() {
+$('#finish').on('click', function () {
     // Button finish pressed  - Check if board has completed
 
     function checkInputs(inputs) {
         // Check inputs (array)
         // Return number of how much validations have been failed.
-    
+
         let success = false;
-    
+
         // Get values of all inputs
         let inputsValues = [];
         for (let i = 0; i < 9; i++) {
@@ -84,7 +83,7 @@ $('#finish').on('click', function() {
         if (isArrayValid(inputsValues)) {
             success = true;
         }
-    
+
         return success;
     }
 
@@ -135,16 +134,15 @@ $('#finish').on('click', function() {
     }
 });
 
-$('#again').on('click', function() {
+$('#again').on('click', function () {
     // Button again pressed - Initilize restart
     const inputs = $('.input');
-    inputs.prop("disabled", false);
+    inputs.prop('disabled', false);
     inputs.val('');
     randomizeInputs(HARD);
 });
 
-
 // On inputs change regex it to 1 digit of 1-9 valid numbers
-$('.input').on('input', function() {
-    return this.value=this.value.replace(/[^1-9]/g,'');
+$('.input').on('input', function () {
+    return (this.value = this.value.replace(/[^1-9]/g, ''));
 });
