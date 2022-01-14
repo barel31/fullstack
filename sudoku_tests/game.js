@@ -54,7 +54,6 @@ function randomizeInputs(number) {
     inputs.prop('disabled', false);
     inputs.val('');
 
-    // const inputs = $('.input');
     let indexRandomNumbers = [];
     for (i = 0; i < number; i++) {
         // Randomize index of input no repeat.
@@ -62,10 +61,8 @@ function randomizeInputs(number) {
         while (indexRandomNumbers.includes(rndIndex)) {
             rndIndex = randomNumber(81);
         }
-        // console.log(rndIndex);
         indexRandomNumbers.push(rndIndex);
 
-        // let classList = inputs[rndIndex].attr('class').split(' '); // NOT WORKING (err: attr is not a function)
         const classList = inputs[rndIndex].classList.toString().split(/\s+/);
 
 
