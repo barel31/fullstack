@@ -1,0 +1,64 @@
+body {
+    background-color: #e45853;
+    align-items: center;
+
+    padding-top: 40px;
+    padding-bottom: 40px;
+
+    font-family: 'Lato', sans-serif;
+}
+
+#container {
+    margin: auto;
+    text-align: center;
+}
+
+#board {
+    margin: 0 auto;
+    height: 50%;
+    width: 50%;
+    background-color: white;
+}
+
+#board input[type='text'] {
+    text-align: center;
+    height: 2rem;
+    width: 2rem;
+    font-size: 2rem;
+}
+
+.group-1 {
+    background-color: red;
+}
+.group-2 {
+    background-color: blue;
+}
+.group-3 {
+    background-color: brown;
+}
+.group-4 {
+    background-color: chartreuse;
+}
+.group-5 {
+    background-color: cornflowerblue;
+}
+.group-6 {
+    background-color: darkgreen;
+}
+.group-7 {
+    background-color: darkseagreen;
+}
+.group-8 {
+    background-color: deeppink;
+}
+.group-9 {
+    background-color: deepskyblue;
+}
+
+img {
+    width: 10%;
+}
+.input {
+    color: black;
+    border: 1px solid black; 
+}
