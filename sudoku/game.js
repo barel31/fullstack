@@ -6,7 +6,6 @@ initBoard();
 
 function initBoard() {
     // Print board
-    // debugger
     const board = $('#board');
 
     let ele, groupBackup;
@@ -39,11 +38,23 @@ function initBoard() {
 }
 
 function randomizeInputs(number) {
-    function randomNumber(to) {
+    function randomNumber(to, plusOne=false) {
+        if (plusOne) {
+            return Math.floor(Math.random() * to) + 1;
+        }
         return Math.floor(Math.random() * to);
     }
 
+    // Loader animation
+    $('#loader').html('');
+
+
+    // Reset inputs
     const inputs = $('.input');
+    inputs.prop('disabled', false);
+    inputs.val('');
+
+    // const inputs = $('.input');
     let indexRandomNumbers = [];
     for (i = 0; i < number; i++) {
         // Randomize index of input no repeat.
@@ -56,15 +67,50 @@ function randomizeInputs(number) {
 
         // let classList = inputs[rndIndex].attr('class').split(' '); // NOT WORKING (err: attr is not a function)
         const classList = inputs[rndIndex].classList.toString().split(/\s+/);
-        // console.log(classList[1]);
 
-        inputs[rndIndex].value = randomNumber(9);
+
+        // Get group of input
+        const group = $('.' + classList[1]);
+        let groupVals = [];
+        for (let i = 0; i < group.length; i++) {
+            if(group[i].value !== '') {
+                groupVals.push(parseInt(group[i].value));
+            }
+        }
+        // Get row of input
+        const row = $('.' + classList[2]);
+        let rowVals = [];
+        for (let i = 0; i < row.length; i++) {
+            if(row[i].value !== '') {
+                rowVals.push(parseInt(row[i].value));
+            }
+        }
+        // Get col of input
+        const col = $('.' + classList[3]);
+        let colVals = [];
+        for (let i = 0; i < col.length; i++) {
+            if(col[i].value !== '') {
+                colVals.push(parseInt(col[i].value));
+            }
+        }
+
+        let rndNumber = randomNumber(9, true);
+        let cnt = 0;
+        while (groupVals.includes(rndNumber) || rowVals.includes(rndNumber) || colVals.includes(rndNumber)) {
+            rndNumber = randomNumber(9, true);
+            if (cnt > 500) {
+                randomizeInputs(EASY);
+                return;
+            }
+            cnt++;
+        }
+        inputs[rndIndex].value = rndNumber;
         inputs[rndIndex].disabled = true;
     }
 }
 
+// Button finish pressed  - Check if board has completed
 $('#finish').on('click', function () {
-    // Button finish pressed  - Check if board has completed
 
     function checkInputs(inputs) {
         // Check inputs (array)
@@ -134,12 +180,12 @@ $('#finish').on('click', function () {
     }
 });
 
+// Button again pressed - Initilize restart
 $('#again').on('click', function () {
-    // Button again pressed - Initilize restart
-    const inputs = $('.input');
-    inputs.prop('disabled', false);
-    inputs.val('');
-    randomizeInputs(HARD);
+    $('#loader').html('<div class="loadingio-spinner-cube-2zx4f3ctido"><div class="ldio-1pkt0oqav2x"><div></div><div></div><div></div><div></div></div></div>');
+    setTimeout(function() {
+        randomizeInputs(EASY);
+    }, 1);
 });
 
 // On inputs change regex it to 1 digit of 1-9 valid numbers
