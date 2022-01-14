@@ -31,7 +31,7 @@ body {
     background-color: red;
 }
 .group-2 {
-    background-color: blue;
+    background-color: aqua;
 }
 .group-3 {
     background-color: brown;
@@ -59,8 +59,11 @@ img {
     width: 10%;
 }
 .input {
-    color: black;
+    /* color: rgb(31, 17, 92); */
     border: 1px solid black; 
+}
+.input:disabled {
+    color:#000000a6;
 }
 
 #loader {

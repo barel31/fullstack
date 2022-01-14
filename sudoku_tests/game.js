@@ -144,10 +144,7 @@ $('#finish').on('click', function () {
     for (let j = 1; j <= 9; j++) {
         let inputs = $('.group-' + j);
         if (checkInputs(inputs)) {
-            console.log('group-' + j + ' good');
             successGrpCount++;
-        } else {
-            console.log('group-' + j + ' wrong');
         }
     }
     // if(successGrpCount === 9) {}
@@ -157,10 +154,7 @@ $('#finish').on('click', function () {
     for (let j = 1; j <= 9; j++) {
         let inputs = $('.col-' + j);
         if (checkInputs(inputs)) {
-            console.log('col-' + j + ' good');
             successColCount++;
-        } else {
-            console.log('col-' + j + ' wrong');
         }
     }
 
@@ -169,11 +163,16 @@ $('#finish').on('click', function () {
     for (let j = 1; j <= 9; j++) {
         let inputs = $('.row-' + j);
         if (checkInputs(inputs)) {
-            console.log('row-' + j + ' good');
             successRowCount++;
-        } else {
-            console.log('row-' + j + ' wrong');
         }
+    }
+
+    // Validation
+    const cnt = successGrpCount + successColCount + successRowCount;
+    console.log(cnt);
+    $('#pMessage').html(successGrpCount + '/9 Groups are good\n' + successRowCount + '/9 Rows are good\n' + successColCount + '/9 Columns are good')
+    if(cnt === 27) {
+        $(body).html('You have been complete.')
     }
 });
 
