@@ -38,7 +38,7 @@ function initBoard() {
 }
 
 function randomizeInputs(number) {
-    function randomNumber(to, plusOne=false) {
+    function randomNumber(to, plusOne = false) {
         if (plusOne) {
             return Math.floor(Math.random() * to) + 1;
         }
@@ -47,7 +47,6 @@ function randomizeInputs(number) {
 
     // Loader animation
     $('#loader').html('');
-
 
     // Reset inputs
     const inputs = $('.input');
@@ -63,30 +62,28 @@ function randomizeInputs(number) {
         }
         indexRandomNumbers.push(rndIndex);
 
+        // Get classes
         const classList = inputs[rndIndex].classList.toString().split(/\s+/);
-
+        let groupVals = [], rowVals = [], colVals = [];
 
         // Get group of input
         const group = $('.' + classList[1]);
-        let groupVals = [];
         for (let i = 0; i < group.length; i++) {
-            if(group[i].value !== '') {
+            if (group[i].value !== '') {
                 groupVals.push(parseInt(group[i].value));
             }
         }
         // Get row of input
         const row = $('.' + classList[2]);
-        let rowVals = [];
         for (let i = 0; i < row.length; i++) {
-            if(row[i].value !== '') {
+            if (row[i].value !== '') {
                 rowVals.push(parseInt(row[i].value));
             }
         }
         // Get col of input
         const col = $('.' + classList[3]);
-        let colVals = [];
         for (let i = 0; i < col.length; i++) {
-            if(col[i].value !== '') {
+            if (col[i].value !== '') {
                 colVals.push(parseInt(col[i].value));
             }
         }
@@ -108,7 +105,6 @@ function randomizeInputs(number) {
 
 // Button finish pressed  - Check if board has completed
 $('#finish').on('click', function () {
-
     function checkInputs(inputs) {
         // Check inputs (array)
         // Return number of how much validations have been failed.
@@ -147,7 +143,6 @@ $('#finish').on('click', function () {
             successGrpCount++;
         }
     }
-    // if(successGrpCount === 9) {}
 
     // Check columns
     let successColCount = 0;
@@ -169,22 +164,29 @@ $('#finish').on('click', function () {
 
     // Validation
     const cnt = successGrpCount + successColCount + successRowCount;
-    console.log(cnt);
-    $('#pMessage').html(successGrpCount + '/9 Groups are good\n' + successRowCount + '/9 Rows are good\n' + successColCount + '/9 Columns are good')
-    if(cnt === 27) {
-        $(body).html('You have been complete.')
+    $('#pMessage').html(
+        successGrpCount + '/9 Groups ' + successRowCount + '/9 Rows ' + successColCount + '/9 Columns<br>' + cnt + '/21 Total'
+    );
+    if (cnt === 27) {
+        $(body).html('You have been completed the puzzle.');
     }
 });
 
 // Button again pressed - Initilize restart
 $('#again').on('click', function () {
-    $('#loader').html('<div class="loadingio-spinner-cube-2zx4f3ctido"><div class="ldio-1pkt0oqav2x"><div></div><div></div><div></div><div></div></div></div>');
-    setTimeout(function() {
+    $('#loader').html(
+        '<div class="loadingio-spinner-cube-2zx4f3ctido"><div class="ldio-1pkt0oqav2x"><div></div><div></div><div></div><div></div></div></div>'
+    );
+    setTimeout(function () {
         randomizeInputs(EASY);
     }, 1);
 });
 
-// On inputs change regex it to 1 digit of 1-9 valid numbers
+// On inputs change
 $('.input').on('input', function () {
+    // Trigger finish btn
+    $('#finish').click();
+
+    // Regex it to 1 digit of 1-9 valid numbers
     return (this.value = this.value.replace(/[^1-9]/g, ''));
 });
