@@ -1,7 +1,7 @@
 // const EASY = 60;
 const MEDIUM = 40;
 const HARD = 20;
-let howMuch = 0;
+let howMuch = 60;
 
 initBoard();
 
@@ -96,8 +96,8 @@ function randomizeInputs(number) {
         }
         inputs[i].value = rndNumber;
         inputs[i].disabled = true;
-        inputs.css('color', '#000000a6');
     }
+    inputs.css('color', '#000000a6');
 
     // Randomize index of input w/ repeation to hide.
     let rndIndex = [];
@@ -126,7 +126,6 @@ $('#finish').on('click', function () {
     function checkInputs(inputs) {
         // Check inputs (array)
         // Return number of how much validations have been failed.
-
         let success = false;
 
         // Get values of all inputs
@@ -153,7 +152,7 @@ $('#finish').on('click', function () {
         return true;
     }
 
-    $('.input:not([disabled])').css('color', 'black');
+    $('.input:not([disabled])').css({'color': 'black', 'opacity': '1.0'});
     $('.input:disabled').css('color', '#000000a6');
 
     // Checks groups

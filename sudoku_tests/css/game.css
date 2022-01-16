@@ -39,10 +39,10 @@ img {
     width: 10%;
 }
 
-/* .validInput {
+.validInput {
     opacity: 0.8;
     color: green;
-} */
+}
 
 #loader {
     position: relative;
