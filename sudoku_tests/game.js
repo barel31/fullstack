@@ -158,7 +158,7 @@ $('#finish').on('click', function () {
         let inputs = $('.group-' + j);
         if (checkInputs(inputs)) {
             successGrpCount++;
-            // inputs.css('opacity', '0.7');
+            inputs.css('opacity', '0.8');
             inputs.css('color', 'red');
         }
     }
@@ -169,7 +169,7 @@ $('#finish').on('click', function () {
         let inputs = $('.col-' + j);
         if (checkInputs(inputs)) {
             successColCount++;
-            // inputs.css('opacity', '0.7');
+            inputs.css('opacity', '0.8');
             inputs.css('color', 'red');
         }
     }
@@ -180,7 +180,7 @@ $('#finish').on('click', function () {
         let inputs = $('.row-' + j);
         if (checkInputs(inputs)) {
             successRowCount++;
-            // inputs.css('opacity', '0.7');
+            inputs.css('opacity', '0.8');
             inputs.css('color', 'red');
         }
     }
