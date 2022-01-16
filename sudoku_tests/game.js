@@ -116,6 +116,9 @@ function randomizeInputs(number) {
         inputs[rndIndex[i]].style.opacity = '1.0';
         inputs[rndIndex[i]].style.color = 'black';
     }
+
+    // Trigger finish btn to execute validation
+    $('#finish').click();
 }
 
 // Button finish pressed  - Check if board has completed
@@ -192,7 +195,7 @@ $('#finish').on('click', function () {
         successGrpCount + '/9 Groups ' + successRowCount + '/9 Rows ' + successColCount + '/9 Columns<br>' + cnt + '/27 Total'
     );
     if (cnt === 27) {
-        $(body).html('You have been completed the puzzle.');
+        $('h1').html('You have been completed the puzzle!');
     }
 });
 
@@ -214,7 +217,6 @@ $('.input').on('input', function () {
     // Regex it to 1 digit of 1-9 valid numbers
     return (this.value = this.value.replace(/[^1-9]/g, ''));
 });
-
 
 // HowMuch
 $('#howMuch').on('input', function () {
