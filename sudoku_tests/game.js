@@ -46,6 +46,8 @@ function randomizeInputs(number) {
         return Math.floor(Math.random() * to);
     }
 
+    $('h1').html('Good Luck!');
+
     // Loader animation
     $('#loader').html('');
 
@@ -203,6 +205,10 @@ $('#again').on('click', function () {
     $('#loader').html(
         '<div class="loadingio-spinner-cube-2zx4f3ctido"><div class="ldio-1pkt0oqav2x"><div></div><div></div><div></div><div></div></div></div>'
     );
+
+    // Reset html text
+    $('h1').html('Generating...');
+
     setTimeout(function () {
         randomizeInputs(howMuch);
     }, 1);
