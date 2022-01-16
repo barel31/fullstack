@@ -1,6 +1,7 @@
-const EASY = 60;
+// const EASY = 60;
 const MEDIUM = 40;
 const HARD = 20;
+let howMuch = 0;
 
 initBoard();
 
@@ -34,7 +35,7 @@ function initBoard() {
         }
     }
 
-    randomizeInputs(EASY);
+    randomizeInputs(howMuch);
 }
 
 function randomizeInputs(number) {
@@ -88,7 +89,7 @@ function randomizeInputs(number) {
         while (groupVals.includes(rndNumber) || rowVals.includes(rndNumber) || colVals.includes(rndNumber)) {
             rndNumber = randomNumber(9, true);
             if (cnt > 500) {
-                randomizeInputs(EASY);
+                randomizeInputs(howMuch);
                 return;
             }
             cnt++;
@@ -100,7 +101,7 @@ function randomizeInputs(number) {
 
     // Randomize index of input w/ repeation to hide.
     let rndIndex = [];
-    for(let i = 0; i < 81-number; i++) {
+    for (let i = 0; i < 81 - number; i++) {
         let rnd = randomNumber(81);
         while (rndIndex.includes(rnd)) {
             rnd = randomNumber(81);
@@ -109,7 +110,7 @@ function randomizeInputs(number) {
     }
 
     // Hide selected inputs.
-    for(let i = 0; i < rndIndex.length; i++) {
+    for (let i = 0; i < rndIndex.length; i++) {
         inputs[rndIndex[i]].value = '';
         inputs[rndIndex[i]].disabled = false;
         inputs[rndIndex[i]].style.opacity = '1.0';
@@ -201,7 +202,7 @@ $('#again').on('click', function () {
         '<div class="loadingio-spinner-cube-2zx4f3ctido"><div class="ldio-1pkt0oqav2x"><div></div><div></div><div></div><div></div></div></div>'
     );
     setTimeout(function () {
-        randomizeInputs(EASY);
+        randomizeInputs(howMuch);
     }, 1);
 });
 
@@ -212,4 +213,11 @@ $('.input').on('input', function () {
 
     // Regex it to 1 digit of 1-9 valid numbers
     return (this.value = this.value.replace(/[^1-9]/g, ''));
+});
+
+
+// HowMuch
+$('#howMuch').on('input', function () {
+    howMuch = parseInt(this.value);
+    console.log(howMuch);
 });
