@@ -7,8 +7,8 @@ function signIn() {
     }
     const username = 'abcd';
     const password = '1234';
-    const user = $('#floatingName').val;
-    const pass = $$('#floatingPassword').val;
+    const user = $('#floatingName').val();
+    const pass = $('#floatingPassword').val();
 
     const ele = $('#pMessage');
     if (user !== username) {
@@ -18,7 +18,7 @@ function signIn() {
         ele.css('color', 'red');
         ele.html('The password is incorrent.');
     } else {
-        $4('#loader').html(
+        $('#loader').html(
             '<div class="loadingio-spinner-cube-2zx4f3ctido"><div class="ldio-1pkt0oqav2x"><div></div><div></div><div></div><div></div></div></div>'
         );
 

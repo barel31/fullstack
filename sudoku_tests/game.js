@@ -53,18 +53,13 @@ function randomizeInputs(number) {
     inputs.prop('disabled', false);
     inputs.val('');
 
-    let indexRandomNumbers = [];
-    for (i = 0; i < number; i++) {
-        // Randomize index of input no repeat.
-        let rndIndex = randomNumber(81);
-        while (indexRandomNumbers.includes(rndIndex)) {
-            rndIndex = randomNumber(81);
-        }
-        indexRandomNumbers.push(rndIndex);
-
-        // Get classes
-        const classList = inputs[rndIndex].classList.toString().split(/\s+/);
-        let groupVals = [], rowVals = [], colVals = [];
+    // Build a complete board.
+    for (i = 0; i < 81; i++) {
+        // Get classes of input
+        const classList = inputs[i].classList.toString().split(/\s+/);
+        let groupVals = [],
+            rowVals = [],
+            colVals = [];
 
         // Get group of input
         const group = $('.' + classList[1]);
@@ -98,8 +93,27 @@ function randomizeInputs(number) {
             }
             cnt++;
         }
-        inputs[rndIndex].value = rndNumber;
-        inputs[rndIndex].disabled = true;
+        inputs[i].value = rndNumber;
+        inputs[i].disabled = true;
+        inputs.css('color', '#000000a6');
+    }
+
+    // Randomize index of input w/ repeation to hide.
+    let rndIndex = [];
+    for(let i = 0; i < 81-number; i++) {
+        let rnd = randomNumber(81);
+        while (rndIndex.includes(rnd)) {
+            rnd = randomNumber(81);
+        }
+        rndIndex.push(rnd);
+    }
+
+    // Hide selected inputs.
+    for(let i = 0; i < rndIndex.length; i++) {
+        inputs[rndIndex[i]].value = '';
+        inputs[rndIndex[i]].disabled = false;
+        inputs[rndIndex[i]].style.opacity = '1.0';
+        inputs[rndIndex[i]].style.color = 'black';
     }
 }
 
@@ -135,12 +149,16 @@ $('#finish').on('click', function () {
         return true;
     }
 
+    $('.input:not([disabled])').css('color', 'black');
+
     // Checks groups
     let successGrpCount = 0;
     for (let j = 1; j <= 9; j++) {
         let inputs = $('.group-' + j);
         if (checkInputs(inputs)) {
             successGrpCount++;
+            // inputs.css('opacity', '0.7');
+            inputs.css('color', 'red');
         }
     }
 
@@ -150,6 +168,8 @@ $('#finish').on('click', function () {
         let inputs = $('.col-' + j);
         if (checkInputs(inputs)) {
             successColCount++;
+            // inputs.css('opacity', '0.7');
+            inputs.css('color', 'red');
         }
     }
 
@@ -159,13 +179,15 @@ $('#finish').on('click', function () {
         let inputs = $('.row-' + j);
         if (checkInputs(inputs)) {
             successRowCount++;
+            // inputs.css('opacity', '0.7');
+            inputs.css('color', 'red');
         }
     }
 
     // Validation
     const cnt = successGrpCount + successColCount + successRowCount;
     $('#pMessage').html(
-        successGrpCount + '/9 Groups ' + successRowCount + '/9 Rows ' + successColCount + '/9 Columns<br>' + cnt + '/21 Total'
+        successGrpCount + '/9 Groups ' + successRowCount + '/9 Rows ' + successColCount + '/9 Columns<br>' + cnt + '/27 Total'
     );
     if (cnt === 27) {
         $(body).html('You have been completed the puzzle.');
