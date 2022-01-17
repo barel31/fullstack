@@ -155,7 +155,7 @@ $('#finish').on('click', function () {
     }
 
     $('.input:not([disabled])').css({'color': 'black', 'opacity': '1.0'});
-    $('.input:disabled').css('color', '#000000a6');
+    $('.input:disabled').css({'color': '#000000a6', 'opacity': '1.0'});
 
     // Checks groups
     let successGrpCount = 0;

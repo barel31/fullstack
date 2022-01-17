@@ -4,13 +4,16 @@ const HARD = 20;
 
 initBoard();
 
+// Print board
 function initBoard() {
-    // Print board
-    // debugger
+    // get element of by board id
     let board = document.getElementById('board');
 
-    let ele, groupBackup;
-    let group = 1;
+    // creation of inputs and tagging them by class and id
+    let ele,
+        groupBackup,
+        group = 1;
+        // creation loops of 9x9 inputs
     for (let i = 1; i <= 9; i++) {
         for (let j = 1; j <= 9; j++) {
             ele = document.createElement('input');
@@ -21,49 +24,99 @@ function initBoard() {
             ele.setAttribute('name', 'input_' + i + '_' + j);
             ele.setAttribute('type', 'text');
             ele.setAttribute('maxlength', '1');
-            ele.setAttribute('oninput', "this.value=this.value.replace(/[^1-9]/g,'');"); // 1-9 only
+            // regex - making a range of numbers only between 1-9
+            ele.setAttribute('oninput', "this.value=this.value.replace(/[^1-9]/g,'');");
             board.appendChild(ele);
-
+            // advance group variable every three iterations
             if (j % 3 === 0) {
                 group++;
             }
+            // pass to a new line & reduces group by three
             if (j % 9 === 0) {
+                // creating br element to move to a new row
                 let br = document.createElement('br');
                 board.appendChild(br);
-
+                // backing up groups before reducing
                 groupBackup = group;
                 group -= 3;
             }
         }
+        // every three columes return group to the backup variable
         if (i % 3 === 0) {
             group = groupBackup;
         }
     }
-
-    randomizeInputs(EASY);
+    // calling the function to generate a playable board
+    randomizeInputs();
 }
-
-function randomizeInputs(number) {
-    let inputs = document.getElementsByClassName('input');
-    let indexRandomNumbers = [];
-    for (i = 0; i < number; i++) {
-        
-        // Randomize index of input no repeat.
-        let rndIndex = Math.floor(Math.random() * 80) + 1;
-        while(indexRandomNumbers.includes(rndIndex)) {
-            rndIndex = Math.floor(Math.random() * 80) + 1;
-            
+// function to make a playable board
+function randomizeInputs() {
+    // function to make randon numbers 
+    function random(to, plusOne = true) {
+        if (plusOne) {
+            return Math.floor(Math.random() * to) + 1;
         }
-        console.log(rndIndex);
-        indexRandomNumbers.push(rndIndex);
-        
-        let classList = inputs[rndIndex].classList.toString().split(' ');
-        console.log(classList[1]);
-
-        inputs[rndIndex].value = Math.floor(Math.random() * 9) + 1;
-        inputs[rndIndex].disabled = true;
+        return Math.floor(Math.random() * to);
     }
 
+    let inputs = document.getElementsByClassName('input');
+    inputs.value = '';
+    inputs.disabled = false;
+    for (i = 0; i <= 80; i++) {
+        // get classes of input
+        let classList = inputs[i].classList.toString().split(' ');
+        // create arrays contain values of col, raw and group
+        let groupArr = [],
+            rowArr = [],
+            colArr = [];
+        // group of input
+        let group = document.getElementsByClassName(classList[1]);
+        for (let i = 0; i < group.length; i++)
+            if (group[i].value !== '') {
+                groupArr.push(parseInt(group[i].value));
+            }
+        // row of input
+        let row = document.getElementsByClassName(classList[2]);
+        for (let i = 0; i < row.length; i++)
+            if (row[i].value !== '') {
+                rowArr.push(parseInt(row[i].value));
+            }
+        // col of input
+        let col = document.getElementsByClassName(classList[3]);
+        for (let i = 0; i < col.length; i++)
+            if (col[i].value !== '') {
+                colArr.push(parseInt(col[i].value));
+            }
+        // keep genereting random number until its not on the arrays.
+        let rnd = random(9);
+        let cnt = 0;
+        while (groupArr.includes(rnd) || rowArr.includes(rnd) || colArr.includes(rnd)) {
+            rnd = random(9);
+            if (cnt === 500) {
+                setTimeout(() => {
+                    restart();
+                }, 0);
+                return;
+            }
+            cnt++;
+        }
+
+        // input
+        inputs[i].value = rnd;
+        inputs[i].disabled = true;
+    }
+    // Randomize index to hide
+    for (i = 0; i < 60; i++) {
+        let indexNumbers = [],
+            rndIndex = random(80, false);
+        while (indexNumbers.includes(rndIndex)) {
+            rndIndex = random(80, false);
+        }
+        indexNumbers.push(rndIndex);
+        inputs[rndIndex].value = '';
+        inputs[rndIndex].disabled = false;
+    }
+    // let rndIndex = Math.floor(Math.random() * 80) + 1;
 }
 
 function finish() {
@@ -105,6 +158,10 @@ function finish() {
             console.log('row-' + j + ' wrong');
         }
     }
+
+    let check1 = document.getElementById('check');
+    check1.setAttribute('disabled', '');
+    check1.disabled = true;
 }
 
 function checkInputs(inputs) {
@@ -144,5 +201,5 @@ function restart() {
         inputs[i].disabled = false;
     }
 
-    randomizeInputs(HARD);
+    randomizeInputs();
 }
