@@ -10,7 +10,8 @@ body {
 }
 
 img {
-    width: 7%;
+    /* width: 7%; */
+    width: 5em;
 }
 
 #container {
@@ -47,8 +48,13 @@ img {
 }
 
 .button-down {
-    margin: 0 10px;
+    margin: 0 5px;
     padding: 5px 10px;
+}
+
+.howMuch {
+    display: none;
+    margin: 5px 0;
 }
 
 .group-1 {
@@ -90,8 +96,4 @@ img {
 }
 .difficulty.dif4 {
     background-color: #fbe5e5;
-}
-
-.howMuch {
-    display: none;
 }
