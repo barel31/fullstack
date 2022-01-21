@@ -1,26 +1,33 @@
 body {
+    height: 100%;
+
     background-color: #e45853;
     align-items: center;
 
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding-top: 20px;
 
     font-family: 'Lato', sans-serif;
 }
 
+img {
+    width: 7%;
+}
+
 #container {
-    margin: auto;
+    margin: 0 auto;
     text-align: center;
 }
 
 #board {
     margin: 0 auto;
-    height: 50%;
-    width: 50%;
-    background-color: white;
 
     min-width: 400px;
-    min-height: 400px;
+    min-height: 350px;
+}
+
+#loader {
+    position: relative;
+    right: 35px;
 }
 
 .input {
@@ -34,13 +41,14 @@ body {
     color: #000000a6;
 }
 
-img {
-    width: 10%;
+.button-up {
+    margin: 10px;
+    padding: 5px 10px;
 }
 
-#loader {
-    position: relative;
-    right: 35px;
+.button-down {
+    margin: 0 10px;
+    padding: 5px 10px;
 }
 
 .group-1 {
@@ -71,10 +79,6 @@ img {
     background-color: deepskyblue;
 }
 
-button {
-    margin: 10px;
-    padding: 10px;
-}
 .difficulty.dif1 {
     background-color: #ffa1c9;
 }
