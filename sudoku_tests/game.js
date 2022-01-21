@@ -1,9 +1,9 @@
 let howMuch = 60;
 let autoCheck = true;
 
+// Print board
 initBoard();
 function initBoard() {
-    // Print board
     const board = $('#board');
 
     let ele, groupBackup;
@@ -35,13 +35,12 @@ function randomizeInputs(number) {
     function randomNumber(to, plusOne = false) {
         return Math.floor(Math.random() * to) + (plusOne ? 1 : 0);
     }
-    // TODO call animation by function
     // Reset inputs
     const inputs = $('.input');
     inputs.prop('disabled', false);
     inputs.val('');
 
-    // Build a complete board.
+    // Try to build a complete board.
     for (i = 0; i < 81; i++) {
         // Get classes of input
         const classList = inputs[i].classList.toString().split(/\s+/);
@@ -76,6 +75,7 @@ function randomizeInputs(number) {
         while (groupVals.includes(rndNumber) || rowVals.includes(rndNumber) || colVals.includes(rndNumber)) {
             rndNumber = randomNumber(9, true);
             if (cnt > 500) {
+                // ! Timeout make matrix effect but more load time.
                 // setTimeout(() => {
                 randomizeInputs(howMuch);
                 // }, 0);
@@ -152,7 +152,7 @@ $('#finish').on('click', () => {
         if (checkInputs(inputs)) {
             successGrpCount++;
             if (autoCheck) {
-                inputs.css({'opacity': '0.8', 'color': 'red'});
+                inputs.css({ opacity: '0.8', color: 'red' });
             }
         }
     }
@@ -164,7 +164,7 @@ $('#finish').on('click', () => {
         if (checkInputs(inputs)) {
             successColCount++;
             if (autoCheck) {
-                inputs.css({'opacity': '0.8', 'color': 'red'});
+                inputs.css({ opacity: '0.8', color: 'red' });
             }
         }
     }
@@ -176,7 +176,7 @@ $('#finish').on('click', () => {
         if (checkInputs(inputs)) {
             successRowCount++;
             if (autoCheck) {
-                inputs.css({'opacity': '0.8', 'color': 'red'});
+                inputs.css({ opacity: '0.8', color: 'red' });
             }
         }
     }
@@ -252,7 +252,7 @@ $('#autoCheck').on('click', function () {
     // Trigger finish btn to restyle inputs
     $('#finish').click();
 
-    if(!autoCheck) {
+    if (!autoCheck) {
         $('#pMessage').html('');
     }
 });
