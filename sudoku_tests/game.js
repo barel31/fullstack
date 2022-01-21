@@ -46,11 +46,6 @@ function randomizeInputs(number) {
         return Math.floor(Math.random() * to);
     }
 
-    $('h1').html('Good Luck!');
-
-    // Loader animation
-    $('#loader').html('');
-
     // Reset inputs
     const inputs = $('.input');
     inputs.prop('disabled', false);
@@ -91,7 +86,9 @@ function randomizeInputs(number) {
         while (groupVals.includes(rndNumber) || rowVals.includes(rndNumber) || colVals.includes(rndNumber)) {
             rndNumber = randomNumber(9, true);
             if (cnt > 500) {
-                randomizeInputs(howMuch);
+                setTimeout(() => {
+                    randomizeInputs(howMuch);
+                }, 0);
                 return;
             }
             cnt++;
@@ -119,6 +116,10 @@ function randomizeInputs(number) {
         inputs[rndIndex[i]].style.color = 'black';
     }
 
+    
+    $('h1').html('Good Luck!');
+    // Loader animation
+    $('#loader').html('');
     // Trigger finish btn to execute validation
     $('#finish').click();
 }
@@ -154,8 +155,8 @@ $('#finish').on('click', function () {
         return true;
     }
 
-    $('.input:not([disabled])').css({'color': 'black', 'opacity': '1.0'});
-    $('.input:disabled').css({'color': '#000000a6', 'opacity': '1.0'});
+    $('.input:not([disabled])').css({ color: 'black', opacity: '1.0' });
+    $('.input:disabled').css({ color: '#000000a6', opacity: '1.0' });
 
     // Checks groups
     let successGrpCount = 0;
