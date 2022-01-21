@@ -1,10 +1,7 @@
-// const EASY = 60;
-const MEDIUM = 40;
-const HARD = 20;
 let howMuch = 60;
+let autoCheck = true;
 
 initBoard();
-
 function initBoard() {
     // Print board
     const board = $('#board');
@@ -15,9 +12,7 @@ function initBoard() {
         for (let j = 1; j <= 9; j++) {
             ele = $('<input>')
                 .addClass('input group-' + group + ' row-' + i + ' col-' + j)
-                .attr('name', 'input_' + i + '_' + j)
-                .attr('type', 'text')
-                .attr('maxlength', '1');
+                .attr({ name: 'input_' + i + '_' + j, type: 'text', maxlength: '1' });
             board.append(ele);
 
             if (j % 3 === 0) {
@@ -34,18 +29,13 @@ function initBoard() {
             group = groupBackup;
         }
     }
-
-    randomizeInputs(howMuch);
 }
 
 function randomizeInputs(number) {
     function randomNumber(to, plusOne = false) {
-        if (plusOne) {
-            return Math.floor(Math.random() * to) + 1;
-        }
-        return Math.floor(Math.random() * to);
+        return Math.floor(Math.random() * to) + (plusOne ? 1 : 0);
     }
-
+    // TODO call animation by function
     // Reset inputs
     const inputs = $('.input');
     inputs.prop('disabled', false);
@@ -86,9 +76,9 @@ function randomizeInputs(number) {
         while (groupVals.includes(rndNumber) || rowVals.includes(rndNumber) || colVals.includes(rndNumber)) {
             rndNumber = randomNumber(9, true);
             if (cnt > 500) {
-                setTimeout(() => {
-                    randomizeInputs(howMuch);
-                }, 0);
+                // setTimeout(() => {
+                randomizeInputs(howMuch);
+                // }, 0);
                 return;
             }
             cnt++;
@@ -116,16 +106,13 @@ function randomizeInputs(number) {
         inputs[rndIndex[i]].style.color = 'black';
     }
 
-    
-    $('h1').html('Good Luck!');
-    // Loader animation
-    $('#loader').html('');
+    loaderAnimation();
     // Trigger finish btn to execute validation
     $('#finish').click();
 }
 
 // Button finish pressed  - Check if board has completed
-$('#finish').on('click', function () {
+$('#finish').on('click', () => {
     function checkInputs(inputs) {
         // Check inputs (array)
         // Return number of how much validations have been failed.
@@ -164,8 +151,9 @@ $('#finish').on('click', function () {
         let inputs = $('.group-' + j);
         if (checkInputs(inputs)) {
             successGrpCount++;
-            inputs.css('opacity', '0.8');
-            inputs.css('color', 'red');
+            if (autoCheck) {
+                inputs.css({'opacity': '0.8', 'color': 'red'});
+            }
         }
     }
 
@@ -175,8 +163,9 @@ $('#finish').on('click', function () {
         let inputs = $('.col-' + j);
         if (checkInputs(inputs)) {
             successColCount++;
-            inputs.css('opacity', '0.8');
-            inputs.css('color', 'red');
+            if (autoCheck) {
+                inputs.css({'opacity': '0.8', 'color': 'red'});
+            }
         }
     }
 
@@ -186,33 +175,30 @@ $('#finish').on('click', function () {
         let inputs = $('.row-' + j);
         if (checkInputs(inputs)) {
             successRowCount++;
-            inputs.css('opacity', '0.8');
-            inputs.css('color', 'red');
+            if (autoCheck) {
+                inputs.css({'opacity': '0.8', 'color': 'red'});
+            }
         }
     }
 
     // Validation
     const cnt = successGrpCount + successColCount + successRowCount;
-    $('#pMessage').html(
-        successGrpCount + '/9 Groups ' + successRowCount + '/9 Rows ' + successColCount + '/9 Columns<br>' + cnt + '/27 Total'
-    );
+    if (autoCheck) {
+        $('#pMessage').html(
+            successGrpCount + '/9 Groups ' + successRowCount + '/9 Rows ' + successColCount + '/9 Columns<br>' + cnt + '/27 Total'
+        );
+    }
     if (cnt === 27) {
         $('h1').html('You have been completed the puzzle!');
     }
 });
 
 // Button again pressed - Initilize restart
-$('#again').on('click', function () {
-    $('#loader').html(
-        '<div class="loadingio-spinner-cube-2zx4f3ctido"><div class="ldio-1pkt0oqav2x"><div></div><div></div><div></div><div></div></div></div>'
-    );
-
-    // Reset html text
-    $('h1').html('Generating...');
-
-    setTimeout(function () {
+$('#again').on('click', () => {
+    loaderAnimation(true);
+    setTimeout(() => {
         randomizeInputs(howMuch);
-    }, 1);
+    }, 0);
 });
 
 // On inputs change
@@ -224,8 +210,49 @@ $('.input').on('input', function () {
     return (this.value = this.value.replace(/[^1-9]/g, ''));
 });
 
-// HowMuch
-$('#howMuch').on('input', function () {
-    howMuch = parseInt(this.value);
-    console.log(howMuch);
+//// HowMuch
+// $('#howMuch').on('input', function () {
+//     howMuch = parseInt(this.value);
+// });
+
+$('.difficulty').on('click', function () {
+    if (this.name !== 'custom') {
+        howMuch = parseInt(this.name);
+    } else {
+        const custom = $('.howMuch');
+        if (custom.css('display') === 'none') {
+            custom.css('display', 'inline');
+            return;
+        }
+        howMuch = parseInt($('#howMuch').val());
+    }
+    const lvlNames = { 20: 'HARD', 40: 'MEDIUM', 60: 'EASY', custom: 'CUSTOM (' + howMuch + ')' };
+    $('#level').html(lvlNames[this.name]);
+
+    loaderAnimation(true);
+    setTimeout(() => {
+        randomizeInputs(howMuch);
+    }, 0);
+});
+
+function loaderAnimation(show = false) {
+    if (show) {
+        $('#loader').html(
+            '<div class="loadingio-spinner-cube-2zx4f3ctido"><div class="ldio-1pkt0oqav2x"><div></div><div></div><div></div><div></div></div></div>'
+        );
+        $('h1').html('Generating...');
+    } else {
+        $('#loader').html('');
+        $('h1').html('Good Luck!');
+    }
+}
+
+$('#autoCheck').on('click', function () {
+    autoCheck = this.checked;
+    // Trigger finish btn to restyle inputs
+    $('#finish').click();
+
+    if(!autoCheck) {
+        $('#pMessage').html('');
+    }
 });

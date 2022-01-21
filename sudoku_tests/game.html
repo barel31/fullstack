@@ -14,17 +14,24 @@
     </head>
     <body>
         <div id="container">
-            <img src="images/icon.png" alt="Sudoko" />
-            <h1>Good Luck!</h1>
+            <img src="images/icon.png" alt="Sudoku" />
+            <h1>Please choose difficulty level:</h1>
+            <button name="60" class="difficulty dif1">Easy</button>
+            <button name="40" class="difficulty dif2">Medium</button>
+            <button name="20" class="difficulty dif3">Hard</button>
+            <button name="custom" class="difficulty dif4">Custom</button>
+            <label class="howMuch" for="howMuch">How Much?</label>
+            <input class="howMuch" type="number" name="howMuch" id="howMuch" min="1" max="81" value="60" />
+            <label class="howMuch" for="custom">/81</label>
             <div id="board"></div>
             <button id="again">Again</button>
             <button id="finish">Finish</button>
-            <br>
-            <label for="howMuch">How Much?</label>
-            <input type="number" name="howMuch" id="howMuch" min="1" max="81" placeholder="60">
-            <label for="howMuch">/81</label>
-            <p id='pMessage'></p>
-            <div id='loader'><div class="loadingio-spinner-cube-2zx4f3ctido"><div class="ldio-1pkt0oqav2x"><div></div><div></div><div></div><div></div></div></div></div>
+            Auto-Check:<input type="checkbox" id="autoCheck" checked/>
+            <p>LVL: <span id="level"></span></p>
+            <br />
+
+            <p id="pMessage">0/9 Groups 0/9 Rows 0/9 Columns<br />0/27 Total</p>
+            <div id="loader"></div>
         </div>
         <!-- jQuery -->
         <script

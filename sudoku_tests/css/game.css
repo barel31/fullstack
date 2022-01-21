@@ -29,7 +29,6 @@ body {
     width: 2rem;
     font-size: 2rem;
     border: 1px solid black;
-
 }
 .input:disabled {
     color: #000000a6;
@@ -39,18 +38,13 @@ img {
     width: 10%;
 }
 
-.validInput {
-    opacity: 0.8;
-    color: green;
-}
-
 #loader {
     position: relative;
     right: 35px;
 }
 
 .group-1 {
-    background-color: #F2789F;
+    background-color: #f2789f;
 }
 .group-2 {
     background-color: aqua;
@@ -65,7 +59,7 @@ img {
     background-color: cornflowerblue;
 }
 .group-6 {
-    background-color: #BAFFB4;
+    background-color: #baffb4;
 }
 .group-7 {
     background-color: darkseagreen;
@@ -75,4 +69,25 @@ img {
 }
 .group-9 {
     background-color: deepskyblue;
+}
+
+button {
+    margin: 10px;
+    padding: 10px;
+}
+.difficulty.dif1 {
+    background-color: #ffa1c9;
+}
+.difficulty.dif2 {
+    background-color: #f94892;
+}
+.difficulty.dif3 {
+    background-color: #e60965;
+}
+.difficulty.dif4 {
+    background-color: #fbe5e5;
+}
+
+.howMuch {
+    display: none;
 }
