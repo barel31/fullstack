@@ -36,7 +36,7 @@ function randomizeInputs(number) {
         return Math.floor(Math.random() * to) + (plusOne ? 1 : 0);
     }
     // Reset inputs
-    const inputs = $('.input');
+    const inputs = $('#board .input');
     inputs.prop('disabled', false);
     inputs.val('');
 
@@ -142,8 +142,8 @@ $('#finish').on('click', () => {
         return true;
     }
 
-    $('.input:not([disabled])').css({ color: 'black', opacity: '1.0' });
-    $('.input:disabled').css({ color: '#000000a6', opacity: '1.0' });
+    $('#board .input:not([disabled])').css({ color: '#002b59', opacity: '1.0' });
+    $('#board .input:disabled').css({ color: 'black', opacity: '1.0' });
 
     // Checks groups
     let successGrpCount = 0;
@@ -202,7 +202,7 @@ $('#again').on('click', () => {
 });
 
 // On inputs change
-$('.input').on('input', function () {
+$('#board .input').on('input', function () {
     // Trigger finish btn
     $('#finish').click();
 
@@ -210,10 +210,14 @@ $('.input').on('input', function () {
     return (this.value = this.value.replace(/[^1-9]/g, ''));
 });
 
-//// HowMuch
-// $('#howMuch').on('input', function () {
-//     howMuch = parseInt(this.value);
-// });
+$('#howMuch').on('keyup', function (e) {
+    if (e.keyCode === 13) {
+        // Enter pressed on custom input
+        // press custom btn to update changes
+        $('.difficulty.dif4').click();
+        console.log('enter');
+    }
+});
 
 $('.difficulty').on('click', function () {
     if (this.name !== 'custom') {
@@ -222,6 +226,7 @@ $('.difficulty').on('click', function () {
         const custom = $('.howMuch');
         if (custom.css('display') === 'none') {
             custom.css('display', 'inline');
+            this.innerHTML = 'Submit'
             return;
         }
         howMuch = parseInt($('#howMuch').val());
@@ -247,12 +252,15 @@ function loaderAnimation(show = false) {
     }
 }
 
-$('#autoCheck').on('click', function () {
-    autoCheck = this.checked;
+$('div.checkbox-custom').on('click', function () {
+    autoCheck = !autoCheck;
     // Trigger finish btn to restyle inputs
     $('#finish').click();
 
     if (!autoCheck) {
         $('#pMessage').html('');
+        this.style.backgroundColor = 'red';
+    } else {
+        this.style.backgroundColor = 'green';
     }
 });

@@ -31,15 +31,22 @@ img {
     right: 35px;
 }
 
+#howMuch {
+    width: 30px;
+}
+
+.howMuch {
+    display: none;
+    margin: 5px 0;
+}
+
 .input {
     text-align: center;
     height: 2rem;
     width: 2rem;
     font-size: 2rem;
     border: 1px solid black;
-}
-.input:disabled {
-    color: #000000a6;
+    margin: .5px;
 }
 
 .button-up {
@@ -52,19 +59,14 @@ img {
     padding: 5px 10px;
 }
 
-.howMuch {
-    display: none;
-    margin: 5px 0;
-}
-
 .group-1 {
-    background-color: #f2789f;
+    background-color: darkseagreen;
 }
 .group-2 {
     background-color: aqua;
 }
 .group-3 {
-    background-color: brown;
+    background-color: rgb(48, 160, 81);
 }
 .group-4 {
     background-color: chartreuse;
@@ -76,10 +78,10 @@ img {
     background-color: #baffb4;
 }
 .group-7 {
-    background-color: darkseagreen;
+    background-color: #f2789f;
 }
 .group-8 {
-    background-color: deeppink;
+    background-color: rgb(87, 52, 70);
 }
 .group-9 {
     background-color: deepskyblue;
@@ -96,4 +98,9 @@ img {
 }
 .difficulty.dif4 {
     background-color: #fbe5e5;
+}
+
+.checkbox-custom {
+    display: inline-block;
+    bottom: -3px;
 }

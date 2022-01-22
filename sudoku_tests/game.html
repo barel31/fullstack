@@ -9,6 +9,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,700&display=swap" rel="stylesheet" />
         <link rel="stylesheet" href="css/game.css" />
         <link rel="stylesheet" href="css/loader.css" />
+        <link rel="stylesheet" href="css/toggler.css" />
 
         <link rel="shortcut icon" href="images/icon.png" type="image/x-icon" />
     </head>
@@ -19,16 +20,20 @@
             <button name="60" class="difficulty dif1 button-up">Easy</button>
             <button name="40" class="difficulty dif2 button-up">Medium</button>
             <button name="20" class="difficulty dif3 button-up">Hard</button>
-            <button name="custom" class="difficulty dif4 button-up">Custom</button>
             <label class="howMuch" for="howMuch">How Much?</label>
             <input class="howMuch" type="number" name="howMuch" id="howMuch" min="1" max="81" value="60" />
             <label class="howMuch" for="custom">/81</label>
+            <button name="custom" class="difficulty dif4 button-up">Custom</button>
             <div id="board"></div>
-            <button class='button-down' id="again">Again</button>
-            <button class='button-down' id="finish">Finish</button>
-            Auto-Check:<input type="checkbox" id="autoCheck" checked/>
+            <button class="button-down" id="again">Again</button>
+            <button class="button-down" id="finish">Finish</button>
+            <label for="button-1">Auto-Check:</label>
+            <div class="checkbox-custom button r center" id="button-1">
+                <input type="checkbox" class="checkbox" checked>
+                <div class="knobs"></div>
+                <div class="layer"></div>
+            </div>
             <p>LVL: <span id="level"></span></p>
-            <!-- <br /> -->
             <p id="pMessage">0/9 Groups 0/9 Rows 0/9 Columns<br />0/27 Total</p>
             <div id="loader"></div>
         </div>
