@@ -10,8 +10,14 @@ body {
 }
 
 img {
-    /* width: 7%; */
     width: 5em;
+}
+
+.footer {
+    position: relative;
+    text-align: center;
+    color: #891204;
+    top: 10vh;
 }
 
 #container {
