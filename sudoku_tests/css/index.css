@@ -29,8 +29,8 @@ body {
 
 /* Replace bootstrap blue border and shadow */
 .no-shadow:focus {
-    border: .1rem solid #891204;
-    box-shadow: .2rem .2rem .1rem #891204;
+    border: 0.1rem solid #891204;
+    box-shadow: 0.2rem 0.2rem 0.1rem #891204;
 }
 
 .form-signin input[type='text'] {
@@ -70,17 +70,17 @@ img.mb-4 {
 }
 
 .bd-placeholder-img {
-	font-size: 1.125rem;
-	text-anchor: middle;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	user-select: none;
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
 }
 
 @media (min-width: 768px) {
-	.bd-placeholder-img-lg {
-		font-size: 3.5rem;
-	}
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
 }
 
 #loader {

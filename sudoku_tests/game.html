@@ -17,19 +17,19 @@
         <div id="container">
             <img src="images/icon.png" alt="Sudoku" />
             <h1>Please choose difficulty level:</h1>
-            <button name="60" class="difficulty dif1 button-up">Easy</button>
-            <button name="40" class="difficulty dif2 button-up">Medium</button>
-            <button name="20" class="difficulty dif3 button-up">Hard</button>
+            <button name="60" class="difficulty">Easy</button>
+            <button name="40" class="difficulty">Medium</button>
+            <button name="20" class="difficulty">Hard</button>
             <label class="howMuch" for="howMuch">How Much?</label>
-            <input class="howMuch" type="number" name="howMuch" id="howMuch" min="1" max="81" value="60" />
+            <input class="howMuch" type="text" name="howMuch" id="howMuch" min="1" max="81" value="60" maxlength="2"/>
             <label class="howMuch" for="custom">/81</label>
-            <button name="custom" class="difficulty dif4 button-up">Custom</button>
+            <button name="custom" class="difficulty">Custom</button>
             <div id="board"></div>
             <button class="button-down" id="again">Again</button>
             <button class="button-down" id="finish">Finish</button>
             <label for="button-1">Auto-Check:</label>
             <div class="checkbox-custom button r center" id="button-1">
-                <input type="checkbox" class="checkbox" checked>
+                <input type="checkbox" class="checkbox" checked />
                 <div class="knobs"></div>
                 <div class="layer"></div>
             </div>

@@ -204,8 +204,9 @@ $('#again').on('click', () => {
 // On inputs change
 $('#board .input').on('input', function () {
     // Trigger finish btn
-    $('#finish').click();
-
+    if (autoCheck) {
+        $('#finish').click();
+    }
     // Regex it to 1 digit of 1-9 valid numbers
     return (this.value = this.value.replace(/[^1-9]/g, ''));
 });
@@ -214,8 +215,7 @@ $('#howMuch').on('keyup', function (e) {
     if (e.keyCode === 13) {
         // Enter pressed on custom input
         // press custom btn to update changes
-        $('.difficulty.dif4').click();
-        console.log('enter');
+        $('button[name="custom"]').click();
     }
 });
 
@@ -226,7 +226,7 @@ $('.difficulty').on('click', function () {
         const custom = $('.howMuch');
         if (custom.css('display') === 'none') {
             custom.css('display', 'inline');
-            this.innerHTML = 'Submit'
+            this.innerHTML = 'Submit';
             return;
         }
         howMuch = parseInt($('#howMuch').val());
@@ -252,15 +252,12 @@ function loaderAnimation(show = false) {
     }
 }
 
-$('div.checkbox-custom').on('click', function () {
+$('.checkbox-custom').on('click', function () {
     autoCheck = !autoCheck;
     // Trigger finish btn to restyle inputs
     $('#finish').click();
+});
 
-    if (!autoCheck) {
-        $('#pMessage').html('');
-        this.style.backgroundColor = 'red';
-    } else {
-        this.style.backgroundColor = 'green';
-    }
+$('#howMuch').on('input', function () {
+    return (this.value = this.value.replace(/[^0-81]/g, ''));
 });
