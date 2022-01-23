@@ -1,5 +1,6 @@
-let howMuch = 60;
-let autoCheck = true;
+var howMuch = 60;
+var autoCheck = true;
+var cntGlobal = 0;
 
 // Print board
 initBoard();
@@ -35,6 +36,7 @@ function randomizeInputs(number) {
     function randomNumber(to, plusOne = false) {
         return Math.floor(Math.random() * to) + (plusOne ? 1 : 0);
     }
+
     // Reset inputs
     const inputs = $('#board .input');
     inputs.prop('disabled', false);
@@ -75,7 +77,7 @@ function randomizeInputs(number) {
         while (groupVals.includes(rndNumber) || rowVals.includes(rndNumber) || colVals.includes(rndNumber)) {
             rndNumber = randomNumber(9, true);
             if (cnt > 500) {
-                // ! Timeout make matrix effect but more load time.
+                // ! Timeout make matrix effect but more load time
                 // setTimeout(() => {
                 randomizeInputs(howMuch);
                 // }, 0);
@@ -86,9 +88,11 @@ function randomizeInputs(number) {
         inputs[i].value = rndNumber;
         inputs[i].disabled = true;
     }
-    inputs.css('color', '#000000a6');
+    //? why?
+    // inputs.css('color', '#000000a6');
 
-    // Randomize index of input w/ repeation to hide.
+    // Hiding inputs
+    // Randomize index of input w/ repeation
     let rndIndex = [];
     for (let i = 0; i < 81 - number; i++) {
         let rnd = randomNumber(81);
@@ -115,7 +119,7 @@ function randomizeInputs(number) {
 $('#finish').on('click', () => {
     function checkInputs(inputs) {
         // Check inputs (array)
-        // Return number of how much validations have been failed.
+        // Return number of how much validations have been failed
         let success = false;
 
         // Get values of all inputs
@@ -145,51 +149,46 @@ $('#finish').on('click', () => {
     $('#board .input:not([disabled])').css({ color: '#002b59', opacity: '1.0' });
     $('#board .input:disabled').css({ color: 'black', opacity: '1.0' });
 
-    // Checks groups
-    let successGrpCount = 0;
-    for (let j = 1; j <= 9; j++) {
-        let inputs = $('.group-' + j);
-        if (checkInputs(inputs)) {
-            successGrpCount++;
-            if (autoCheck) {
-                inputs.css({ opacity: '0.8', color: 'red' });
+    const classesNames = ['group', 'row', 'col'];
+    let classesCount = [0, 0, 0];
+
+    for (let i = 0; i < 3; i++) {
+        for (let j = 1; j <= 9; j++) {
+            let inputs = $('.' + classesNames[i] + '-' + j);
+            if (checkInputs(inputs)) {
+                classesCount[i]++;
+                if (autoCheck) {
+                    inputs.css({ opacity: '0.8', color: 'red' });
+                }
             }
         }
     }
 
-    // Check columns
-    let successColCount = 0;
-    for (let j = 1; j <= 9; j++) {
-        let inputs = $('.col-' + j);
-        if (checkInputs(inputs)) {
-            successColCount++;
-            if (autoCheck) {
-                inputs.css({ opacity: '0.8', color: 'red' });
-            }
-        }
-    }
-
-    // Check Rows
-    let successRowCount = 0;
-    for (let j = 1; j <= 9; j++) {
-        let inputs = $('.row-' + j);
-        if (checkInputs(inputs)) {
-            successRowCount++;
-            if (autoCheck) {
-                inputs.css({ opacity: '0.8', color: 'red' });
-            }
-        }
-    }
-
+    const cnt = classesCount[0] + classesCount[1] + classesCount[2];
+    const changed = cnt !== cntGlobal;
     // Validation
-    const cnt = successGrpCount + successColCount + successRowCount;
-    if (autoCheck) {
-        $('#pMessage').html(
-            successGrpCount + '/9 Groups ' + successRowCount + '/9 Rows ' + successColCount + '/9 Columns<br>' + cnt + '/27 Total'
+    if (changed) {
+        cntGlobal = cnt;
+
+        const message = $('#pMessage');
+        message.html(
+            classesCount[0] + '/9 Groups ' + classesCount[1] + '/9 Rows ' + classesCount[2] + '/9 Columns<br>' + cnt + '/27 Total'
         );
+
+        message.addClass('fadeEffect');
+        setTimeout(() => {
+            message.removeClass('fadeEffect');
+        }, 500);
     }
+
     if (cnt === 27) {
-        $('h1').html('You have been completed the puzzle!');
+        const h1 = $('h1');
+        h1.html('You have been completed the puzzle!');
+
+        h1.addClass('fadeEffect');
+        setTimeout(() => {
+            h1.removeClass('fadeEffect');
+        }, 500);
     }
 });
 
