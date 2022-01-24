@@ -1,14 +1,17 @@
-var howMuch = 60;
-var autoCheck = true;
-var cntGlobal = 0;
+var howMuch = 60; // represent the custom input value
+var autoCheck = true; // autoCheck slider
+var cntGlobal = 0; // global successs counter
 
 // Print board
-initBoard();
+initBoard(); // Print the board on page load
 function initBoard() {
+    // get the div element of the board
     const board = $('#board');
 
+    // creating inputs and tagging them by classes
     let ele, groupBackup;
     let group = 1;
+    // creating loops of 9x9 inputs
     for (let i = 1; i <= 9; i++) {
         for (let j = 1; j <= 9; j++) {
             ele = $('<input>')
@@ -16,26 +19,31 @@ function initBoard() {
                 .attr({ name: 'input_' + i + '_' + j, type: 'text', maxlength: '1' });
             board.append(ele);
 
+            // advance group variable every three iterations
             if (j % 3 === 0) {
                 group++;
             }
+            // pass to a new line & reduces group by three
             if (j % 9 === 0) {
+                // creating br element to move to a new row
                 board.append('<br>');
-
+                // backing up groups before reducing
                 groupBackup = group;
                 group -= 3;
             }
         }
+        // every three columes return group to the backup variable
         if (i % 3 === 0) {
             group = groupBackup;
         }
     }
 }
-
+// generate a playable board
 function randomizeInputs(number) {
-    function randomNumber(to, plusOne = false) {
+    // function to make random numbers
+    const randomNumber = (to, plusOne = false) => {
         return Math.floor(Math.random() * to) + (plusOne ? 1 : 0);
-    }
+    };
 
     // Reset inputs
     const inputs = $('#board .input');
@@ -46,6 +54,7 @@ function randomizeInputs(number) {
     for (i = 0; i < 81; i++) {
         // Get classes of input
         const classList = inputs[i].classList.toString().split(/\s+/);
+        // create arrays contain values of col, row and group
         let groupVals = [],
             rowVals = [],
             colVals = [];
@@ -54,30 +63,31 @@ function randomizeInputs(number) {
         const group = $('.' + classList[1]);
         for (let i = 0; i < group.length; i++) {
             if (group[i].value !== '') {
-                groupVals.push(parseInt(group[i].value));
+                groupVals.push(group[i].value | 0);
             }
         }
         // Get row of input
         const row = $('.' + classList[2]);
         for (let i = 0; i < row.length; i++) {
             if (row[i].value !== '') {
-                rowVals.push(parseInt(row[i].value));
+                rowVals.push(row[i].value | 0);
             }
         }
         // Get col of input
         const col = $('.' + classList[3]);
         for (let i = 0; i < col.length; i++) {
             if (col[i].value !== '') {
-                colVals.push(parseInt(col[i].value));
+                colVals.push(col[i].value) | 0;
             }
         }
-
+        // Genereting random number
         let rndNumber = randomNumber(9, true);
         let cnt = 0;
+        // keep genereting random number until its not in the arrays.
         while (groupVals.includes(rndNumber) || rowVals.includes(rndNumber) || colVals.includes(rndNumber)) {
             rndNumber = randomNumber(9, true);
             if (cnt > 500) {
-                // ! Timeout make matrix effect but more load time
+                // ! Timeout make a Matrix effect but takes more load time
                 // setTimeout(() => {
                 randomizeInputs(howMuch);
                 // }, 0);
@@ -85,11 +95,10 @@ function randomizeInputs(number) {
             }
             cnt++;
         }
+        // Assign input the number and disable it
         inputs[i].value = rndNumber;
         inputs[i].disabled = true;
     }
-    //? why?
-    // inputs.css('color', '#000000a6');
 
     // Hiding inputs
     // Randomize index of input w/ repeation
@@ -101,15 +110,14 @@ function randomizeInputs(number) {
         }
         rndIndex.push(rnd);
     }
-
-    // Hide selected inputs.
-    for (let i = 0; i < rndIndex.length; i++) {
-        inputs[rndIndex[i]].value = '';
-        inputs[rndIndex[i]].disabled = false;
-        inputs[rndIndex[i]].style.opacity = '1.0';
-        inputs[rndIndex[i]].style.color = 'black';
-    }
-
+    // Hide value of selected inputs.
+    rndIndex.forEach((i) => {
+        inputs[i].value = '';
+        inputs[i].disabled = false;
+        inputs[i].style.opacity = '1.0';
+        inputs[i].style.color = 'black';
+    });
+    // Stop animation
     loaderAnimation();
     // Trigger finish btn to execute validation
     $('#finish').click();
@@ -117,7 +125,7 @@ function randomizeInputs(number) {
 
 // Button finish pressed  - Check if board has completed
 $('#finish').on('click', () => {
-    function checkInputs(inputs) {
+    const checkInputs = (inputs) => {
         // Check inputs (array)
         // Return number of how much validations have been failed
         let success = false;
@@ -135,56 +143,69 @@ $('#finish').on('click', () => {
         }
 
         return success;
-    }
-
-    function isArrayValid(arr) {
+    };
+    // Check if array is having all numbers from 1 to 9
+    const isArrayValid = (arr) => {
         for (let i = 0; i < arr.length; i++) {
             if (arr[i] != i + 1) {
                 return false;
             }
         }
         return true;
-    }
-
+    };
+    // Reset style of the inputs
     $('#board .input:not([disabled])').css({ color: '#002b59', opacity: '1.0' });
     $('#board .input:disabled').css({ color: 'black', opacity: '1.0' });
 
+    // Create arr of classes names that need to check together
     const classesNames = ['group', 'row', 'col'];
+    // Create arr to count succesnes
     let classesCount = [0, 0, 0];
 
+    // First loop goes throw group, row and col classes
     for (let i = 0; i < 3; i++) {
+        // Second loop goes throw 1-9 with the same class
         for (let j = 1; j <= 9; j++) {
+            // Get all input within the class
             let inputs = $('.' + classesNames[i] + '-' + j);
+            // Check for validdation (arr is 1-9)
             if (checkInputs(inputs)) {
+                // Count success
                 classesCount[i]++;
                 if (autoCheck) {
+                    // Restyle class
                     inputs.css({ opacity: '0.8', color: 'red' });
                 }
             }
         }
     }
 
+    // sum of classesCount arr
     const cnt = classesCount[0] + classesCount[1] + classesCount[2];
+
+    // Check if a new result
     const changed = cnt !== cntGlobal;
-    // Validation
     if (changed) {
+        // Update global result counter
         cntGlobal = cnt;
 
+        // Update message
         const message = $('#pMessage');
         message.html(
             classesCount[0] + '/9 Groups ' + classesCount[1] + '/9 Rows ' + classesCount[2] + '/9 Columns<br>' + cnt + '/27 Total'
         );
-
+        // Message effect
         message.addClass('fadeEffect');
         setTimeout(() => {
             message.removeClass('fadeEffect');
         }, 500);
     }
-
+    // Check if board is complete
     if (cnt === 27) {
+        // Make announcement in the header
         const h1 = $('h1');
         h1.html('You have been completed the puzzle!');
-
+        // Header effect
         h1.addClass('fadeEffect');
         setTimeout(() => {
             h1.removeClass('fadeEffect');
@@ -206,21 +227,24 @@ $('#board .input').on('input', function () {
     if (autoCheck) {
         $('#finish').click();
     }
-    // Regex it to 1 digit of 1-9 valid numbers
+    // Replace input by regex of number 1-9
     return (this.value = this.value.replace(/[^1-9]/g, ''));
 });
 
-$('#howMuch').on('keyup', function (e) {
+// On key pressed in custom input
+$('#howMuch').on('keyup', (e) => {
     if (e.keyCode === 13) {
-        // Enter pressed on custom input
-        // press custom btn to update changes
+        // Enter key pressed in the custom input
+
+        // click the custom btn to update changes
         $('button[name="custom"]').click();
     }
 });
 
+// One of four difficulty btns pressed
 $('.difficulty').on('click', function () {
     if (this.name !== 'custom') {
-        howMuch = parseInt(this.name);
+        howMuch = this.name | 0;
     } else {
         const custom = $('.howMuch');
         if (custom.css('display') === 'none') {
@@ -228,17 +252,20 @@ $('.difficulty').on('click', function () {
             this.innerHTML = 'Submit';
             return;
         }
-        howMuch = parseInt($('#howMuch').val());
+        howMuch = $('#howMuch').val() | 0;
     }
+    // Dictinary to level names
     const lvlNames = { 20: 'HARD', 40: 'MEDIUM', 60: 'EASY', custom: 'CUSTOM (' + howMuch + ')' };
     $('#level').html(lvlNames[this.name]);
 
     loaderAnimation(true);
+    // timeout to make html like loader appear
     setTimeout(() => {
         randomizeInputs(howMuch);
     }, 0);
 });
 
+// Loading animation on/off
 function loaderAnimation(show = false) {
     if (show) {
         $('#loader').html(
@@ -251,12 +278,15 @@ function loaderAnimation(show = false) {
     }
 }
 
-$('.checkbox-custom').on('click', function () {
+// Auto-Check slider changed
+$('.checkbox-custom').on('click', () => {
+    // true <-> false
     autoCheck = !autoCheck;
     // Trigger finish btn to restyle inputs
     $('#finish').click();
 });
 
 $('#howMuch').on('input', function () {
+    // Allow only number 1-81
     return (this.value = this.value.replace(/[^0-81]/g, ''));
 });
