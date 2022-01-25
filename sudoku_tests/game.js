@@ -100,7 +100,7 @@ function randomizeInputs(number) {
                 // ! Timeout make a Matrix effect but takes more load time
                 setTimeout(() => {
                     randomizeInputs(howMuch);
-                }, 10);
+                }, 50);
                 return;
             }
             cnt++;
