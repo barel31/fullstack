@@ -44,14 +44,18 @@ function randomizeInputs(number) {
     const randomNumber = (to, plusOne = false) => {
         return Math.floor(Math.random() * to) + (plusOne ? 1 : 0);
     };
-    // function to make random color
+    // function to make a random color
     const rndColor = () => {
         return '#' + (0x1000000 + Math.random() * 0xffffff).toString(16).substring(1, 7);
     };
+    // Make random color effect by groups
+    for (let i = 1; i <= 9; i++) {
+        const color = rndColor();
+        $('.group-' + i).css('backgroundColor', color);
+    }
 
     // Reset inputs
     const inputs = $('#board .input');
-    inputs.css('backgroundColor', rndColor);
     inputs.css('color', rndColor);
     inputs.prop('disabled', false);
     inputs.val('');
@@ -281,8 +285,6 @@ function loaderAnimation(show = false) {
     } else {
         $('#loader').html('');
         $('h1').html('Good Luck!');
-
-    // $('#board .input').css('backgroundColor', default);
     }
 }
 
