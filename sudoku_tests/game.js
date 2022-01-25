@@ -44,9 +44,15 @@ function randomizeInputs(number) {
     const randomNumber = (to, plusOne = false) => {
         return Math.floor(Math.random() * to) + (plusOne ? 1 : 0);
     };
+    // function to make random color
+    const rndColor = () => {
+        return '#' + (0x1000000 + Math.random() * 0xffffff).toString(16).substring(1, 7);
+    };
 
     // Reset inputs
     const inputs = $('#board .input');
+    inputs.css('backgroundColor', rndColor);
+    inputs.css('color', rndColor);
     inputs.prop('disabled', false);
     inputs.val('');
 
@@ -88,9 +94,9 @@ function randomizeInputs(number) {
             rndNumber = randomNumber(9, true);
             if (cnt > 500) {
                 // ! Timeout make a Matrix effect but takes more load time
-                // setTimeout(() => {
-                randomizeInputs(howMuch);
-                // }, 0);
+                setTimeout(() => {
+                    randomizeInputs(howMuch);
+                }, 10);
                 return;
             }
             cnt++;
@@ -262,7 +268,7 @@ $('.difficulty').on('click', function () {
     // timeout to make html like loader appear
     setTimeout(() => {
         randomizeInputs(howMuch);
-    }, 0);
+    }, 10);
 });
 
 // Loading animation on/off
@@ -275,6 +281,8 @@ function loaderAnimation(show = false) {
     } else {
         $('#loader').html('');
         $('h1').html('Good Luck!');
+
+    // $('#board .input').css('backgroundColor', default);
     }
 }
 
