@@ -38,7 +38,7 @@ function initBoard() {
         }
     }
 }
-// generate a playable board
+// try to generate a playable board
 function randomizeInputs(number) {
     // function to make random numbers
     const randomNumber = (to, plusOne = false) => {
@@ -87,7 +87,7 @@ function randomizeInputs(number) {
         const col = $('.' + classList[3]);
         for (let i = 0; i < col.length; i++) {
             if (col[i].value !== '') {
-                colVals.push(col[i].value) | 0;
+                colVals.push(col[i].value | 0);
             }
         }
         // Genereting random number
@@ -99,8 +99,9 @@ function randomizeInputs(number) {
             if (cnt > 500) {
                 // ! Timeout make a Matrix effect but takes more load time
                 setTimeout(() => {
+                    // cann't make a playable board, try again
                     randomizeInputs(howMuch);
-                }, 50);
+                }, 0);
                 return;
             }
             cnt++;
@@ -135,9 +136,9 @@ function randomizeInputs(number) {
 
 // Button finish pressed  - Check if board has completed
 $('#finish').on('click', () => {
+    // Check inputs (array)
     const checkInputs = (inputs) => {
-        // Check inputs (array)
-        // Return number of how much validations have been failed
+        // Return true if inputs having 9 input of value 1-9 else otherwise
         let success = false;
 
         // Get values of all inputs
@@ -168,7 +169,7 @@ $('#finish').on('click', () => {
     $('#board .input:disabled').css({ color: 'black', opacity: '1.0' });
 
     // Create arr of classes names that need to check together
-    const classesNames = ['group', 'row', 'col'];
+    let classesNames = ['group', 'row', 'col'];
     // Create arr to count succesnes
     let classesCount = [0, 0, 0];
 
@@ -178,7 +179,7 @@ $('#finish').on('click', () => {
         for (let j = 1; j <= 9; j++) {
             // Get all input within the class
             let inputs = $('.' + classesNames[i] + '-' + j);
-            // Check for validdation (arr is 1-9)
+            // Check for validation (if arr is 1-9)
             if (checkInputs(inputs)) {
                 // Count success
                 classesCount[i]++;
