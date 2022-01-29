@@ -48,57 +48,45 @@ function randomizeInputs(number) {
     const rndColor = () => {
         return '#' + (0x1000000 + Math.random() * 0xffffff).toString(16).substring(1, 7);
     };
-    // Make random color effect by groups
+    // Make a random color for each group
     for (let i = 1; i <= 9; i++) {
         const color = rndColor();
         $('.group-' + i).css('backgroundColor', color);
     }
 
     // Reset inputs
-    const inputs = $('#board .input');
-    // inputs.css('color', rndColor); //! Make load time 2x slower
-    inputs.prop('disabled', false);
-    inputs.val('');
+    const inputs = $('#board .input')
+        // .css('color', rndColor); //! Make load time 2x slower
+        .prop('disabled', false)
+        .val('');
 
     // Try to build a complete board
-    // Using Vanilla JS inside the loop to reduce load time
+    //? Using Vanilla JS inside the loop to reduce load time
+    // loop to go throw all inputs
     for (i = 0; i < 81; i++) {
         // Get classes of input
         const classList = inputs[i].classList.toString().split(/\s+/);
-        // create arrays contain values of column, row and group
-        let groupVals = [],
-            rowVals = [],
-            colVals = [];
+        // create a nested array to contain values of column, row and group
+        let classVals = [[], [], []];
 
-        // Get group of input
-        // const group = $('.' + classList[1]);
-        const group = document.getElementsByClassName(classList[1]);
-        for (let i = 0; i < group.length; i++) {
-            if (group[i].value !== '') {
-                groupVals.push(group[i].value | 0);
+        // Loop to go throw classes [row, col, group]
+        for (let i = 1; i < classList.length; i++) {
+            // get all inputs with the same class name
+            const className = document.getElementsByClassName(classList[i]);
+            // loop throw inputs matched class name
+            for (let j = 0; j < className.length; j++) {
+                if (className[j].value !== '') {
+                    // push the value to the nested array
+                    classVals[i - 1].push(className[j].value | 0);
+                }
             }
         }
-        // Get row of input
-        // const row = $('.' + classList[2]);
-        const row = document.getElementsByClassName(classList[2]);
-        for (let i = 0; i < row.length; i++) {
-            if (row[i].value !== '') {
-                rowVals.push(row[i].value | 0);
-            }
-        }
-        // Get col of input
-        // const col = $('.' + classList[3]);
-        const col = document.getElementsByClassName(classList[3]);
-        for (let i = 0; i < col.length; i++) {
-            if (col[i].value !== '') {
-                colVals.push(col[i].value | 0);
-            }
-        }
+
         // Generating random number
         let rndNumber = randomNumber(9, true);
         let cnt = 250; // number of times to retrying before calling the function again
-        // keep generating a random number until number not in the arrays.
-        while (groupVals.includes(rndNumber) || rowVals.includes(rndNumber) || colVals.includes(rndNumber)) {
+        // keep generating a random number until number not in the nested array.
+        while (classVals[0].includes(rndNumber) || classVals[1].includes(rndNumber) || classVals[2].includes(rndNumber)) {
             rndNumber = randomNumber(9, true);
             if (!cnt) {
                 // ! Timeout make a Matrix effect but takes more load time
@@ -134,7 +122,7 @@ function randomizeInputs(number) {
     });
     // Stop animation
     loaderAnimation();
-    // Trigger finish btn to execute validation
+    // Trigger finish button to execute validation
     $('#finish').click();
 }
 
@@ -142,7 +130,6 @@ function randomizeInputs(number) {
 $('#finish').on('click', () => {
     // Check inputs (array)
     const checkInputs = (inputs) => {
-        // Return true if inputs having 9 input of value 1-9 else otherwise
         let success = false;
 
         // Get values of all inputs
@@ -157,6 +144,7 @@ $('#finish').on('click', () => {
             success = true;
         }
 
+        // Return true if inputs having 9 input of value 1-9 else otherwise
         return success;
     };
     // Check if array is having all numbers from 1 to 9
@@ -188,7 +176,7 @@ $('#finish').on('click', () => {
                 // Count success
                 classesCount[i]++;
                 if (autoCheck) {
-                    // Restyle class
+                    // Restyle valid class
                     inputs.css({ opacity: '0.8', color: 'red' });
                 }
             }
@@ -218,9 +206,7 @@ $('#finish').on('click', () => {
     if (cnt === 27) {
         // Make announcement in the header
         const h1 = $('h1');
-        h1.html('You have been completed the puzzle!');
-        // Header effect
-        h1.addClass('fadeEffect');
+        h1.html('✨You have been completed the puzzle!✨').css('color', '#91C483').addClass('fadeEffect'); // header fade effect
         setTimeout(() => {
             h1.removeClass('fadeEffect');
         }, 500);
@@ -237,7 +223,7 @@ $('#again').on('click', () => {
 
 // On inputs change
 $('#board .input').on('input', function () {
-    // Trigger finish btn
+    // Trigger finish button
     if (autoCheck) {
         $('#finish').click();
     }
@@ -250,7 +236,7 @@ $('#howMuch').on('keyup', (e) => {
     if (e.keyCode === 13) {
         // Enter key pressed in the custom input
 
-        // click the custom btn to update changes
+        // Click the custom button to update changes
         $('button[name="custom"]').click();
     }
 });
@@ -285,10 +271,10 @@ function loaderAnimation(show = false) {
         $('#loader').html(
             '<div class="loadingio-spinner-cube-2zx4f3ctido"><div class="ldio-1pkt0oqav2x"><div></div><div></div><div></div><div></div></div></div>'
         );
-        $('h1').html('Generating...');
+        $('h1').html('Generating...').css('color', '#DA1212');
     } else {
         $('#loader').html('');
-        $('h1').html('Good Luck!');
+        $('h1').html('Good Luck!').css('color', '#313552');
     }
 }
 
@@ -296,7 +282,7 @@ function loaderAnimation(show = false) {
 $('.checkbox-custom').on('click', () => {
     // change from true to false and otherwise
     autoCheck = !autoCheck;
-    // Trigger finish btn to restyle inputs
+    // click finish button to restyle inputs
     $('#finish').click();
 });
 
