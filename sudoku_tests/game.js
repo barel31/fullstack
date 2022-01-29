@@ -56,57 +56,61 @@ function randomizeInputs(number) {
 
     // Reset inputs
     const inputs = $('#board .input');
-    inputs.css('color', rndColor);
+    // inputs.css('color', rndColor); //! Make load time 2x slower
     inputs.prop('disabled', false);
     inputs.val('');
 
-    // Try to build a complete board.
+    // Try to build a complete board
+    // Using Vanilla JS inside the loop to reduce load time
     for (i = 0; i < 81; i++) {
         // Get classes of input
         const classList = inputs[i].classList.toString().split(/\s+/);
-        // create arrays contain values of col, row and group
+        // create arrays contain values of column, row and group
         let groupVals = [],
             rowVals = [],
             colVals = [];
 
         // Get group of input
-        const group = $('.' + classList[1]);
+        // const group = $('.' + classList[1]);
+        const group = document.getElementsByClassName(classList[1]);
         for (let i = 0; i < group.length; i++) {
             if (group[i].value !== '') {
                 groupVals.push(group[i].value | 0);
             }
         }
         // Get row of input
-        const row = $('.' + classList[2]);
+        // const row = $('.' + classList[2]);
+        const row = document.getElementsByClassName(classList[2]);
         for (let i = 0; i < row.length; i++) {
             if (row[i].value !== '') {
                 rowVals.push(row[i].value | 0);
             }
         }
         // Get col of input
-        const col = $('.' + classList[3]);
+        // const col = $('.' + classList[3]);
+        const col = document.getElementsByClassName(classList[3]);
         for (let i = 0; i < col.length; i++) {
             if (col[i].value !== '') {
                 colVals.push(col[i].value | 0);
             }
         }
-        // Genereting random number
+        // Generating random number
         let rndNumber = randomNumber(9, true);
-        let cnt = 0;
-        // keep genereting random number until its not in the arrays.
+        let cnt = 250; // number of times to retrying before calling the function again
+        // keep generating a random number until number not in the arrays.
         while (groupVals.includes(rndNumber) || rowVals.includes(rndNumber) || colVals.includes(rndNumber)) {
             rndNumber = randomNumber(9, true);
-            if (cnt > 500) {
+            if (!cnt) {
                 // ! Timeout make a Matrix effect but takes more load time
                 setTimeout(() => {
-                    // cann't make a playable board, try again
+                    // can't make a playable board, try again
                     randomizeInputs(howMuch);
                 }, 0);
                 return;
             }
-            cnt++;
+            cnt--;
         }
-        // Assign input the number and disable it
+        // Assign the random number to the input and disable it
         inputs[i].value = rndNumber;
         inputs[i].disabled = true;
     }
@@ -175,7 +179,7 @@ $('#finish').on('click', () => {
 
     // First loop goes throw group, row and col classes
     for (let i = 0; i < 3; i++) {
-        // Second loop goes throw 1-9 with the same class
+        // Second loop goes throw 1-9 on the same class
         for (let j = 1; j <= 9; j++) {
             // Get all input within the class
             let inputs = $('.' + classesNames[i] + '-' + j);
@@ -195,8 +199,7 @@ $('#finish').on('click', () => {
     const cnt = classesCount[0] + classesCount[1] + classesCount[2];
 
     // Check if a new result
-    const changed = cnt !== cntGlobal;
-    if (changed) {
+    if (cnt !== cntGlobal) {
         // Update global result counter
         cntGlobal = cnt;
 
@@ -242,7 +245,7 @@ $('#board .input').on('input', function () {
     return (this.value = this.value.replace(/[^1-9]/g, ''));
 });
 
-// On key pressed in custom input
+// On key press in custom input
 $('#howMuch').on('keyup', (e) => {
     if (e.keyCode === 13) {
         // Enter key pressed in the custom input
@@ -252,7 +255,7 @@ $('#howMuch').on('keyup', (e) => {
     }
 });
 
-// One of four difficulty btns pressed
+// One of four difficulty buttons pressed
 $('.difficulty').on('click', function () {
     if (this.name !== 'custom') {
         howMuch = this.name | 0;
@@ -265,18 +268,18 @@ $('.difficulty').on('click', function () {
         }
         howMuch = $('#howMuch').val() | 0;
     }
-    // Dictinary to level names
+    // Dictionary to level names
     const lvlNames = { 20: 'HARD', 40: 'MEDIUM', 60: 'EASY', custom: 'CUSTOM (' + howMuch + ')' };
     $('#level').html(lvlNames[this.name]);
 
     loaderAnimation(true);
-    // timeout to make html like loader appear
+    // a timeout to allow animation and html changes to show
     setTimeout(() => {
         randomizeInputs(howMuch);
     }, 10);
 });
 
-// Loading animation on/off
+// Turn loading animation on/off
 function loaderAnimation(show = false) {
     if (show) {
         $('#loader').html(
@@ -291,7 +294,7 @@ function loaderAnimation(show = false) {
 
 // Auto-Check slider changed
 $('.checkbox-custom').on('click', () => {
-    // true <-> false
+    // change from true to false and otherwise
     autoCheck = !autoCheck;
     // Trigger finish btn to restyle inputs
     $('#finish').click();
