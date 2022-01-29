@@ -69,7 +69,7 @@ function randomizeInputs(number) {
         // create a nested array to contain values of column, row and group
         let classVals = [[], [], []];
 
-        // Loop to go throw classes [row, col, group]
+        // Loop throw the classList [row, col, group]
         for (let i = 1; i < classList.length; i++) {
             // get all inputs with the same class name
             const className = document.getElementsByClassName(classList[i]);
