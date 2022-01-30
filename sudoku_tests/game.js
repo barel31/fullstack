@@ -9,15 +9,15 @@ function initBoard() {
     const board = $('#board');
 
     // creating inputs and tagging them by classes
-    let ele, groupBackup;
+    let element, groupBackup;
     let group = 1;
     // creating loops of 9x9 inputs
     for (let i = 1; i <= 9; i++) {
         for (let j = 1; j <= 9; j++) {
-            ele = $('<input>')
+            element = $('<input>')
                 .addClass('input group-' + group + ' row-' + i + ' col-' + j)
                 .attr({ name: 'input_' + i + '_' + j, type: 'text', maxlength: '1' });
-            board.append(ele);
+            board.append(element);
 
             // advance group variable every three iterations
             if (j % 3 === 0) {
