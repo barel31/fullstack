@@ -45,19 +45,19 @@ function randomizeInputs(number) {
         return Math.floor(Math.random() * to) + (plusOne ? 1 : 0);
     };
     // Function to return a random color
-    const rndColor = () => {
+    const randomColor = () => {
         return '#' + (0x1000000 + Math.random() * 0xffffff).toString(16).substring(1, 7);
     };
 
     // Make a random color for each group
     for (let i = 1; i <= 9; i++) {
-        const color = rndColor();
+        const color = randomColor();
         $('.group-' + i).css('backgroundColor', color);
     }
 
     // Reset inputs
     const inputs = $('#board .input')
-        // .css('color', rndColor); //! Make load time 2x slower
+        // .css('color', randomColor); //! Make load time 2x slower
         .prop('disabled', false)
         .val('');
 
