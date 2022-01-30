@@ -115,11 +115,11 @@ function randomizeInputs(number) {
         rndIndex.push(rnd);
     }
     // Hide value of selected inputs.
-    rndIndex.forEach((i) => {
-        inputs[i].value = '';
-        inputs[i].disabled = false;
-        inputs[i].style.opacity = '1.0';
-        inputs[i].style.color = 'black';
+    rndIndex.forEach((val) => {
+        inputs[val].value = '';
+        inputs[val].disabled = false;
+        inputs[val].style.opacity = '1.0';
+        inputs[val].style.color = 'black';
     });
     // Stop animation
     loaderAnimation();
