@@ -32,19 +32,19 @@ function initBoard() {
                 group -= 3;
             }
         }
-        // every three columes return group to the backup variable
+        // every three columns return group to the backup variable
         if (i % 3 === 0) {
             group = groupBackup;
         }
     }
 }
-// try to generate a playable board
+// Try to generate a playable board
 function randomizeInputs(number) {
-    // function to make random numbers
+    // Function to return random number
     const randomNumber = (to, plusOne = false) => {
         return Math.floor(Math.random() * to) + (plusOne ? 1 : 0);
     };
-    // function to make a random color
+    // Function to return a random color
     const rndColor = () => {
         return '#' + (0x1000000 + Math.random() * 0xffffff).toString(16).substring(1, 7);
     };
@@ -255,6 +255,7 @@ $('.difficulty').on('click', function () {
             this.innerHTML = 'Submit'; // Change button custom text to Submit
             return;
         }
+        // Get value of custom input and assign it to variable
         howMuch = $('#howMuch').val() | 0;
     }
     // dictionary to level names
