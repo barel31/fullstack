@@ -24,24 +24,24 @@
         <main class="form-signin">
             <img class="mb-4" src="images/icon.png" alt="Sudoku!" />
             <h1 class="h3 mb-3 fw-normal">Sign in to play Sudoku!</h1>
-                <div class="form-floating">
-                    <input name="name" type="text" class="form-control no-shadow" id="floatingName" placeholder="Name" required autofocus />
-                    <label for="floatingName">Name (abcd)</label>
-                </div>
-                <div class="form-floating">
-                    <input
+            <div class="form-floating">
+                <input name="name" type="text" class="form-control no-shadow" id="floatingName" placeholder="Name" required autofocus />
+                <label for="floatingName">Name (abcd)</label>
+            </div>
+            <div class="form-floating">
+                <input
                     name="password"
                     type="password"
                     class="form-control no-shadow"
                     id="floatingPassword"
                     placeholder="Password"
                     required
-                    />
-                    <label for="floatingPassword">Password (1234)</label>
-                </div>
-                <button class="w-100 btn btn-lg btn-primary" type="submit" onclick="signIn()">Sign In</button>
-                <p id="pMessage"></p>
-                <div id='loader'></div>
+                />
+                <label for="floatingPassword">Password (1234)</label>
+            </div>
+            <button class="w-100 btn btn-lg btn-primary" type="submit" onclick="signIn()">Sign In</button>
+            <p id="pMessage"></p>
+            <div id="loader"></div>
             <p class="footer mt-5 mb-3">&copy; Barel Shraga & Anton Varakuta</p>
         </main>
         <!-- jQuery -->

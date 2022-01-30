@@ -40,7 +40,7 @@ function initBoard() {
 }
 // Try to generate a playable board
 function randomizeInputs(number) {
-    // Function to return random number
+    // Function to return a random number
     const randomNumber = (to, plusOne = false) => {
         return Math.floor(Math.random() * to) + (plusOne ? 1 : 0);
     };
@@ -48,6 +48,7 @@ function randomizeInputs(number) {
     const rndColor = () => {
         return '#' + (0x1000000 + Math.random() * 0xffffff).toString(16).substring(1, 7);
     };
+
     // Make a random color for each group
     for (let i = 1; i <= 9; i++) {
         const color = rndColor();
@@ -248,7 +249,8 @@ $('#howMuch').on('keyup', (e) => {
 $('.difficulty').on('click', function () {
     if (this.name !== 'custom') {
         howMuch = this.name | 0;
-    } else { // Custom pressed - show input element
+    } else {
+        // Custom pressed - show input element
         const custom = $('.howMuch');
         if (custom.css('display') === 'none') {
             custom.css('display', 'inline');
