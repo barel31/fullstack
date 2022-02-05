@@ -119,7 +119,7 @@ function randomizeInputs(number) {
         }
         rndIndex.push(rnd);
     }
-    // Hide value of selected inputs.
+    // Hide value of selected inputs.sd
     debugger
     console.log('debugger start');
     rndIndex.forEach((val) => {
