@@ -4,7 +4,7 @@ var cntGlobal = 0; // global success counter
 var timer = 0; // global score variable
 var timerElement = $('#timer'); // timer element
 let interval; // global variable for timer interval
-let hideInputs = {} // global dict of hidden inputs to show hints
+let hidenInputs = {} // global dict of hidden inputs to show hints
 
 // Print board
 initBoard(); // Print the board on page load
@@ -120,11 +120,9 @@ function randomizeInputs(number) {
         rndIndex.push(rnd);
     }
     // Hide value of selected inputs.sd
-    debugger
-    console.log('debugger start');
     rndIndex.forEach((val) => {
         // add input index and value to hiddenInputs dict
-        hideInputs[val] = inputs[val].value;
+        hidenInputs[val] = inputs[val].value;
 
         inputs[val].value = '';
         inputs[val].disabled = false;
@@ -132,12 +130,38 @@ function randomizeInputs(number) {
         inputs[val].style.color = 'black';
 
     });
-    console.log(hideInputs);
     // Stop animation
     loaderAnimation();
     // Trigger finish button to execute validation
     $('#finish').click();
 }
+
+// Button hint pressed
+$('#hint').on('click', () => {
+    if(!Object.keys(hidenInputs).length) {
+        return;
+    }
+
+    let indexes = Object.keys(hidenInputs);
+    let random = Math.floor(Math.random() * indexes.length);
+
+    // console.log(hidenInputs);
+    // console.log(indexes[random]);
+    // console.log(hidenInputs[indexes[random]]);
+
+    const inputs = $('#board .input');
+
+    // console.log(inputs[indexes[random]]);
+
+    inputs[indexes[random]].value = hidenInputs[indexes[random]];
+    inputs[indexes[random]].disabled = true;
+    inputs[indexes[random]].style.backgroundColor = 'green';
+
+    delete hidenInputs[indexes[random]];
+
+    // Trigger finish button to execute validation
+    $('#finish').click();
+});
 
 // Button finish pressed  - Check if board has completed
 $('#finish').on('click', () => {
@@ -222,16 +246,14 @@ $('#finish').on('click', () => {
     if (cnt === 27) {
         // make announcement in the header
         const h1 = $('h1');
-        h1.html('✨You have been completed the puzzle!✨').css('color', '#91C483').addClass('fadeEffect'); // header fade effect
+        h1.html('✨You have been completed the puzzle! (within ' + timer + ' seconds!) ✨').css('color', '#91C483').addClass('fadeEffect'); // header fade effect
         setTimeout(() => {
             h1.removeClass('fadeEffect');
         }, 500);
+
+        // stop timer interval
+        window.clearInterval(interval);
     }
-});
-
-// Button hint pressed
-$('hint').on('click', () => {
-
 });
 
 // Button again pressed - Initilize restart
