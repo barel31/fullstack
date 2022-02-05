@@ -120,6 +120,8 @@ function randomizeInputs(number) {
         rndIndex.push(rnd);
     }
     // Hide value of selected inputs.
+    debugger
+    console.log('debugger start');
     rndIndex.forEach((val) => {
         // add input index and value to hiddenInputs dict
         hideInputs[val] = inputs[val].value;
