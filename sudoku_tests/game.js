@@ -108,7 +108,7 @@ function randomizeInputs(number) {
         inputs[i].value = rndNumber;
         inputs[i].disabled = true;
     }
-
+ 
     // Hiding inputs
     // Randomize index of input w/ repeation
     let rndIndex = [];
