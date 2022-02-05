@@ -4,6 +4,7 @@ var cntGlobal = 0; // global success counter
 var timer = 0; // global score variable
 var timerElement = $('#timer'); // timer element
 let interval; // global variable for timer interval
+let hideInputs = {} // global dict of hidden inputs to show hints
 
 // Print board
 initBoard(); // Print the board on page load
@@ -120,11 +121,16 @@ function randomizeInputs(number) {
     }
     // Hide value of selected inputs.
     rndIndex.forEach((val) => {
+        // add input index and value to hiddenInputs dict
+        hideInputs[val] = inputs[val].value;
+
         inputs[val].value = '';
         inputs[val].disabled = false;
         inputs[val].style.opacity = '1.0';
         inputs[val].style.color = 'black';
+
     });
+    console.log(hideInputs);
     // Stop animation
     loaderAnimation();
     // Trigger finish button to execute validation
@@ -219,6 +225,11 @@ $('#finish').on('click', () => {
             h1.removeClass('fadeEffect');
         }, 500);
     }
+});
+
+// Button hint pressed
+$('hint').on('click', () => {
+
 });
 
 // Button again pressed - Initilize restart
