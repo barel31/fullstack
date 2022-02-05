@@ -2,6 +2,8 @@ var howMuch = 60; // custom input value
 var autoCheck = true; // Auto-Check slider
 var cntGlobal = 0; // global success counter
 var timer = 0; // global score variable
+var timerElement = $('#timer'); // timer element
+let interval; // global variable for timer interval
 
 // Print board
 initBoard(); // Print the board on page load
@@ -39,13 +41,6 @@ function initBoard() {
         }
     }
 }
-
-// Timer repeater
-var timerElement = $('#timer');
-setInterval(() => {
-    timer += 1;
-    timerElement.html(timer);
-}, 1000);
 
 // Try to generate a playable board
 function randomizeInputs(number) {
@@ -282,17 +277,25 @@ $('.difficulty').on('click', function () {
 
 // Turn loading animation on/off
 function loaderAnimation(show = false) {
+    // clear timer interval
+    window.clearInterval(interval);
+
     if (show) {
         $('#loader').html(
             '<div class="loadingio-spinner-cube-2zx4f3ctido"><div class="ldio-1pkt0oqav2x"><div></div><div></div><div></div><div></div></div></div>'
         );
         $('h1').html('Generating...').css('color', '#DA1212');
+        
     } else {
         $('#loader').html('');
         $('h1').html('Good Luck!').css('color', '#313552');
         
-        // reset score
+        // timer repeater
         timer = 0;
+        interval = setInterval(() => {
+            timer += 1;
+            timerElement.html(timer);
+        }, 1000);
     }
 }
 
