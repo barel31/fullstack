@@ -1,6 +1,7 @@
 var howMuch = 60; // custom input value
 var autoCheck = true; // Auto-Check slider
 var cntGlobal = 0; // global success counter
+var timer = 0; // global score variable
 
 // Print board
 initBoard(); // Print the board on page load
@@ -38,6 +39,14 @@ function initBoard() {
         }
     }
 }
+
+// Timer repeater
+var timerElement = $('#timer');
+setInterval(() => {
+    timer += 1;
+    timerElement.html(timer);
+}, 1000);
+
 // Try to generate a playable board
 function randomizeInputs(number) {
     // Function to return a random number
@@ -281,6 +290,9 @@ function loaderAnimation(show = false) {
     } else {
         $('#loader').html('');
         $('h1').html('Good Luck!').css('color', '#313552');
+        
+        // reset score
+        timer = 0;
     }
 }
 
