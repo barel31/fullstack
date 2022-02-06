@@ -4,7 +4,7 @@ var cntGlobal = 0; // global success counter
 var timer = 0; // global score variable
 var timerElement = $('#timer'); // timer element
 let interval; // global variable for timer interval
-let hidenInputs = {} // global dict of hidden inputs to show hints
+let hidenInputs = {}; // global dict of hidden inputs to show hints
 
 // Print board
 initBoard(); // Print the board on page load
@@ -64,8 +64,9 @@ function randomizeInputs(number) {
     const inputs = $('#board .input')
         // .css('color', randomColor); //! Make load time 2x slower
         .prop('disabled', false)
-        .val('');
-
+        .val('')
+        .attr('placeholder', '');
+``
     // Try to build a complete board
     //? Using Vanilla JS inside the loop to reduce load time
     // loop to go throw all inputs
@@ -108,7 +109,7 @@ function randomizeInputs(number) {
         inputs[i].value = rndNumber;
         inputs[i].disabled = true;
     }
- 
+
     // Hiding inputs
     // Randomize index of input w/ repeation
     let rndIndex = [];
@@ -128,7 +129,6 @@ function randomizeInputs(number) {
         inputs[val].disabled = false;
         inputs[val].style.opacity = '1.0';
         inputs[val].style.color = 'black';
-
     });
     // Stop animation
     loaderAnimation();
@@ -138,28 +138,34 @@ function randomizeInputs(number) {
 
 // Button hint pressed
 $('#hint').on('click', () => {
-    if(!Object.keys(hidenInputs).length) {
+    // if no hints left do nothing
+    if (!Object.keys(hidenInputs).length) {
         return;
     }
-
-    let indexes = Object.keys(hidenInputs);
+    // randomize input to hint
+    const indexes = Object.keys(hidenInputs);
     let random = Math.floor(Math.random() * indexes.length);
-
-    // console.log(hidenInputs);
-    // console.log(indexes[random]);
-    // console.log(hidenInputs[indexes[random]]);
-
+    // Get all inputs
     const inputs = $('#board .input');
 
-    // console.log(inputs[indexes[random]]);
+    let counter = 100;
+    // create loop if the player used the randomize input
+    while (inputs[indexes[random]].value != '') {
+        random = Math.floor(Math.random() * indexes.length);
 
+        counter--;
+        if (!counter) {
+            // avoid infinity loop - break and continue;
+            break;
+        }
+    }
+    // show hint
     inputs[indexes[random]].value = hidenInputs[indexes[random]];
-    inputs[indexes[random]].disabled = true;
-    inputs[indexes[random]].style.backgroundColor = 'green';
+    inputs[indexes[random]].placeholder = hidenInputs[indexes[random]];
 
     delete hidenInputs[indexes[random]];
 
-    // Trigger finish button to execute validation
+    // trigger finish button to execute validation
     $('#finish').click();
 });
 
@@ -246,7 +252,10 @@ $('#finish').on('click', () => {
     if (cnt === 27) {
         // make announcement in the header
         const h1 = $('h1');
-        h1.html('✨You have been completed the puzzle! (within ' + timer + ' seconds!) ✨').css('color', '#91C483').addClass('fadeEffect'); // header fade effect
+        const format = ~~(timer / 360) + ':' + ~~(timer / 60) + ':' + (timer % 60);
+        h1.html('✨You have been completed the puzzle! (within ' + format + '!) ✨')
+            .css('color', '#91C483')
+            .addClass('fadeEffect'); // header fade effect
         setTimeout(() => {
             h1.removeClass('fadeEffect');
         }, 500);
@@ -320,16 +329,16 @@ function loaderAnimation(show = false) {
             '<div class="loadingio-spinner-cube-2zx4f3ctido"><div class="ldio-1pkt0oqav2x"><div></div><div></div><div></div><div></div></div></div>'
         );
         $('h1').html('Generating...').css('color', '#DA1212');
-        
     } else {
         $('#loader').html('');
         $('h1').html('Good Luck!').css('color', '#313552');
-        
+
         // timer repeater
         timer = 0;
         interval = setInterval(() => {
             timer += 1;
-            timerElement.html(timer);
+            const format = ~~(timer / 360) + ':' + ~~(timer / 60) + ':' + (timer % 60);
+            timerElement.html(format);
         }, 1000);
     }
 }
