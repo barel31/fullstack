@@ -66,7 +66,7 @@ function randomizeInputs(number) {
         .prop('disabled', false)
         .val('')
         .attr('placeholder', '');
-``
+    ``;
     // Try to build a complete board
     //? Using Vanilla JS inside the loop to reduce load time
     // loop to go throw all inputs
@@ -252,8 +252,7 @@ $('#finish').on('click', () => {
     if (cnt === 27) {
         // make announcement in the header
         const h1 = $('h1');
-        const format = ~~(timer / 360) + ':' + ~~(timer / 60) + ':' + (timer % 60);
-        h1.html('✨You have been completed the puzzle! (within ' + format + '!) ✨')
+        h1.html('✨You have been completed the puzzle! (within ' + formatTime() + ' seconds!) ✨')
             .css('color', '#91C483')
             .addClass('fadeEffect'); // header fade effect
         setTimeout(() => {
@@ -337,11 +336,15 @@ function loaderAnimation(show = false) {
         timer = 0;
         interval = setInterval(() => {
             timer += 1;
-            const format = ~~(timer / 360) + ':' + ~~(timer / 60) + ':' + (timer % 60);
-            timerElement.html(format);
+            timerElement.html(formatTime());
         }, 1000);
     }
 }
+
+// Format timer to hours:minutes:seconds
+const formatTime = () => {
+    return ~~(timer / 3600) + ':' + ~~(timer / 60 - ~~(timer / 3600) * 60) + ':' + (timer % 60);
+};
 
 // Auto-Check slider changed
 $('.checkbox-custom').on('click', () => {
