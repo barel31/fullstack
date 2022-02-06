@@ -66,7 +66,7 @@ function randomizeInputs(number) {
         .prop('disabled', false)
         .val('')
         .attr('placeholder', '');
-    ``;
+
     // Try to build a complete board
     //? Using Vanilla JS inside the loop to reduce load time
     // loop to go throw all inputs
@@ -120,7 +120,8 @@ function randomizeInputs(number) {
         }
         rndIndex.push(rnd);
     }
-    // Hide value of selected inputs.sd
+    // Hide value of selected inputs
+    hidenInputs = {}; // clear dict from old data
     rndIndex.forEach((val) => {
         // add input index and value to hiddenInputs dict
         hidenInputs[val] = inputs[val].value;
