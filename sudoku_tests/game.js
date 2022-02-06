@@ -229,10 +229,8 @@ $('#finish').on('click', () => {
         }
     }
 
-    // Sum of classesCount arr
+    // determine if there's a new result
     const cnt = classesCount[0] + classesCount[1] + classesCount[2];
-
-    // Check if a new result
     if (cnt !== cntGlobal) {
         // update global result counter
         cntGlobal = cnt;
@@ -248,7 +246,7 @@ $('#finish').on('click', () => {
             message.removeClass('fadeEffect');
         }, 500);
     }
-    // Check if board is complete
+    // check if board have been completed
     if (cnt === 27) {
         // make announcement in the header
         const h1 = $('h1');
@@ -297,14 +295,14 @@ $('.difficulty').on('click', function () {
     if (this.name !== 'custom') {
         howMuch = this.name | 0;
     } else {
-        // Custom pressed - show input element
+        // custom pressed - show input element
         const custom = $('.howMuch');
         if (custom.css('display') === 'none') {
             custom.css('display', 'inline');
             this.innerHTML = 'Submit'; // Change button custom text to Submit
             return;
         }
-        // Get value of custom input and assign it to variable
+        // get value of custom input and assign it to variable
         howMuch = $('#howMuch').val() | 0;
     }
     // dictionary to level names
