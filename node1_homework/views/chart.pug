@@ -1,0 +1,17 @@
+html
+    head
+        title= title 
+        script(src="https://cdn.jsdelivr.net/npm/chart.js")
+    body
+        each val, key in grades
+            li= val + ': ' + key 
+        else 
+            li= 'no values'
+
+        div#container(max-height='40px')
+            canvas#myChart
+ 
+        script
+            | var grades = '#{Object.keys(grades)}'
+            | var names = '#{Object.values(grades)}'
+        script(src='chart.js')
