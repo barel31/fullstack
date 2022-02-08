@@ -53,19 +53,3 @@ for (let i = 0; i < data.length; i++) {
         td2.appendChild(link);
     }
 }
-//     <td>
-//         <h5>simon-say:</h5>
-//     </td>
-//     <td>
-//         <a href="simon/">Play!</a>
-//     </td>
-// </tr>
-// <tr>
-//     <td>
-//         <h5>Sudoku:</h5>
-//     </td>
-//     <td>
-//         <a href="sudoku_tests/">Play!</a>
-//     </td>
-// </tr>
-// </table>
