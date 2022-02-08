@@ -12,7 +12,6 @@ app.set('view engine', 'pug');
 //----------------------
 // load grdes from elsx file and render in a chart
 //----------------------
-
 var grades = {};
 readXlsxFile('grades.xlsx').then((rows) => {
     for (let i = 2; i < rows.length; i++) {
@@ -24,7 +23,7 @@ app.get('/', (req, res) => {
     res.render('chart', { title: 'Grade Chart', grades: grades });
 });
 
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, () => {
     console.log('Server is up and running on port 3000.');
 });
 
