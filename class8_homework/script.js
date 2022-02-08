@@ -69,7 +69,7 @@ class Course {
         for (let i = 0; i < this.students.length; i++) {
             if (higher > this.students[i].higherGrade()) {
                 higher = this.students[i].higherGrade();
-                student = his.students[i];
+                student = this.students[i];
             }
             return student;
         }
