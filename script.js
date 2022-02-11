@@ -46,7 +46,7 @@ for (let i = 0; i < data.length; i++) {
 
     const linkArr = data[i].link.split(' ');
     const textArr = data[i].text.split(' ');
-    for (let j = 0; j < linkArr.length; j++) {
+    for (let j = 0; j <= linkArr.length; j++) {
         const link = document.createElement('a');
         link.innerHTML = textArr[j];
         link.setAttribute('href', linkArr[j]);
