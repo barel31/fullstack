@@ -52,6 +52,6 @@ for (let i = 0; i < data.length; i++) {
         link.setAttribute('href', linkArr[j]);
         link.style.marginRight = '1vh';
         td2.appendChild(link);
-    } 
+    }
 }
 
