@@ -11,7 +11,7 @@ class Data {
 }
 
 const data = [
-    new Data('Trivia Game', 'Play!', 'http://trivia-flask.azurewebsites.net/'),
+    new Data('Trivia Game', 'Play!', 'https://evening-oasis-66395.herokuapp.com/play'),
     new Data('class-1', 'index.html', 'class1_homework/index.html'),
     new Data('class-2', 'signin.html signup.html', 'class2_homework/signin.html class2_homework/signup.html'),
     new Data('class-3', 'index.html', 'class3_homework/index.html'),
