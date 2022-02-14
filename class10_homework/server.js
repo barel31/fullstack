@@ -63,6 +63,6 @@ app.get('/home', (req, res) => {
     });
 });
 
-app.listen(3000, () => {
+app.listen(proccess.env.PORT || 3000, () => {
     console.log('Server listening to port 3000');
 });
