@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        <title>SignUp</title>
+
+        <link rel="stylesheet" href="signup.css">
+    </head>
+    <body>
+        <div class="container">
+        <div class="nested-container">
+            <h1>Sign Up</h1>
+            <p class="grey p-margin-up">Please fill this form to create an account!</p>
+            <hr>
+
+            <form action="#" method="post">
+                <div class="flex">
+                    <input class="inline_input" type="text" name="firstName" id="firstName" placeholder="First Name*" required>
+                    <input class="inline_input" type="text" name="lastName" id="lastName" placeholder="Last Name*" required>
+                </div>
+                <div class="grid">
+                    <input type="text" name="username" id="username", placeholder="Username*" required>
+                    <!-- <input type="email" name="email" id="email", placeholder="Email" required> -->
+                    <input type="password" name="password" id="password" placeholder="Password*" required>
+                    <input type="password" name="password_confirm" id="password_confirm" placeholder="Confirm Password*" required>
+                </div>
+                <div class="flex">
+                    <input class="checkbox-margin-down" type="checkbox" name="check" id="check" required>
+                    <p class="grey">I accept the <a href="#">Terms of Use</a> &<a href="#"> Privacy Policy</a>.</p>
+                </div>
+                <input type="submit" value="Sign Up", id="submit">
+            </form>
+            </div>
+
+        </div>
+    </body>
+</html>

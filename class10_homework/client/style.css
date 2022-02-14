@@ -1,0 +1,16 @@
+input[type='text'] {
+    background-color: whitesmoke;
+}
+
+form {
+    margin: 5vh;
+}
+
+input[type='submit'] {
+    position: relative;
+    top: 10vh;
+    left: 5vh;
+
+    padding: 0.25vh 3vh;
+    background-color: steelblue;
+}
