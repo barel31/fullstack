@@ -36,8 +36,8 @@ app.post('/signup', (req, res) => {
         res.send('Error: The email have to be valid (contain @)');
     } else if (password.length < 5 || password.length > 10) {
         res.send("Error: The password isn't valid");
-        } else if (password.indexOf('$') === -1) {
-            res.send('The password must contain "$"');
+    } else if (password.indexOf('$') === -1) {
+        res.send('The password must contain "$"');
     } else if (password !== req.body.password_confirm) {
         res.send("Error: The password isn't match to the confirm passowrd");
     } else {
@@ -63,6 +63,6 @@ app.get('/home', (req, res) => {
     });
 });
 
-app.listen(proccess.env.PORT || 3000, () => {
+app.listen(process.env.PORT || 3000, () => {
     console.log('Server listening to port 3000');
 });
