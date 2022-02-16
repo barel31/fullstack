@@ -30,8 +30,8 @@ app.post('/signup', (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
 
-    if (username.length < 5 || username.length > 10) {
-        res.send('Error: The username have to be 5-10 length');
+    if (username.length < 4 || username.length > 8) {
+        res.send('Error: The username have to be 4-8 length');
     } else if (email.indexOf('@') === -1) {
         res.send('Error: The email have to be valid (contain @)');
     } else if (password.length < 5 || password.length > 10) {
