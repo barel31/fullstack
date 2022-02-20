@@ -1,0 +1,22 @@
+div {
+    text-align: center;
+    margin: 5em;
+    border: 0.1em solid black;
+    display: block;
+    justify-content: center;
+}
+
+input {
+    display: block;
+    width: 12em;
+    text-align: center;
+    margin: 0 auto 0.5em;
+}
+
+img {
+    width: 20vh;
+}
+
+td {
+    font-size: 2rem;
+}
