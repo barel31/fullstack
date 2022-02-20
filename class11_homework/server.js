@@ -7,7 +7,7 @@ app.use(express.static('client'));
 app.use(bodyParser.urlencoded({ extended: false }));
 
 mongoose.connect('mongodb://127.0.0.1:27017/SVBurgerDB', () => {
-    console.log('db/SVBurgerDB connected');
+    console.log('connected to db/SVBurgerDB');
 });
 
 const User = mongoose.Schema({
@@ -32,11 +32,9 @@ app.post('/signin', (req, res) => {
 
     const user = findUser(currentUser.email);
     user.then((found) => {
-        if (currentUser.password !== found.password) {
-            res.send('Bad password');
-        }
-        else
-            found !== null ? res.redirect('/menu.html') : res.send('no user found at email: ' + currentUser.email);
+        if (found !== null) {
+            currentUser.password !== found.password ? res.send('Bad Password') : res.redirect('/menu.html');
+        } else res.send('no user found at email: ' + currentUser.email);
     });
 });
 
@@ -56,9 +54,9 @@ app.post('/signup', (req, res) => {
 
     if (currentUser.email.indexOf('gmail') === -1 && currentUser.email.indexOf('yahoo') === -1) {
         res.send('Error: Email must contain an gmail or a yahoo domain');
-    } else if (currentUser.firstname !== null && (currentUser.firstname.length < 2 || currentUser.firstname.length > 20)) {
+    } else if (currentUser.firstname !== '' && (currentUser.firstname.length < 2 || currentUser.firstname.length > 20)) {
         res.send('Error: First name must to be between 2-20 characters');
-    } else if (currentUser.lastname !== null && (currentUser.lastname.length < 2 || currentUser.lastname.length > 20)) {
+    } else if (currentUser.lastname !== '' && (currentUser.lastname.length < 2 || currentUser.lastname.length > 20)) {
         res.send('Error: Last name must to be between 2-20 characters');
     } else if (!containsSpecialChars(currentUser.password) || currentUser.password.length < 2 || currentUser.password.length > 10) {
         res.send('Password must contain atleast one special character and the length must to be between 2-10');
