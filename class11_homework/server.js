@@ -53,15 +53,15 @@ app.post('/signup', (req, res) => {
     };
 
     if (currentUser.email.indexOf('gmail') === -1 && currentUser.email.indexOf('yahoo') === -1) {
-        res.send('Error: Email must contain an gmail or a yahoo domain');
+        res.send('Error: Email must contain a gmail or a yahoo domain');
     } else if (currentUser.firstname !== '' && (currentUser.firstname.length < 2 || currentUser.firstname.length > 20)) {
         res.send('Error: First name must to be between 2-20 characters');
     } else if (currentUser.lastname !== '' && (currentUser.lastname.length < 2 || currentUser.lastname.length > 20)) {
         res.send('Error: Last name must to be between 2-20 characters');
     } else if (!containsSpecialChars(currentUser.password) || currentUser.password.length < 2 || currentUser.password.length > 10) {
-        res.send('Password must contain atleast one special character and the length must to be between 2-10');
+        res.send('Error: Password must contain atleast one special character and the length must to be between 2-10');
     } else if (req.body.passwordConfirm !== currentUser.password) {
-        res.send('Password doesn`t match to password confirm');
+        res.send('Error: Password doesn`t match to password confirm');
     } else {
         // Form validation complete
 
