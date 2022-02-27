@@ -22,8 +22,8 @@ img {
 #board {
     margin: 0 auto;
 
-    min-width: 390px;
-    min-height: 380px;
+    min-width: 400px;
+    min-height: 390px;
 }
 
 #loader {
