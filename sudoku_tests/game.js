@@ -304,7 +304,12 @@ $('.difficulty').on('click', function () {
             return;
         }
         // get value of custom input and assign it to variable
-        howMuch = $('#howMuch').val() | 0;
+        const value = $('#howMuch').val() | 0;
+        if (value > 1 && value < 81) {
+            howMuch = value;
+        } else {
+            howMuch = 60;
+        }
     }
     // dictionary to level names
     const lvlNames = { 20: 'HARD', 40: 'MEDIUM', 60: 'EASY', custom: 'CUSTOM (' + howMuch + ')' };
