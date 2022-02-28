@@ -1,10 +1,14 @@
-document.getElementById('signupPost').addEventListener('submit', (event) => {
-    const email = document.getElementsByName('email')[0].value;
-    const password = document.getElementsByName('password')[0].value;
-    const passwordConfirm = document.getElementsByName('passwordConfirm')[0].value;
+const signupForm = () => {
+    const passwordLength = document.forms['signupform']['password'].value.length;
+    const firstnameLength = document.forms['signupform']['firstname'].value.length;
+    const lastnameLength = document.forms['signupform']['lastname'].value.length;
 
-    if (password === '' || email === '' || passwordConfirm === '') {
+    if (passwordLength < 2 || passwordLength > 10
+        || !(firstnameLength >= 2 && firstnameLength <= 20)
+        || !(lastnameLength >= 2 && lastnameLength <= 20)) {
         alert('You have to complete the required fields');
-        event.preventDefault();
+        return false;
     }
-});
+    
+    return true;
+}
