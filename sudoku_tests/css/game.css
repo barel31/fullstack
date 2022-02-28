@@ -52,7 +52,7 @@ img {
     margin: 5px 0;
 }
 
-#board .input {
+.input {
     text-align: center;
     border: 1px solid black;
     margin: 0.5px;
@@ -144,14 +144,14 @@ img {
 
 @media only screen and (max-width: 768px) {
     .input {
-        height: 1rem;
-        width: 1rem;
-        font-size: 1rem;
+        height: 1.1rem;
+        width: 1.1rem;
+        font-size: 1.1rem;
     }
 
     .difficulty {
-        font-size: 1em;
-        padding: 0.3em;
+        font-size: 1rem;
+        padding: 0.3rem;
     }
 
     #howMuch {
