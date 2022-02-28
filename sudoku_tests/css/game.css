@@ -55,10 +55,8 @@ img {
 .input {
     text-align: center;
     border: 1px solid black;
-    margin: 0.5px;
-}
+    /* margin: 0.5px; */
 
-.input {
     height: 2rem;
     width: 2rem;
     font-size: 2rem;
