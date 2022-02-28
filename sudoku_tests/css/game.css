@@ -24,9 +24,9 @@ img {
 #board {
     margin: 0 auto;
 
-    min-width: 80vh;
-    /* min-width: 360px;
-    min-height: 350px; */
+    /* min-width: 80vh; */
+    min-width: 360px;
+    min-height: 350px;
 }
 
 #loader {
@@ -51,13 +51,16 @@ img {
     margin: 5px 0;
 }
 
-.input {
+#board .input {
     text-align: center;
-    /* height: 2rem;
-    width: 2rem;
-    font-size: 2rem; */
     border: 1px solid black;
     margin: 0.5px;
+}
+
+.input {
+    height: 2rem;
+    width: 2rem;
+    font-size: 2rem;
 }
 
 .difficulty {
