@@ -60,6 +60,10 @@ img {
     height: 2rem;
     width: 2rem;
     font-size: 2rem;
+
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
 }
 
 .button-down {
