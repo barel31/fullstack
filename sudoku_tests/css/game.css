@@ -145,6 +145,9 @@ img {
     #howMuch {
         width: 1rem;
     }
+    #board {
+        margin: none;
+    }
 }
 
 @supports (-webkit-touch-callout: none) {
