@@ -154,8 +154,8 @@ img {
 
 @supports (-webkit-touch-callout: none) {
     .input {
-        height: 1.1rem;
-        width: 1.1rem;
-        font-size: 1.1rem;
+        height: 1.2rem;
+        width: 1.2rem;
+        font-size: 1.5rem;
     }
 }
