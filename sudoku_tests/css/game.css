@@ -22,10 +22,6 @@ img {
 
 #board {
     margin: 10px auto;
-
-    /* min-width: 80vh; */
-    /* min-width: 360px; */
-    /* min-height: 300px; */
 }
 
 #loader {
@@ -106,7 +102,6 @@ img {
         opacity: 1;
     }
 }
-
 .fadeEffect {
     animation-name: fade;
     animation-duration: 0.5s;
