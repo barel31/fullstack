@@ -1,10 +1,11 @@
 var howMuch = 60; // custom input value
 var autoCheck = true; // Auto-Check slider
-var cntGlobal = 0; // global success counter
-var timer = 0; // global score variable
-var timerElement = $('#timer'); // timer element
-let interval; // global variable for timer interval
-let hidenInputs = {}; // global dict of hidden inputs to show hints
+var cntGlobal = 0; // success counter
+var timer = 0; // timer variable
+var timerElement = $('#timer'); // timer DOM element
+let interval; // variable to hold the timer interval repeater
+let hidenInputs = {}; // dict of hidden inputs to show hints
+let lastFocusedInput; // DOM contain last focused input (use for hint)
 
 // Print board
 initBoard(); // Print the board on page load
@@ -15,11 +16,12 @@ function initBoard() {
     // creating inputs and tagging them by classes
     let element, groupBackup;
     let group = 1;
+    let counter = 0;
     // creating loops of 9x9 inputs
     for (let i = 1; i <= 9; i++) {
         for (let j = 1; j <= 9; j++) {
             element = $('<input>')
-                .addClass('input group-' + group + ' row-' + i + ' col-' + j)
+                .addClass('input group-' + group + ' row-' + i + ' col-' + j + ' n' + counter)
                 .attr({ name: 'input_' + i + '_' + j, type: 'text', maxlength: '1' });
             board.append(element);
 
@@ -35,6 +37,7 @@ function initBoard() {
                 groupBackup = group;
                 group -= 3;
             }
+            counter++;
         }
         // every three columns return group to the backup variable
         if (i % 3 === 0) {
@@ -120,7 +123,7 @@ function randomizeInputs(number) {
         }
         rndIndex.push(rnd);
     }
-    // Hide value of selected inputs
+    // Hide values of selected inputs
     hidenInputs = {}; // clear dict from old data
     rndIndex.forEach((val) => {
         // add input index and value to hiddenInputs dict
@@ -138,36 +141,32 @@ function randomizeInputs(number) {
 }
 
 // Button hint pressed
-$('#hint').on('click', () => {
+$('#hint').on('click', function () {
     // if no hints left do nothing
     if (!Object.keys(hidenInputs).length) {
         return;
     }
-    // randomize input to hint
-    const indexes = Object.keys(hidenInputs);
-    let random = Math.floor(Math.random() * indexes.length);
-    // Get all inputs
-    const inputs = $('#board .input');
-
-    let counter = 100;
-    // create loop if the player used the randomize input
-    while (inputs[indexes[random]].value != '') {
-        random = Math.floor(Math.random() * indexes.length);
-
-        counter--;
-        if (!counter) {
-            // avoid infinity loop - break and continue;
-            break;
-        }
-    }
-    // show hint
-    inputs[indexes[random]].value = hidenInputs[indexes[random]];
-    inputs[indexes[random]].placeholder = hidenInputs[indexes[random]];
-
-    delete hidenInputs[indexes[random]];
-
+    let index = lastFocusedInput.classList.toString().split(' ')[4].substring(1);
+    lastFocusedInput.value = hidenInputs[index];
+    lastFocusedInput.placeholder = hidenInputs[index];
+    // disable button untill next input focused
+    this.disabled = true;
     // trigger finish button to execute validation
     $('#finish').click();
+});
+
+// Get focued input for hint
+$('input.input').on('focusin', function () {
+    if (interval && this.classList.contains('input') && this.disabled === false) {
+        // reset opacity of the last focused input
+        if (lastFocusedInput) lastFocusedInput.style.opacity = '1';
+        // save focused input
+        lastFocusedInput = this;
+        // change opacity of the focused input
+        lastFocusedInput.style.opacity = '0.8';
+        // enable hint button
+        $('#hint').prop('disabled', false);
+    }
 });
 
 // Button finish pressed  - Check if board has completed
@@ -238,9 +237,7 @@ $('#finish').on('click', () => {
 
         // update message
         const message = $('#pMessage');
-        message.html(
-            classesCount[0] + '/9 Groups ' + classesCount[1] + '/9 Rows ' + classesCount[2] + '/9 Columns<br>' + cnt + '/27 Total'
-        );
+        message.html(classesCount[0] + '/9 Groups ' + classesCount[1] + '/9 Rows ' + classesCount[2] + '/9 Columns<br>' + cnt + '/27 Total');
         // message effect
         message.addClass('fadeEffect');
         setTimeout(() => {
@@ -260,6 +257,8 @@ $('#finish').on('click', () => {
 
         // stop timer interval
         window.clearInterval(interval);
+        // disable hint button
+        $('#hint').prop('disabled', true);
     }
 });
 
@@ -328,6 +327,9 @@ function loaderAnimation(show = false) {
     window.clearInterval(interval);
 
     if (show) {
+        // disable hint button
+        $('#hint').prop('disabled', true);
+
         $('#loader').html(
             '<div class="loadingio-spinner-cube-2zx4f3ctido"><div class="ldio-1pkt0oqav2x"><div></div><div></div><div></div><div></div></div></div>'
         );
