@@ -142,11 +142,7 @@ function randomizeInputs(number) {
 
 // Button hint pressed
 $('#hint').on('click', function () {
-    // if no hints left do nothing
-    if (!Object.keys(hidenInputs).length) {
-        return;
-    }
-    let index = lastFocusedInput.classList.toString().split(' ')[4].substring(1);
+    const index = lastFocusedInput.classList.toString().split(' ')[4].substring(1);
     lastFocusedInput.value = hidenInputs[index];
     lastFocusedInput.placeholder = hidenInputs[index];
     // disable button untill next input focused
@@ -304,7 +300,7 @@ $('.difficulty').on('click', function () {
         }
         // get value of custom input and assign it to variable
         const value = $('#howMuch').val() | 0;
-        if (value > 1 && value < 81) {
+        if (value >= 1 && value <= 80) {
             howMuch = value;
         } else {
             howMuch = 60;
