@@ -1,0 +1,40 @@
+.product {
+    background-color: steelblue;
+    text-align: center;
+
+    width: 20em;
+    margin: 0.1em auto;
+
+    border-radius: 0.3em;
+}
+
+.product p {
+    margin: 0.1em;
+    padding: 0.1em;
+
+    font-size: 1.5em;
+    height: 1.5em;
+    
+    display: flex;
+    justify-content: space-between;
+}
+
+.product button {
+    font-weight: bolder;
+    font-size: 1.5em;
+
+    background-color: transparent;
+    border: none;
+
+    position: relative;
+
+    cursor: pointer;
+}
+
+.product button:hover {
+    background-color: rgb(38, 53, 189);
+}
+.product button:active {
+    position: relative;
+    top: 0.1em;
+}

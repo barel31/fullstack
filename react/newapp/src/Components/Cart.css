@@ -1,0 +1,35 @@
+.cart {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.right {
+    border-left: 0.1em solid steelblue;
+    width: 100%;
+}
+
+.left {
+    display: inline;
+    width: 40%;
+}
+
+.right button {
+    background-color: steelblue;
+    padding: 0.5em;
+    margin: 0.5em;
+    border-radius: 0.3em;
+    position: relative;
+    left: 3.5em;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+.right li {
+    background-color: steelblue;
+    margin: 0.5em;
+    width: 7em;
+    border-radius: 0.3em;
+    font-size: 1.5em;
+    word-spacing: 0.5em;
+}

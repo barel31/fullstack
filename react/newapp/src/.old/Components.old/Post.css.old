@@ -1,0 +1,21 @@
+.post {
+    display: flex;
+    flex-flow: row-reverse wrap;
+    justify-content: space-around;
+
+    margin: 1rem;
+    padding: 1em;
+
+    border: 0.2em solid black;
+}
+
+.postLogo {
+    width: 10rem;
+    height: 10rem;
+    
+/* 
+    display: flex;
+    position: relative;
+    left: 100%;
+    top: 2rem; */
+}

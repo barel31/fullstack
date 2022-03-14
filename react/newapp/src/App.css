@@ -1,0 +1,39 @@
+.App {
+    font-family: Arial, Helvetica, sans-serif;
+
+    text-align: center;
+    border: 0.1em solid green;
+
+    max-width: 30em;
+
+    margin: auto;
+}
+
+.productsList {
+    text-align: left;
+
+    margin: auto;
+    padding: 0.5em;
+}
+
+.head {
+    display: flex;
+    justify-content: space-between;
+}
+
+.icons {
+    height: 3em;
+    margin: 1em;
+    cursor: pointer;
+}
+
+.middle {
+    display: flex;
+    justify-content: space-between;
+    border-top: 0.1em solid steelblue;
+}
+
+.emptyDiv {
+    border-left: 0.1em solid steelblue;
+    width: 5em;
+}
