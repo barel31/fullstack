@@ -1,0 +1,13 @@
+.result {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: auto;
+    text-align: center;
+}
+
+.result button {
+    font-size: 2em;
+    margin: 1em;
+    background-color: steelblue;
+    color: white;
+    border-radius: 0.2em;
+}

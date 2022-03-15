@@ -1,0 +1,35 @@
+.open {
+    margin: auto;
+    text-align: center;
+    border: 1px solid green;
+
+    max-width: 35em;
+    max-height: 30em;
+}
+
+.open h1 {
+    color: steelblue;
+    font-size: 30px;
+}
+
+.open input[type='text'] {
+    height: 2em;
+    max-width: 10em;
+    margin: 2em auto;
+    text-align: center;
+    border: 0.1em solid green;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+
+.open input[type='submit'] {
+    display: block;
+    margin: 1em auto;
+    background-color: steelblue;
+    border-radius: 0.4em;
+    color: white;
+    height: 2em;
+    width: 7em;
+    font-size: 2em;
+}

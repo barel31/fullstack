@@ -1,0 +1,48 @@
+.game {
+    font-family: Arial, Helvetica, sans-serif;
+    
+    /* display: flex;
+    flex-direction: column;
+    justify-content: space-between; */
+
+    margin: auto;
+    border: 1px solid green;
+    /* height: 50em; */
+    width: 35em;
+}
+
+.game h3 {
+    font-size: 35px;
+    margin: 0.5em;
+    display: inline;
+}
+
+.down {
+    display: flex;
+    justify-content: space-between;
+}
+
+.game button {
+    background-color: steelblue;
+    color: white;
+    font-size: 2em;
+    border-radius: 0.2em;
+    padding: 0.1em 0.5em;
+    margin: 0 0.5em 0.5em;
+}
+
+.botCard, .playerCard {
+    margin: 1em auto;
+    height: 15em;
+    width: 10em;
+    border: 1px solid blue;
+    background-color: darkgray;
+}
+
+.cardNumber {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    top: 25%;
+    font-size: 5em;
+}

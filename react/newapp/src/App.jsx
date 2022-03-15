@@ -1,73 +1,81 @@
 import React, { useState } from 'react';
-import Product from './Components/Product';
-import Cart from './Components/Cart';
-import './App.css';
+import Open from './Components/Open';
+import Game from './Components/Game';
+import Result from './Components/Result';
 
-const PAGE_PRODUCT = true;
-const PAGE_CART = false;
+const PAGE_OPEN = 0;
+const PAGE_GAME = 1;
+const PAGE_RESULT = 2;
 
 export default function App() {
-    const products = [
-        { name: 'Computer', price: '100' },
-        { name: 'Paper', price: '1' },
-        { name: 'Pen', price: '10' },
-    ];
+    const [cards, setCards] = useState([
+        1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 1, 2, 3, 4, 5, 6, 7, 8,
+        9, 10, 11, 12, 13,
+    ]);
 
-    const [cart, setCart] = useState([]);
-    const [page, setPage] = useState(PAGE_PRODUCT);
+    const [page, setPage] = useState(PAGE_OPEN);
 
-    const add = (index) => {
-        // todo sum the repeated products
-        setCart([...cart, products[index]]);
+    const [bot, setBot] = useState({
+        score: 0,
+        cards: null,
+        points: 0,
+    });
+
+    const [player, setPlayer] = useState({
+        name: '',
+        score: 0,
+        cards: null,
+        points: 0,
+    });
+
+    const handleRound = (win) => {
+        let botCards = bot.cards;
+        let playerCards = player.cards;
+        botCards.shift();
+        playerCards.shift();
+
+        let botPoints = bot.points;
+        let playerPoints = player.points;
+
+        win ? (playerPoints += 1) : (botPoints += 1);
+
+        setBot({ score: bot.score, cards: botCards, points: botPoints });
+        setPlayer({ name: player.name, score: player.score, cards: playerCards, points: playerPoints });
     };
 
-    const cartPage = () => {
-        return page === PAGE_CART ? <Cart list={cart} clear={clearCart} /> : null;
+    const init = ({ playerName = player.name, playerScore = player.score, botScore = bot.score }) => {
+        const shuffle = (a) => {
+            var j, x, i;
+            for (i = a.length - 1; i > 0; i--) {
+                j = Math.floor(Math.random() * (i + 1));
+                x = a[i];
+                a[i] = a[j];
+                a[j] = x;
+            }
+            return a;
+        };
+        setCards(shuffle(cards));
+        setPlayer({ name: playerName, score: playerScore, cards: cards.slice(0, 26), points: 0 });
+        setBot({ score: botScore, cards: cards.slice(26), points: 0 });
     };
 
-    const clearCart = () => {
-        setCart([]);
+    const setName = (name) => {
+        setPlayer({ name: name, score: player.score, cards: player.cards, points: player.points });
     };
 
-    const productPage = () => {
-        return page === PAGE_PRODUCT ? (
-            <>
-                <div className='productsList'>
-                    <h2>List of Products</h2>
-                    {products.map((val, i) => {
-                        return <Product key={i} name={val.name} price={val.price} add={add} index={i} />;
-                    })}
-                </div>
-                <div className='emptyDiv'></div>
-            </>
-        ) : null;
+    const pageHandler = () => {
+        if (page === PAGE_OPEN) return <Open setPage={setPage} init={init} setName={(n) => setName(n)} />;
+        else if (page === PAGE_GAME) {
+            return <Game player={player} setPlayer={setPlayer} bot={bot} setBot={setBot} handleRound={handleRound} init={init} setPage={setPage} />;
+        } else if (page === PAGE_RESULT) {
+            let winner = false;
+            if (player.points > bot.points) {
+                winner = true;
+            }
+
+            return <Result winner={winner} player={player} bot={bot} init={init} setPage={setPage} />;
+        }
     };
 
-    return (
-        <div className='App'>
-            <div className='head'>
-                <img
-                    src='./home.png'
-                    alt='home'
-                    className='icons'
-                    onClick={() => {
-                        setPage(PAGE_PRODUCT);
-                    }}
-                />
-                <h1>SV-SHOP</h1>
-                <img
-                    src='./cart.png'
-                    alt='cart'
-                    className='icons'
-                    onClick={() => {
-                        setPage(PAGE_CART);
-                    }}
-                />
-            </div>
-            <div className='middle'>
-                {cartPage()}
-                {productPage()}
-            </div>
-        </div>
-    );
+    return <div>{pageHandler()}</div>;
 }
