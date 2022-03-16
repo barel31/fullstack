@@ -7,11 +7,17 @@ const PAGE_OPEN = 0;
 const PAGE_GAME = 1;
 const PAGE_RESULT = 2;
 
+const BOT = false;
+
 export default function App() {
     const [cards, setCards] = useState([
-        1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 1, 2, 3, 4, 5, 6, 7, 8,
-        9, 10, 11, 12, 13,
+        1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,
+        1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,
+        1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,
+        1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,
     ]);
+
+    const [winner, setWinner] = useState(BOT);
 
     const [page, setPage] = useState(PAGE_OPEN);
 
@@ -36,7 +42,6 @@ export default function App() {
 
         let botPoints = bot.points;
         let playerPoints = player.points;
-
         win ? (playerPoints += 1) : (botPoints += 1);
 
         setBot({ score: bot.score, cards: botCards, points: botPoints });
@@ -65,15 +70,21 @@ export default function App() {
 
     const pageHandler = () => {
         if (page === PAGE_OPEN) return <Open setPage={setPage} init={init} setName={(n) => setName(n)} />;
-        else if (page === PAGE_GAME) {
-            return <Game player={player} setPlayer={setPlayer} bot={bot} setBot={setBot} handleRound={handleRound} init={init} setPage={setPage} />;
-        } else if (page === PAGE_RESULT) {
-            let winner = false;
-            if (player.points > bot.points) {
-                winner = true;
-            }
-
-            return <Result winner={winner} player={player} bot={bot} init={init} setPage={setPage} />;
+        else if (page === PAGE_GAME)
+            return (
+                <Game
+                    player={player}
+                    setPlayer={setPlayer}
+                    bot={bot}
+                    setBot={setBot}
+                    handleRound={handleRound}
+                    init={init}
+                    setPage={setPage}
+                    setWinner={setWinner}
+                />
+            );
+        else if (page === PAGE_RESULT) {
+            return <Result hasPlayerWin={winner} player={player} bot={bot} init={init} setPage={setPage} />;
         }
     };
 
