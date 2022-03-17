@@ -28,13 +28,7 @@ export default function Game(props) {
         }
     };
 
-    let backgroundColor = 'red';
-    const updateScore = () => {
-        if (props.player.cards[0] > props.bot.cards[0]) {
-            backgroundColor = 'green';
-        }
-    };
-    updateScore();
+    const backgroundColor = props.player.cards[0] > props.bot.cards[0] ? 'green' : 'red';
 
     return (
         <div className='game' style={{ backgroundColor: backgroundColor }}>
@@ -46,7 +40,7 @@ export default function Game(props) {
                 <span className='cardNumber'>{JSON.stringify(props.player.cards[0])}</span>
             </div>
             <div className='down'>
-                <button onClick={next}>Next ({props.player.cards.length}/26)</button>
+                <button onClick={next}>{props.player.cards.length > 1 ? 'Next' : 'FINISH'} ({27 - props.player.cards.length}/26)</button>
                 <h3>YOU</h3>
             </div>
         </div>
