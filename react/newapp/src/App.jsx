@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './App.css';
 import Open from './Components/Open';
 import Game from './Components/Game';
 import Result from './Components/Result';
@@ -7,61 +8,49 @@ const PAGE_OPEN = 0;
 const PAGE_GAME = 1;
 const PAGE_RESULT = 2;
 
-const BOT = false;
+const CARDS = [
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,
+];
 
 export default function App() {
-    const [cards, setCards] = useState([
-        1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,
-        1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,
-        1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,
-        1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,
-    ]);
-
-    const [winner, setWinner] = useState(BOT);
+    const [winner, setWinner] = useState(false);
 
     const [page, setPage] = useState(PAGE_OPEN);
 
     const [bot, setBot] = useState({
         score: 0,
-        cards: null,
+        cards: [],
         points: 0,
     });
 
     const [player, setPlayer] = useState({
         name: '',
         score: 0,
-        cards: null,
+        cards: [],
         points: 0,
     });
 
     const handleRound = (win) => {
-        let botCards = bot.cards;
-        let playerCards = player.cards;
-        botCards.shift();
-        playerCards.shift();
-
-        let botPoints = bot.points;
-        let playerPoints = player.points;
-        win ? (playerPoints += 1) : (botPoints += 1);
-
-        setBot({ score: bot.score, cards: botCards, points: botPoints });
-        setPlayer({ name: player.name, score: player.score, cards: playerCards, points: playerPoints });
+        bot.cards.shift();
+        player.cards.shift();
+        setBot({ score: bot.score, cards: bot.cards, points: (bot.points += win ? 0 : 1) });
+        setPlayer({ name: player.name, score: player.score, cards: player.cards, points: (player.points += win ? 1 : 0) });
     };
 
     const init = ({ playerName = player.name, playerScore = player.score, botScore = bot.score }) => {
-        const shuffle = (a) => {
-            var j, x, i;
-            for (i = a.length - 1; i > 0; i--) {
-                j = Math.floor(Math.random() * (i + 1));
-                x = a[i];
-                a[i] = a[j];
-                a[j] = x;
-            }
-            return a;
-        };
-        setCards(shuffle(cards));
-        setPlayer({ name: playerName, score: playerScore, cards: cards.slice(0, 26), points: 0 });
-        setBot({ score: botScore, cards: cards.slice(26), points: 0 });
+        var j, x, i;
+        for (i = CARDS.length - 1; i > 0; i--) {
+            j = Math.floor(Math.random() * (i + 1));
+            x = CARDS[i];
+            CARDS[i] = CARDS[j];
+            CARDS[j] = x;
+        }
+
+        setPlayer({ name: playerName, score: playerScore, cards: CARDS.slice(0, 26), points: 0 });
+        setBot({ score: botScore, cards: CARDS.slice(26), points: 0 });
     };
 
     const setName = (name) => {
@@ -69,7 +58,8 @@ export default function App() {
     };
 
     const pageHandler = () => {
-        if (page === PAGE_OPEN) return <Open setPage={setPage} init={init} setName={(n) => setName(n)} />;
+        if (page === PAGE_OPEN)
+            return <Open setPage={setPage} init={init} setName={setName} />;
         else if (page === PAGE_GAME)
             return (
                 <Game
@@ -83,10 +73,16 @@ export default function App() {
                     setWinner={setWinner}
                 />
             );
-        else if (page === PAGE_RESULT) {
+        else if (page === PAGE_RESULT)
             return <Result hasPlayerWin={winner} player={player} bot={bot} init={init} setPage={setPage} />;
-        }
     };
 
-    return <div>{pageHandler()}</div>;
+    return (
+        <div className='App'>
+            {pageHandler()}
+            <footer>
+                <p>Made with React by Barel Shraga</p>
+            </footer>
+        </div>
+    );
 }

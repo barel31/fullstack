@@ -1,46 +1,37 @@
 import React from 'react';
 import './Game.css';
+import './button-next.css';
 
 const PAGE_RESULT = 2;
 
 export default function Game(props) {
     const next = () => {
-        let playerPoint = false;
-        if (props.player.cards[0] > props.bot.cards[0]) {
-            playerPoint = true;
-        }
-        props.handleRound(playerPoint);
+        props.handleRound(props.player.cards[0] > props.bot.cards[0]);
 
         if (props.player.cards.length === 0) {
             // end of game
-
-            let hasPlayerWin = false;
-            if (props.player.points > props.bot.points) {
-                hasPlayerWin = true;
-            }
+            console.log('end');
+            const hasPlayerWin = props.player.points > props.bot.points ? true : false;
             props.setWinner(hasPlayerWin);
 
-            const botScore = props.bot.score + (hasPlayerWin ? 0 : 1);
-            const playerScore = props.player.score + (hasPlayerWin ? 1 : 0);
-
-            props.init({ botScore: botScore, playerScore: playerScore });
+            props.init({ botScore: props.bot.score + !hasPlayerWin, playerScore: props.player.score + hasPlayerWin });
             props.setPage(PAGE_RESULT);
         }
     };
 
-    const backgroundColor = props.player.cards[0] > props.bot.cards[0] ? 'green' : 'red';
-
     return (
-        <div className='game' style={{ backgroundColor: backgroundColor }}>
+        <div className='game' style={{ backgroundColor: props.player.cards[0] > props.bot.cards[0] ? '#6EBF8B' : '#D82148' }}>
             <h3>COMPUTER</h3>
-            <div className='botCard'>
+            <div className='card'>
                 <span className='cardNumber'>{JSON.stringify(props.bot.cards[0])}</span>
             </div>
-            <div className='playerCard'>
+            <div className='card'>
                 <span className='cardNumber'>{JSON.stringify(props.player.cards[0])}</span>
             </div>
             <div className='down'>
-                <button onClick={next}>{props.player.cards.length > 1 ? 'Next' : 'FINISH'} ({27 - props.player.cards.length}/26)</button>
+                <button autoFocus className='button-next' onClick={next}>
+                    {props.player.cards.length > 1 ? 'Next' : 'FINISH'} ({27 - props.player.cards.length}/26)
+                </button>
                 <h3>YOU</h3>
             </div>
         </div>
