@@ -21,7 +21,7 @@ const data = [
     new Data('Dice Game', 'Play!', 'dice/dicee.html'),
     new Data('Drum Kit', 'Play!', 'drum/index.html'),
     new Data('Simon Say', 'Play!', 'simon/index.html'),
-    new Data('Sudoku', 'Play!', 'sudoku_tests/index.html'),
+    new Data('Sudoku', 'Play!', 'sudoku/index.html'),
     new Data('Grade Graph', 'Heroku', 'https://evening-plains-58384.herokuapp.com/'),
     new Data('class-10', 'Heroku', 'https://still-ravine-70553.herokuapp.com/'),
 ];

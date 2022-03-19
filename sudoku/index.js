@@ -5,29 +5,27 @@ function signIn() {
         window.location.href = 'game.html';
         return;
     }
-    let username = 'abcd';
-    let password = '1234';
-    let user = document.getElementById('floatingName').value;
-    let pass = document.getElementById('floatingPassword').value;
+    const username = 'abcd';
+    const password = '1234';
+    const user = $('#floatingName').val();
+    const pass = $('#floatingPassword').val();
 
-    let ele = document.getElementById('pMessage');
+    const ele = $('#pMessage');
     if (user !== username) {
-        ele.setAttribute('style', 'color: red');
-        ele.innerHTML = 'Username ' + user + ' has not exists.';
+        ele.css('color' , 'red');
+        ele.html('Username ' + user + ' has not exists.');
     } else if (pass !== password) {
-        ele.setAttribute('style', 'color: red');
-        ele.innerHTML = 'The password is incorrent.';
+        ele.css('color', 'red');
+        ele.html('The password is incorrent.');
     } else {
-    // ele.style.color = 'green';
-    // ele.innerHTML = 'Successfully logged in. redirecting...';
-
-    document.getElementById('loader').innerHTML += 
-    '<div class="loadingio-spinner-cube-2zx4f3ctido"><div class="ldio-1pkt0oqav2x"><div></div><div></div><div></div><div></div></div></div>';
+        $('#loader').html(
+            '<div class="loadingio-spinner-cube-2zx4f3ctido"><div class="ldio-1pkt0oqav2x"><div></div><div></div><div></div><div></div></div></div>'
+        );
 
         setTimeout(function () {
-        window.location.href = 'game.html';
-    }, 2000);
+            window.location.href = 'game.html';
+        }, 2000);
 
-    logged = true;
-}
+        logged = true;
+    }
 }
