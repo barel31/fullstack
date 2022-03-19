@@ -62,8 +62,3 @@ img {
     color: black;
     border: 1px solid black; 
 }
-
-#loader {
-    position: relative;
-    right: 35px;
-}
