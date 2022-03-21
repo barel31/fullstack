@@ -1,18 +1,25 @@
 import React from 'react';
 import './Result.css';
 
+const PAGE_OPEN = 0;
 const PAGE_GAME = 1;
 
 export default function Result(props) {
+
+    const quit = () => {
+        props.setPage(PAGE_OPEN);
+    };
+
     const color = props.hasPlayerWin ? 'green' : 'red';
 
     return (
         <div className='result' style={{ border: '0.1em solid ' + color }}>
-            <h1 style={{ color: color }}>{props.hasPlayerWin ? 'WIN' : 'LOSE'}</h1>
+            <button className='quit' onClick={quit}>X</button>
+            <p className='head' style={{ color: color }}>{props.hasPlayerWin ? 'WIN' : 'LOSE'}</p>
             <h2 style={{ color: color }}>
-                COMP {props.bot.score} — {props.player.score} YOU
+                LOSE {props.bot.wins} — {props.player.wins} WINS
             </h2>
-            <button autoFocus className='button-next' onClick={() => props.setPage(PAGE_GAME)}>
+            <button className='button-next again' onClick={() => props.setPage(PAGE_GAME)}>
                 Again?
             </button>
         </div>

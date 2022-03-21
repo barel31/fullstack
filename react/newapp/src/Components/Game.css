@@ -2,10 +2,20 @@
     border: 1px solid green;
 }
 
-.game h3 {
-    font-size: 35px;
+.name {
+    font-size: 2em;
     margin: 0.3em;
     text-align: left;
+}
+
+.up {
+    display: flex;
+    justify-content: space-between;
+}
+
+.score {
+    font-size: 1em;
+    margin: 1em;
 }
 
 .down {

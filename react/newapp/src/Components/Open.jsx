@@ -1,34 +1,46 @@
 import React, { useState } from 'react';
 import './Open.css';
+import Scoreboard from './Scoreboard';
 
 const PAGE_GAME = 1;
 
 export default function Open(props) {
     const [name, setName] = useState(' ');
+    const [showScoreboard, setShowScoreboard] = useState(false);
 
     const validName = () => {
-        if (name !== '') return null;
-        else return <p style={{ color: 'red', margin: 0 }}>You have to enter a name</p>;
+        if (name != '') return null;
+        else return <label htmlFor='name' style={{ color: 'red' }}>You have to enter a nickname</label>;
     };
 
+    const scoreboard = () => {
+        if (showScoreboard) {
+            props.players.sort((a, b) => b.wins - a.wins); // order by score before showing scoreboard
+            return <Scoreboard players={props.players} setPage={props.setPage} player={props.player} />;
+        }
+    }
     return (
         <div className='open'>
             <h1>Ready for WAR</h1>
             {validName()}
-            <input onInput={(e) => setName(e.target.value)} type='text' name='name' id='name' placeholder='Enter your name' />
+            <input onInput={(e) => setName(e.target.value)} type='text' name='name' id='name' placeholder='Enter nickname' />
             <button
                 className='button-next'
                 onClick={() => {
                     if (!name.trim().length) {
-                        alert('You have to enter your name to play');
-                        return;
+                        setName('');
+                        alert('You have to enter your nickname');
+                    } else {
+                        props.setPage(PAGE_GAME);
+                        props.addPlayer(name);
+                        props.init({ playerName: name });
                     }
-                    props.setPage(PAGE_GAME);
-                    props.init({ playerName: name });
                 }}
             >
                 Start
             </button>
+            <button className="button-next" onClick={() => setShowScoreboard(!showScoreboard)}>Scoreboard</button>
+            {scoreboard()}
         </div>
     );
 }
