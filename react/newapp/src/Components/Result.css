@@ -17,3 +17,7 @@
     font-size: 2em;
     float: left;
 }
+
+.quit:before {
+    content: "\00d7";
+}

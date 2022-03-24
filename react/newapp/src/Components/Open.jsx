@@ -10,7 +10,12 @@ export default function Open(props) {
 
     const validName = () => {
         if (name != '') return null;
-        else return <label htmlFor='name' style={{ color: 'red' }}>You have to enter a nickname</label>;
+        else
+            return (
+                <label htmlFor='name' style={{ color: 'red' }}>
+                    You have to enter a nickname
+                </label>
+            );
     };
 
     const scoreboard = () => {
@@ -18,28 +23,38 @@ export default function Open(props) {
             props.players.sort((a, b) => b.wins - a.wins); // order by score before showing scoreboard
             return <Scoreboard players={props.players} setPage={props.setPage} player={props.player} />;
         }
-    }
+    };
     return (
         <div className='open'>
             <h1>Ready for WAR</h1>
             {validName()}
-            <input onInput={(e) => setName(e.target.value)} type='text' name='name' id='name' placeholder='Enter nickname' />
+            <input
+                onInput={(e) => setName(e.target.value)}
+                type='text'
+                name='name'
+                id='name'
+                placeholder={props.player.name ? props.player.name : 'Enter nickname'}
+            />
             <button
                 className='button-next'
                 onClick={() => {
-                    if (!name.trim().length) {
+                    if (!name.trim().length && !props.player.name.length) {
                         setName('');
                         alert('You have to enter your nickname');
                     } else {
+                        const player = !name.trim().length ? props.player.name : name;
+
                         props.setPage(PAGE_GAME);
-                        props.addPlayer(name);
-                        props.init({ playerName: name });
+                        props.addPlayer(player);
+                        props.init({ playerName: player });
                     }
                 }}
             >
                 Start
             </button>
-            <button className="button-next" onClick={() => setShowScoreboard(!showScoreboard)}>Scoreboard</button>
+            <button className='button-next' onClick={() => setShowScoreboard(!showScoreboard)}>
+                Scoreboard
+            </button>
             {scoreboard()}
         </div>
     );

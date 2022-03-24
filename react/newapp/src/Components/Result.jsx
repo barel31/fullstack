@@ -14,12 +14,12 @@ export default function Result(props) {
 
     return (
         <div className='result' style={{ border: '0.1em solid ' + color }}>
-            <button className='quit' onClick={quit}>X</button>
+            <button className='quit' onClick={quit}></button>
             <p className='head' style={{ color: color }}>{props.hasPlayerWin ? 'WIN' : 'LOSE'}</p>
             <h2 style={{ color: color }}>
                 LOSE {props.bot.wins} — {props.player.wins} WINS
             </h2>
-            <button className='button-next again' onClick={() => props.setPage(PAGE_GAME)}>
+            <button autoFocus className='button-next again' onClick={() => props.setPage(PAGE_GAME)}>
                 Again?
             </button>
         </div>
