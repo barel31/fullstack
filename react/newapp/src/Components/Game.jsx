@@ -11,18 +11,19 @@ export default function Game(props) {
             const hasPlayerWin = props.player.points > props.bot.points ? true : false;
             props.setWinner(hasPlayerWin);
 
-            props.init({ botWins: props.bot.wins + !hasPlayerWin, playerWins: props.player.wins + hasPlayerWin });
+            props.init({
+                botWins: props.bot.wins + !hasPlayerWin,
+                playerWins: props.player.wins + hasPlayerWin,
+            });
             props.setPage(PAGE_RESULT);
         }
     };
 
     const winner = () => {
-        if ((props.player.cards[0].substr(1) | 0) < (props.bot.cards[0].substr(1) | 0))
-            return 2;
-        if ((props.player.cards[0].substr(1) | 0) > (props.bot.cards[0].substr(1) | 0))
-            return 1;
+        if ((props.player.cards[0].substr(1) | 0) < (props.bot.cards[0].substr(1) | 0)) return 2;
+        if ((props.player.cards[0].substr(1) | 0) > (props.bot.cards[0].substr(1) | 0)) return 1;
         return 0;
-    }
+    };
 
     const bgColor = () => {
         if (winner() === 2) return '#D82148';
