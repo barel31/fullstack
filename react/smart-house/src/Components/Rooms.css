@@ -1,0 +1,59 @@
+.Products {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 1em;
+}
+
+.Product {
+    text-align: center;
+    height: 6em;
+    margin: 1em;
+}
+
+.Product button:first-child {
+    height: 100%;
+    width: 100%;
+    font-size: larger;
+}
+
+.DeleteProductBtn {
+    position: relative;
+    float: left;
+    bottom: 7em;
+    margin: 0.2em 0 0 0.5em;
+}
+
+.AddProduct {
+    margin: 1em;
+    justify-content: space-between;
+}
+
+.AddProductBtn {
+    position: relative;
+    text-align-last: center;
+    position: static;
+    background-color: lightskyblue;
+    padding: 0.5em;
+    margin: auto 1em 1em 0;
+}
+
+.AddBtn {
+    display: block;
+    margin: 1em auto;
+    background-color: lightskyblue;
+    padding: 1em;
+}
+
+h3 {
+    margin: 0;
+}
+
+.DeleteRoomBtn {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 1em;
+    padding: 0.5em;
+    background-color: red;
+}

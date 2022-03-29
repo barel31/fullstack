@@ -1,0 +1,20 @@
+.Rooms {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.Room {
+    width: 5em;
+    height: 5em;
+    color: aqua;
+}
+
+.AddRoomBtn {
+    height: 3em;
+    width: 3em;
+    margin: 1em auto;
+    font-size: 5em;
+    border-radius: 100%;
+    background-color: lightskyblue;
+}

@@ -1,0 +1,16 @@
+.AddRoom {
+    display: block;
+}
+
+input[type='text'] {
+    display: block;
+    margin: 0.5em auto;
+}
+
+.BtnCreate {
+    margin: 0.5em auto;
+    display: block;
+    background-color: lightskyblue;
+    font-size: 2em;
+    padding: 0.5em;
+}
