@@ -21,32 +21,27 @@
     position: relative;
     float: left;
     bottom: 7em;
-    margin: 0.2em 0 0 0.5em;
+    height: 2.0em;
+    width: 2.0em;
+    margin: 0.3em;
 }
-
+/* 
 .AddProduct {
     margin: 1em;
-    justify-content: space-between;
-}
+} */
 
 .AddProductBtn {
-    position: relative;
-    text-align-last: center;
-    position: static;
     background-color: lightskyblue;
     padding: 0.5em;
-    margin: auto 1em 1em 0;
+    margin: 1em 1em 1em 0;
 }
 
 .AddBtn {
     display: block;
-    margin: 1em auto;
     background-color: lightskyblue;
     padding: 1em;
-}
-
-h3 {
-    margin: 0;
+    margin: auto;
+    margin-top: 1em;
 }
 
 .DeleteRoomBtn {

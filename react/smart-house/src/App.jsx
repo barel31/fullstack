@@ -2,8 +2,8 @@ import './App.css';
 import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import { Provider } from './ContextAPI.js';
-import AddRoom from './Components/CreateRoom';
-import Rooms from './Components/Rooms';
+import CreateRoom from './Components/CreateRoom';
+import Room from './Components/Room';
 import HomePage from './Components/HomePage';
 
 function App() {
@@ -11,8 +11,12 @@ function App() {
     const [products, setProducts] = useState([[]]);
 
     const addNewRoom = (name, type, color) => {
-        setRooms([...rooms, { name: name, type: type, color: color }]);
-        setProducts([...products, []]);
+        if (rooms.find((room) => room.name === name) !== undefined) {
+            alert('You already have a room with this name. Please choose another name.');
+        } else {
+            setRooms([...rooms, { name: name, type: type, color: color }]);
+            setProducts([...products, []]);
+        }
     };
 
     const addNewProduct = (roomId, type) => {
@@ -21,12 +25,10 @@ function App() {
     };
 
     const deleteRoom = (index) => {
-        var temp = rooms;
-        temp.splice(index, 1);
-        setRooms([...temp]);
+        rooms.splice(index, 1);
+        setRooms([...rooms]);
 
-        temp = products;
-        temp.splice(index, 1);
+        products.splice(index, 1);
         setProducts([...products]);
     };
 
@@ -35,13 +37,25 @@ function App() {
         setProducts([...products]);
     };
 
+    const editRoom = (roomId, key, value) => {
+        if (key === 'name' && rooms.find((room) => room.name === value) !== undefined) {
+            alert('You already have a room with this name. Please choose another name.');
+            return false;
+        }
+        rooms[roomId][key] = value;
+        setRooms([...rooms]);
+        return true;
+    };
+
     return (
         <div className='App'>
             <h1>Smart House</h1>
             <Provider value={addNewRoom}>
                 <BrowserRouter>
                     <Link to='/'>
-                        <button className='Exit'>✖</button>
+                        <button className='Exit custom-btn btn-7'>
+                            <span>X</span>
+                        </button>
                     </Link>
                     <Routes>
                         <Route path='/' element={<HomePage rooms={rooms} />} />
@@ -51,19 +65,20 @@ function App() {
                                     key={i}
                                     path={'/room-' + v.name}
                                     element={
-                                        <Rooms
+                                        <Room
                                             room={rooms[i]}
                                             deleteRoom={deleteRoom}
                                             index={i}
                                             products={products[i]}
                                             addProduct={addNewProduct}
                                             deleteProduct={deleteProduct}
+                                            editRoom={editRoom}
                                         />
                                     }
                                 />
                             );
                         })}
-                        <Route path='/addroom' element={<AddRoom />} />
+                        <Route path='/addroom' element={<CreateRoom />} />
                     </Routes>
                 </BrowserRouter>
             </Provider>
