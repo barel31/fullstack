@@ -37,7 +37,7 @@ export default function Room(props) {
                                 alert('You can add up to one Streo-System in a room');
                             else {
                                 setShowProducts(false);
-                                setProductType('air-conditioner');
+                                setProductType('Air-Conditioner');
                                 props.addProduct(props.index, productType);
                             }
                         }}

@@ -1,5 +1,13 @@
 .Room {
     margin: 1vh;
+    border-radius: 5px;
+    color: #393E46;
+}
+.Room h2,
+.Room h3,
+.Room label,
+.Room p {
+    color: #393E46;
 }
 
 .Products {

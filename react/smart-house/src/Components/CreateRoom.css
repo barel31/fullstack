@@ -1,4 +1,4 @@
-input[type='text'] {
+.CreateRoom input[type='text'] {
     display: block;
     margin: 0.5em auto;
 }
@@ -6,7 +6,10 @@ input[type='text'] {
 .BtnCreate {
     margin: 0.5em auto;
     display: block;
-    background-color: #F1E1A6;
+    background-color: #00ADB5;
     font-size: 2em;
     padding: 0.5em;
+    border-radius: 5px;
+    border: 0;
+    outline: 0;
 }

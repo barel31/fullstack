@@ -4,7 +4,24 @@
     border: 1px solid black;
     margin: auto;
     max-width: 40em;
-    background-color: #b7cadb;
+    background-color: #222831;
+}
+
+h1,
+h2,
+h3,
+label,
+p {
+    color: #EEEEEE;
+}
+
+footer {
+    color: #ecb365;
+}
+
+h3,
+p {
+    margin: 0;
 }
 
 .Exit {
@@ -14,11 +31,6 @@
     left: 0;
     margin: 0.5em;
     width: 2em;
-}
-
-h3,
-p {
-    margin: 0;
 }
 
 button {
@@ -35,8 +47,6 @@ button {
     transition: all 0.3s ease;
     /* position: relative; */
     display: inline-block;
-    box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5), 7px 7px 20px 0px rgba(0, 0, 0, 0.1),
-        4px 4px 5px 0px rgba(0, 0, 0, 0.1);
     outline: none;
 }
 .custom-btn-relative {
@@ -62,8 +72,6 @@ button {
     right: 0;
     bottom: 0;
     background: #f24a72;
-    box-shadow: -7px -7px 20px 0px rgba(255, 255, 255, 0.9), -4px -4px 5px 0px rgba(255, 255, 255, 0.9),
-        7px 7px 20px 0px rgba(0, 0, 0, 0.2), 4px 4px 5px 0px rgba(0, 0, 0, 0.3);
     transition: all 0.3s ease;
 }
 .btn-7:before {
@@ -91,8 +99,6 @@ button {
     left: 0;
     top: 0;
     background: #f24a72;
-    box-shadow: -7px -7px 20px 0px rgba(255, 255, 255, 0.9), -4px -4px 5px 0px rgba(255, 255, 255, 0.9),
-        7px 7px 20px 0px rgba(0, 0, 0, 0.2), 4px 4px 5px 0px rgba(0, 0, 0, 0.3);
     transition: all 0.3s ease;
 }
 .btn-7 span:before {
