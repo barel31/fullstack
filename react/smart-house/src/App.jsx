@@ -7,39 +7,38 @@ import Room from './Components/Room';
 import HomePage from './Components/HomePage';
 
 function App() {
+    // rooms is an array with objects inside
+    // with the properties of name, type, color and products.
+    // The index of the array is represents the ID of the rooms.
+    // products - a nested array contain arrays of objects with the keys type and status of False/True.
     const [rooms, setRooms] = useState([]);
-    const [products, setProducts] = useState([[]]);
 
     const addNewRoom = (name, type, color) => {
         if (rooms.find((room) => room.name === name) !== undefined) {
             alert('You already have a room with this name. Please choose another name.');
         } else {
-            setRooms([...rooms, { name: name, type: type, color: color }]);
-            setProducts([...products, []]);
+            setRooms([...rooms, { name: name, type: type, color: color, products: [] }]);
         }
     };
 
     const addNewProduct = (roomId, type) => {
-        products[roomId].push({ type: type, toggle: false });
-        setProducts([...products]);
+        rooms[roomId].products.push({ type: type, status: false });
+        setRooms([...rooms]);
     };
 
     const deleteRoom = (index) => {
         rooms.splice(index, 1);
         setRooms([...rooms]);
-
-        products.splice(index, 1);
-        setProducts([...products]);
     };
 
     const deleteProduct = (roomId, ProductId) => {
-        products[roomId].splice(ProductId, 1);
-        setProducts([...products]);
+        rooms[roomId].products.splice(ProductId, 1);
+        setRooms([...rooms]);
     };
 
     const editRoom = (roomId, key, value) => {
         if (key === 'name' && rooms.find((room) => room.name === value) !== undefined) {
-            alert('You already have a room with this name. Please choose another name.');
+            alert(`You already have a room with the name ${value}. Please choose another name.`);
             return false;
         }
         rooms[roomId][key] = value;
@@ -69,7 +68,7 @@ function App() {
                                             room={rooms[i]}
                                             deleteRoom={deleteRoom}
                                             index={i}
-                                            products={products[i]}
+                                            products={rooms[i].products}
                                             addProduct={addNewProduct}
                                             deleteProduct={deleteProduct}
                                             editRoom={editRoom}

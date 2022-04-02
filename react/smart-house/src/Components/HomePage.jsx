@@ -12,14 +12,12 @@ export default function HomePage(props) {
                     return (
                         <button
                             key={i}
-                            className='Room custom-btn btn-4'
-                            style={{ backgroundColor: v.color }}
+                            className='BtnRoom hvr-grow'
+                            style={{ backgroundColor: v.color, border: `3px solid ${v.color}` }}
                             onClick={() => nav('/room-' + v.name)}
                         >
-                            <span>
-                                <h3>{v.name}</h3>
-                                <span className='RoomTypeText'>{v.type}</span>
-                            </span>
+                            <h3>{v.name}</h3>
+                            <span className='RoomTypeText'>{v.type}</span>
                         </button>
                     );
                 })}

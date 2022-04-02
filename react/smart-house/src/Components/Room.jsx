@@ -3,13 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import './Room.css';
 
 export default function Room(props) {
-    const [showProducts, setShowProducts] = useState(false);
+    const [showProduct, setShowProducts] = useState(false);
     const [productType, setProductType] = useState('Air-Conditioner');
     const [refresh, setRefresh] = useState(false);
     const nav = useNavigate();
 
     const productsList = () => {
-        if (showProducts) {
+        if (showProduct) {
             return (
                 <div className='AddProduct'>
                     <label htmlFor='products'>Choose product: </label>
@@ -27,12 +27,12 @@ export default function Room(props) {
                     <button
                         className='AddBtn'
                         onClick={() => {
-                            if (props.products.length >= 5) alert('You have reached the maximum products in this room');
-                            else if (productType === 'Boiler' && props.room.type !== 'bathroom')
+                            if (props.room.products.length >= 5) alert('You have reached the maximum products in this room');
+                            else if (productType === 'Boiler' && props.room.type !== 'Bathroom')
                                 alert('Boilder can be addded to Bathrooms only');
                             else if (
                                 productType === 'Streo-System' &&
-                                props.products.find((v) => v.type === productType)
+                                props.room.products.find((v) => v.type === productType)
                             )
                                 alert('You can add up to one Streo-System in a room');
                             else {
@@ -50,7 +50,7 @@ export default function Room(props) {
     };
 
     return (
-        <div style={{ backgroundColor: props.room.color }}>
+        <div className='Room' style={{ backgroundColor: props.room.color }}>
             <h2>
                 {props.room.name}'s Room{' '}
                 <input
@@ -88,7 +88,7 @@ export default function Room(props) {
                 </button>
             </h3>
             <div className='Products'>
-                {props.products.map((v, i) => {
+                {props.room.products.map((v, i) => {
                     return (
                         <div key={i} className='Product'>
                             <button
@@ -96,12 +96,12 @@ export default function Room(props) {
                                     props.products[i].toggle = !props.products[i].toggle;
                                     setRefresh(!refresh);
                                 }}
-                                style={{ backgroundColor: v.toggle ? 'green' : 'red' }}
+                                style={{ backgroundColor: v.toggle ? '#2EB086' : '#B8405E' }}
                             >
                                 {i + 1}. {v.type}
                             </button>
                             <button
-                                className='DeleteProductBtn custom-btn btn-7'
+                                className='DeleteProductBtn'
                                 onClick={() => {
                                     if (window.confirm('Are you sure you want to delete this product?'))
                                         props.deleteProduct(props.index, i);
@@ -113,8 +113,8 @@ export default function Room(props) {
                     );
                 })}
             </div>
-            {!showProducts ? (
-                <button className='AddProductBtn' onClick={() => setShowProducts(!showProducts)}>
+            {!showProduct ? (
+                <button className='AddProductBtn' onClick={() => setShowProducts(!showProduct)}>
                     Add Product
                 </button>
             ) : null}

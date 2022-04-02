@@ -1,3 +1,7 @@
+.Room {
+    margin: 1vh;
+}
+
 .Products {
     display: flex;
     justify-content: space-around;
@@ -10,45 +14,66 @@
     height: 6em;
     margin: 1em;
 }
+/* add hover to product */
 
 .Product button:first-child {
-    height: 100%;
+    height: 10vh;
     width: 100%;
     font-size: larger;
+    border-radius: 5px;
 }
 
 .DeleteProductBtn {
     position: relative;
     float: left;
-    bottom: 7em;
-    height: 2.0em;
-    width: 2.0em;
-    margin: 0.3em;
+    bottom: 10vh;
+    height: 2.5vh;
+    width: 2.5vh;
+    margin: 0.3vh 0.4vh;
+    padding: 0;
+    border-radius: 5px;
+    background-color: #EFEFEF;
+    transition: all 0.3s ease;
+    box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5), 7px 7px 20px 0px rgba(0, 0, 0, 0.1),
+        4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+    outline: none;
 }
+.DeleteProductBtn:hover {
+    background-color: #D1D1D1;
+}
+
 /* 
 .AddProduct {
     margin: 1em;
 } */
 
 .AddProductBtn {
-    background-color: lightskyblue;
+    background-color: #C3DBD9;
     padding: 0.5em;
     margin: 1em 1em 1em 0;
+    border-radius: 5px;
 }
 
+/* add hover */
 .AddBtn {
     display: block;
-    background-color: lightskyblue;
+    background-color: #C3DBD9;
     padding: 1em;
     margin: auto;
     margin-top: 1em;
+    border-radius: 5px;
 }
 
+/* add hover */
 .DeleteRoomBtn {
     position: absolute;
     right: 0;
     bottom: 0;
     margin: 1em;
     padding: 0.5em;
-    background-color: red;
+    background-color: #BB6464;
+    border-radius: 5px;
+}
+select {
+    border-radius: 5px;
 }

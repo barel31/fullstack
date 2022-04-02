@@ -4,13 +4,28 @@
     justify-content: space-around;
 }
 
-.Room {
+.BtnRoom {
     min-width: 6vh;
     height: 6vh;
     font-size: 2vh;
     margin: 0.5vh;
     padding: 0.5vh;
+    border-radius: 5px;
+    outline: 0;
+    border: 0;
+    background-color: transparent;
 }
+.BtnRoom h3 {
+    color: #111;
+}
+.BtnRoom:hover {
+    border: 2px solid #111;
+    box-shadow: 0px 0px 26px 8px hsla(323, 7%, 49%, 0.664);
+    background-color: #000428;
+}
+/* .BtnRoom:hover h3 {
+    color: white
+} */
 
 .AddRoomBtn {
     height: 20vh;
@@ -19,14 +34,14 @@
     padding: 0;
     font-size: 15vh;
     border-radius: 100%;
-    background-color: #97DBAE;
+    background-color: #97dbae;
     box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9, 7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001;
 }
-
 .AddRoomBtn:hover {
-    box-shadow: 5px 5px 17px 5px #B6FFCE;
+    box-shadow: 5px 5px 17px 5px #b6ffce;
 }
 
 .RoomTypeText {
-    font-size: 0.8em;
+    position: relative;
+    top: 2.5vh;
 }
