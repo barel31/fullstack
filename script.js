@@ -12,10 +12,10 @@ class Data {
 
 const data = [
     new Data('Trivia Game', 'Play!', 'https://evening-oasis-66395.herokuapp.com/play'),
-    new Data('class-1', 'index.html', 'class1_homework/index.html'),
-    new Data('class-2', 'signin.html signup.html', 'class2_homework/signin.html class2_homework/signup.html'),
-    new Data('class-3', 'index.html', 'class3_homework/index.html'),
-    new Data('class-4', 'index.html', 'class4_homework/index.html'),
+    new Data('class-1 CV DEMO', 'index.html', 'class1_homework/index.html'),
+    new Data('class-2 signin/up templates', 'signin.html signup.html', 'class2_homework/signin.html class2_homework/signup.html'),
+    new Data('class-3 Bootstrap template', 'index.html', 'class3_homework/index.html'),
+    new Data('class-4 Summary of compiler and commentator', 'index.html', 'class4_homework/index.html'),
     new Data('class-5 - DEMO Exchanger', 'index.html', 'class5_homework/index.html'),
     new Data('class-6 - Simple Calculator', 'index.html', 'class6_homework/index.html'),
     new Data('Dice Game', 'Play!', 'dice/dicee.html'),
