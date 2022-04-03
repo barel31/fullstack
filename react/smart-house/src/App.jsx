@@ -9,10 +9,10 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
-    // rooms Is an array of objects
-    // The object have properties of name, type, color and products.
-    // products - a nested array contain arrays of objects with the keys type and status of False/True.
-    // The index of the array is represents the ID of the rooms.
+    /* rooms Is an array of objects,
+    The object have properties of name, type, color and products.
+    products - a nested array contain arrays of objects with the keys type and status of False/True.
+    The index of the array is represents the ID of the rooms. */
     const [rooms, setRooms] = useState([]);
 
     const toast_bottom = (msg, success) => {

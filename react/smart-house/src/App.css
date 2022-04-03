@@ -49,13 +49,10 @@ button {
     font-weight: 500;
     background: transparent;
     transition: all 0.3s ease;
-    /* position: relative; */
     display: inline-block;
     outline: none;
 }
-.custom-btn-relative {
-    position: relative;
-}
+
 /* 7 */
 .btn-7 {
     background: linear-gradient(0deg, #fd5d5d 0%, #f24a72 100%);
