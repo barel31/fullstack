@@ -9,10 +9,10 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
-    // rooms is an array with objects inside
-    // with the properties of name, type, color and products.
-    // The index of the array is represents the ID of the rooms.
+    // rooms Is an array of objects
+    // The object have properties of name, type, color and products.
     // products - a nested array contain arrays of objects with the keys type and status of False/True.
+    // The index of the array is represents the ID of the rooms.
     const [rooms, setRooms] = useState([]);
 
     const toast_bottom = (msg, success) => {
@@ -24,7 +24,7 @@ function App() {
         if (!isRoomNameValid(name)) return false;
 
         setRooms([...rooms, { name: name, type: type, color: color, products: [] }]);
-        toast_bottom('Room was successfully created!', true);
+        toast_bottom('Room created successfully!', true);
         return true;
     };
 
@@ -37,7 +37,7 @@ function App() {
     const deleteRoom = (index) => {
         rooms.splice(index, 1);
         setRooms([...rooms]);
-        toast_bottom('Room deleted successfully', true);
+        toast_bottom('Room deleted successfully!', true);
     };
 
     const deleteProduct = (roomId, ProductId) => {
@@ -49,7 +49,7 @@ function App() {
     const isRoomNameValid = (name) => {
         if (rooms.find((room) => room.name === name) !== undefined) {
             // alert(`You already have a room with the name ${name}. Please choose another name`);
-            toast_bottom(`ERROR! The name ${name} is taken!`, false);
+            toast_bottom(`ERROR! The name ${name} is taken by another room!`, false);
             return false;
         }
 
@@ -125,7 +125,6 @@ function App() {
             </Provider>
             <ToastContainer />
             <footer>Created by Barel Shraga with React</footer>
-            <p>TODO: Add hover effect to product create and delete btns</p>
         </div>
     );
 }

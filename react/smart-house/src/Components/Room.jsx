@@ -118,6 +118,7 @@ export default function Room(props) {
                     Add Product
                 </button>
             ) : null}
+            {productsList()}
             <button
                 className='DeleteRoomBtn'
                 onClick={() => {
@@ -129,7 +130,6 @@ export default function Room(props) {
             >
                 Delete Room
             </button>
-            {productsList()}
         </div>
     );
 }

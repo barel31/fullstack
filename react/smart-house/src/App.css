@@ -1,10 +1,5 @@
-.App {
-    position: relative;
-    text-align: center;
-    border: 1px solid black;
-    margin: auto;
-    max-width: 40em;
-    background-color: #222831;
+body {
+    font-family: 'Kanit', sans-serif;
 }
 
 h1,
@@ -12,7 +7,7 @@ h2,
 h3,
 label,
 p {
-    color: #EEEEEE;
+    color: #eeeeee;
 }
 
 footer {
@@ -22,6 +17,15 @@ footer {
 h3,
 p {
     margin: 0;
+}
+
+.App {
+    position: relative;
+    text-align: center;
+    border: 1px solid black;
+    margin: auto;
+    max-width: 40em;
+    background-color: #222831;
 }
 
 .Exit {
