@@ -24,6 +24,8 @@ const data = [
     new Data('Sudoku', 'Play!', 'sudoku/index.html'),
     new Data('Grade Graph', 'Heroku', 'https://evening-plains-58384.herokuapp.com/'),
     new Data('class-10', 'Heroku', 'https://still-ravine-70553.herokuapp.com/'),
+    new Data('War Game', 'Play!', 'https://barel31.github.io/war-game/'),
+    new Data('Smart-House', 'Go!', 'https://barel31.github.io/smart-house/'),
 ];
 
 const table = document.getElementById('table');
