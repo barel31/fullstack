@@ -3,9 +3,9 @@ var autoCheck = true; // Auto-Check slider
 var cntGlobal = 0; // success counter
 var timer = 0; // timer variable
 var timerElement = $('#timer'); // timer DOM element
-let interval; // variable to hold the timer interval repeater
-let hidenInputs = {}; // dict of hidden inputs to show hints
-let lastFocusedInput; // DOM contain last focused input (use for hint)
+var interval; // variable to hold the timer interval repeater
+var hidenInputs = {}; // dict of hidden inputs to show hints
+var lastFocusedInput; // DOM contain last focused input (use for hint)
 
 // Print board
 initBoard(); // Print the board on page load
