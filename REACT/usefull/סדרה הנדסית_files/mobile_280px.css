@@ -1,0 +1,117 @@
+﻿/* ===========================================
+     page structure
+   =========================================== */
+
+/* Set a DIV in the center of the window */
+div.page_full {
+   width:260px;
+   }
+
+/* ===========================================
+     main structure
+   =========================================== */
+
+/* Set a DIV in the center of the main window */
+div.main_full {
+   width:260px;
+   }
+
+/* ===========================================
+     title bar
+   =========================================== */
+
+div.title_total {
+   width:260px;
+   height:70px;
+   }
+
+/* ===========================================
+     Right side bar of the TEXT
+   =========================================== */
+
+div.right_side_width {
+   width:0px;
+   }
+
+/* ===========================================
+     Left side bar of the TEXT
+   =========================================== */
+
+div.left_side_width {
+   width:0px;
+   }
+
+/* ===========================================
+     middle TEXT area
+   =========================================== */
+
+div.middle_gap_width {
+   width:250px;
+   }
+
+/* ===========================================
+     tail bottom bar/line
+   =========================================== */
+
+div.tail_total {
+   width:260px;
+   }
+
+/* ===========================================
+     Decorative links Style
+   =========================================== */
+
+// next/prev chapter
+   .class_nextprev {
+   }
+
+// next/prev chapter
+a.class_nextprev {
+   }
+
+a.class_nextprev:hover {
+   color:#E20;
+   background-color:#FF4;
+   }
+
+// chapters index at bottom of page
+.class_hl_menu {
+}
+
+a.class_hl_menu {
+   }
+
+a.class_hl_menu:hover {
+}
+
+// chapter index (main subject)
+.class_hl2_menu {
+}
+
+.class_hl2_menu:hover {
+}
+
+// topics index (used in main page)
+.class_hl3_menu_table {
+}
+
+.class_hl3_menu_title_topic {
+}
+
+.class_hl3_menu_title_topic_b {
+}
+
+.class_hl3_menu_title_subject {
+}
+
+.class_hl3_menu {
+}
+
+.class_hl3_menu:hover {
+}
+
+// go back-up to top of the page
+div.return_up {
+   width:100%;
+   height:20px;
+   }

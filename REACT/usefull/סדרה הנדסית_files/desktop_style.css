@@ -1,0 +1,538 @@
+﻿/* ===========================================
+     general style
+   =========================================== */
+
+body {
+   background-color:#FFF;
+   text-align:justify;
+   unicode-bidi:embed;
+   color:#000000;
+   line-height:120%;
+   font-family: Arial;
+   font-style:normal;
+   font-weight:normal;
+   font-size:100%;
+   margin: 0px;
+   padding: 0px;
+   cursor: auto;
+}
+
+p {
+   padding-left:0pt;
+   padding-right:0pt;
+}
+
+p.text_rtl {
+   direction:rtl;
+}
+
+p.text_ltr {
+   direction:ltr;
+}
+
+p.text_center {
+   text-align:center;
+}
+
+a                       {text-decoration: none; background-color: white;  color:blue; border-style: none;  border-color: #004;  cursor: pointer;}
+a:hover                 {text-decoration: none; background-color: #ADF;   color:blue; border-style: none;  border-color: #004;  cursor: pointer;}
+
+a.positive_colors       {text-decoration: none; background-color: white;  color:blue; border-style: none;  border-color: #004;  cursor: pointer;}
+a.positive_colors:hover {text-decoration: none; background-color: #ADF;   color:blue; border-style: none;  border-color: #004;  cursor: pointer;}
+
+a.negative_colors       {text-decoration: none; background-color: black;  color:white; border-style: solid; border-color: white; cursor: pointer;}
+a.negative_colors:hover {text-decoration: none; background-color: #00C;   color:white; border-style: solid; border-color: #bbf;  cursor: pointer;}
+
+h1    {margin:0px; padding:3px; color:#840; font-size:1.6em; font-weight:800; text-align:center;}
+h2    {margin:0px; padding:3px; color:#484; font-size:1.2em; font-weight:800;}
+h3    {margin:0px; padding:3px; color:#9c6; font-size:1.1em; font-weight:800;}
+h4    {margin:0px; padding:3px; color:#d84; font-size:0.9em; font-weight:800; text-align:center;}
+h5    {margin:0px; padding:0px; color:#630; font-size:1.0em; font-weight:800; display:inline;}
+img   {galleryimg:no; border:0px none white; max-width:100%; min-width:0%; background-color:#FFF;}
+div   {max-width:100%}
+
+div.float_right {
+   float:right;
+   }
+
+div.float_left {
+   float:left;
+   }
+
+div.float_top {
+   float:top;
+   }
+
+div.float_bottom {
+   float:bottom;
+   }
+
+.class_ltr {
+   direction:ltr;
+   text-align:left;
+   }
+
+.class_font_monospace {
+   font-family:Monospace;
+   }
+
+
+/* ===========================================
+     page structure
+   =========================================== */
+
+div.page_default {
+   height:100%;
+   padding:0px;
+   margin:0px;
+   direction: rtl;
+   text-align:justify;
+   }
+
+/* ===========================================
+     title bar
+   =========================================== */
+
+div.title_default {
+   background-color:#FFFFFF;
+   width:100%;
+   height:40px;
+   padding:0px;
+   margin:0px;
+   direction: rtl;
+   position:fixed;
+   top:0px;
+   line-height:38px;
+   font-size:38px;
+   }
+
+div.title_image {
+   width:100%;
+   height:40px;
+   border-width: 0px 0px 1px 0px;
+   border-style: dotted;
+   border-color: #004;
+   padding: 0px 0px 0px 0px;
+   }
+
+div.title_image_side {
+   width:15%;
+   height:40px;
+   }
+
+div.title_image_middle {
+   width:70%;
+   height:40px;
+   }
+
+/* ===========================================
+     main structure
+   =========================================== */
+
+div.main_default {
+   height:100%;
+   padding:0px;
+   margin:0px;
+   direction: rtl;
+   text-align:justify;
+   cursor: default;
+   }
+
+/* ===========================================
+     Right side bar of the TEXT
+   =========================================== */
+
+div.right_side_default {
+   padding:0px;
+   margin:0px;
+   text-align:right;
+   text-decoration:none;
+   height:145px;
+   }
+
+div.right_side_float {
+   float:right;
+   }
+
+div.side_menu_item1 {
+   width:100%;
+   height:100%;
+   float:right;
+   }
+
+div.side_menu_item2 {
+   width:100%;
+   height:100%;
+   float:right;
+   }
+
+/* ===========================================
+     Left side bar of the TEXT
+   =========================================== */
+
+div.left_side_default {
+   background-color:#F0F;
+   padding:0px;
+   margin:0px;
+   text-align:right;
+   text-decoration:none;
+   }
+
+div.left_side_width {
+   width: 0px;
+   }
+
+div.left_side_float {
+   float:left;
+   }
+
+/* ===========================================
+     middle TEXT area
+   =========================================== */
+
+div.middle_default {
+   text-decoration:none;
+   margin: 0px 138px 0px 138px;
+   padding: 10px 5px 10px 5px;
+   height:100%;
+   float: right;
+   }
+
+/* ===========================================
+     tail bottom bar/line
+   =========================================== */
+
+div.tail_total_default {
+   height:40px;
+   }
+
+
+div.tail_total_float {
+   float:top;
+   }
+
+/* ===========================================
+     Decorative text
+   =========================================== */
+
+td.table_of_chapters {
+   width:200px;
+   }
+
+img.table_of_chapters_gif {
+   width:200px;
+   }
+
+td.class_icon_img {
+   font-size: 230px;
+   line-height: 230px;
+   padding: 0px 0px 0px 10px;
+   }
+
+/* ===========================================
+     Different table:
+     Geography / English / ...
+   =========================================== */
+
+table.tbl_data {
+   border-color: #ECB;
+   border-width:1px;
+   border-style: solid;
+   }
+
+table.tbl_data th {
+   background-color:#ECA;
+   border-color: #EDB;
+   border-width:1px;
+   border-style: solid;
+   font-weight:bold;
+   }
+
+table.tbl_data td {
+   border-color: #FDB;
+   border-width:1px;
+   border-style: solid;
+   font-weight:normal;
+   }
+
+table.tbl_data2 {
+   border-color: #004;
+   border-width:1px;
+   border-style: solid;
+   }
+
+table.tbl_data2 th {
+   border-color: #44a;
+   border-width: 1px;
+   border-style: solid;
+   font-weight: bold;
+   }
+
+table.tbl_data2 tr td {
+   border-color: #840;
+   border-width: 1px;
+   border-style: solid;
+   font-style: normal;
+   font-weight: normal;
+   }
+
+
+table.tbl_exec {
+   border-color: #FFF;
+   border-width: 1px;
+   border-style: solid;
+   width: 100%;
+   }
+
+table.tbl_exec tr {
+   border-color: #FF0;
+   border-width:1px;
+   border-style: solid;
+   font-weight:normal;
+   }
+
+table.tbl_exec th {
+   border-color: #FFF;
+   border-width:1px;
+   border-style: solid;
+   font-weight:bold;
+   }
+
+table.tbl_exec td {
+   border-color: #ECF;
+   border-width:1px;
+   border-style: solid;
+   font-weight:normal;
+   }
+
+table.tbl_text_l2r_r2l {
+   border-color: green;
+   border-width: 2px;
+   border-style: solid;
+   }
+
+table.tbl_text_l2r_r2l th {
+   border-color: #44a;
+   border-width:0px;
+   border-style: solid;
+   font-weight:bold;
+   }
+
+table.tbl_text_l2r_r2l tr td {
+   border-color: #840;
+   border-width:0px;
+   border-style: solid;
+   font-weight:normal;
+   }
+
+
+.text_left tr { 
+   text-align:left;
+   direction:ltr; 
+   } 
+
+.text_left th { 
+   text-align:left;
+   direction:ltr; 
+   } 
+
+.text_left td { 
+   text-align:left;
+   direction:ltr; 
+   } 
+
+
+table tr.text_left { 
+   text-align:left;
+   direction:ltr; 
+   } 
+
+table th.text_left { 
+   text-align:left;
+   direction:ltr; 
+   } 
+
+table td.text_left { 
+   text-align:left;
+   direction:ltr; 
+   } 
+
+table tr.text_right { 
+   text-align:right;
+   direction:rtl; 
+   } 
+
+table th.text_right { 
+   text-align:right;
+   direction:rtl; 
+   } 
+
+table td.text_right { 
+   text-align:right;
+   direction:rtl; 
+   } 
+
+/* ===========================================
+     Israel map & search engine
+   =========================================== */
+
+div.israel_sites_search_engine {
+   height:100%;
+   float:left;
+   margin: 0px;
+   padding: 0px;
+   }
+
+table.tbl_israel_sites_se_main {
+   width:100%;
+   border-width:1px;
+   border-style: solid;
+   border-right: black 1px outset;
+   border-bottom: black 1px outset;
+   border-left: black 1px outset;
+   border-top: black 1px outset;
+   }
+
+table.tbl_israel_sites_se {
+   width:100%;
+   border-width:1px;
+   border-style: solid;
+   border-right: black 3px outset;
+   border-bottom: black 3px outset;
+   border-left: black 1px outset;
+   border-top: black 1px outset;
+   }
+
+/* ----- */
+
+td.td0_israel_sites_se_location {
+   width:50px;
+   background-color:#7c3;
+   border-width:1px;
+   border-style: solid;
+   border-right: black 3px outset;
+   border-bottom: black 3px outset;
+   border-left: black 1px outset;
+   border-top: black 1px outset;
+   }
+
+td.td1_israel_sites_se_location {
+   width:33%;
+   background-color:#77a;
+   }
+
+td.td2_israel_sites_se_location {
+   width:33%;
+   background-color:#99b;
+   }
+
+td.td3_israel_sites_se_location {
+   width:33%;
+   background-color:#aac;
+   }
+
+/* ----- */
+
+td.td0_israel_sites_se_type {
+   width:50px;
+   background-color:#7c3;
+   border-width:1px;
+   border-style: solid;
+   border-right: black 3px outset;
+   border-bottom: black 3px outset;
+   border-left: black 1px outset;
+   border-top: black 1px outset;
+   }
+
+td.td1_israel_sites_se_type {
+   width:33%;
+   background-color:#7b7;
+   }
+
+td.td2_israel_sites_se_type {
+   width:33%;
+   background-color:#9c9;
+   }
+
+td.td3_israel_sites_se_type {
+   width:33%;
+   background-color:#bdb;
+   }
+
+/* ----- */
+
+td.td0_israel_sites_se_level {
+   width:50px;
+   background-color:#7c3;
+   border-width:1px;
+   border-style: solid;
+   border-right: black 3px outset;
+   border-bottom: black 3px outset;
+   border-left: black 1px outset;
+   border-top: black 1px outset;
+   }
+
+td.td1_israel_sites_se_level {
+   width:33%;
+   background-color:#975;
+   }
+
+td.td2_israel_sites_se_level {
+   width:33%;
+   background-color:#b97;
+   }
+
+td.td3_israel_sites_se_level {
+   width:33%;
+   background-color:#db9;
+   }
+
+/* ----- */
+
+td.td0_israel_sites_se_duration {
+   width:50px;
+   background-color:#7c3;
+   border-width:1px;
+   border-style: solid;
+   border-right: black 3px outset;
+   border-bottom: black 3px outset;
+   border-left: black 1px outset;
+   border-top: black 1px outset;
+   }
+
+td.td1_israel_sites_se_duration {
+   width:33%;
+   background-color:#aa7;
+   }
+
+td.td2_israel_sites_se_duration {
+   width:33%;
+   background-color:#cc9;
+   }
+
+td.td3_israel_sites_se_duration {
+   width:33%;
+   background-color:#eea;
+   }
+
+/* ===========*/
+
+img.site_photo1   {
+   border-top: #D84 10px inset;
+   border-bottom: #D84 10px outset;
+   border-right: #8A4 40px inset;
+   border-left: #8A4 40px outset;
+   galleryimg: no;
+   }
+
+img.map_photo1   {
+   border-top: #8A4 10px outset;
+   border-bottom: #8A4 10px inset;
+   border-right: #8A4 10px inset;
+   border-left: #8A4 10px outset;
+   galleryimg: no;
+   }
+
+#marquee_news {
+   cursor: pointer;
+   }
