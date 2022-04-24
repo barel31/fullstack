@@ -1,0 +1,123 @@
+.App {
+    max-width: 400px;
+    margin: auto;
+    border: 1px solid black;
+    text-align: center;
+    background-color: lightgray;
+}
+
+.App button {
+    cursor: pointer;
+}
+
+/*//////////*/
+/* HomePage */
+/*//////////*/
+.HomePage .SignBtns button {
+    border-radius: 10%;
+    background-color: steelblue;
+    color: white;
+    font-size: larger;
+    align-items: center;
+    display: block;
+    margin: auto;
+    padding: 1vh 2vh;
+    margin: 1vh auto;
+    border: 1px solid black;
+}
+
+/*//////////*/
+/* SignUp */
+/*//////////*/
+.SignUp {
+    display: flex;
+    flex-direction: column;
+}
+
+.SignUp .Inputs {
+    display: flex;
+    justify-content: space-evenly;
+}
+.SignUp .Inputs label {
+    width: 10vh;
+}
+
+.SignUp .ForkliftRadio {
+    display: block;
+}
+
+.SignUp .CreateBtn {
+    width: 100px;
+    margin: 2vh;
+    float: left;
+}
+
+.SignUp .ForkliftRadio {
+    margin: 1vh;
+    position: relative;
+    right: 30%;
+}
+.SignUp .ForkliftRadio p {
+    margin: 0;
+}
+
+/*//////////*/
+/* Login */
+/*//////////*/
+.Login {
+    display: block;
+}
+
+.Login .BtnEnter {
+    margin: 1vh;
+    font-size: larger;
+    padding: 0 2vh;
+    border-radius: 5%;
+    border: 1px solid black;
+}
+
+.Login .Details {
+    text-align: left;
+    margin: 1vh;
+}
+
+.Login .ProductsNotInPlace {
+    border: 1px solid black;
+}
+
+.Login .ProductsNotInPlace div {
+    border: 1px solid black;
+}
+
+.Login .ProductsNotInPlace div button {
+    position: relative;
+    left: 20%;
+}
+
+.Login .BtnLogout {
+    position: relative;
+    left: 35%;
+    margin: 1vh;
+    font-size: larger;
+    padding: 1vh 2vh;
+}
+
+/*//////////*/
+/* Manager */
+/*//////////*/
+.Manager table {
+    margin: 1vh auto 0;
+}
+
+.Manager td {
+    border: 1px solid black;
+    padding: 0.5vh;
+}
+
+.Manager button {
+    position: relative;
+    left: 35%;
+    font-size: larger;
+    padding: 0.5vh 1vh;
+    margin: 1vh;
+}

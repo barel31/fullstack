@@ -1,0 +1,15 @@
+.Trainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.WorkoutItem {
+    border: 1px solid green;
+    margin: 1vh;
+    text-align: center;
+}
+
+.Trainer button {
+    font-size: large;
+    margin: auto;
+}

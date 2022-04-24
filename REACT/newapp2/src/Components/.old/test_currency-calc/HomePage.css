@@ -1,0 +1,24 @@
+.FlexTop,
+.FlexMiddle {
+    display: flex;
+    justify-content: space-around;
+    margin: 3vh 5vh;
+}
+
+.FlexMiddle {
+    margin: 0 10vh;
+}
+.FlexBottom {
+    position: relative;
+    margin-top: 3vh;
+}
+
+.FlexBottom button {
+    height: 5vh;
+}
+
+.ListItem {
+    border: 1px solid black;
+    border-radius: 15%;
+    margin: 1vh;
+}

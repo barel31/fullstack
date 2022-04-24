@@ -1,0 +1,14 @@
+.Table {
+    display: flex;
+    flex-direction: column;
+}
+
+table, td {
+    border: 1px solid black;
+}
+
+.Inputs div {
+    display: flex;
+    justify-content: space-around;
+    margin: 2vh 6vh;
+}
