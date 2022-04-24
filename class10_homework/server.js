@@ -4,7 +4,7 @@ const fs = require('fs');
 
 const app = express();
 
-// able loading external files like css
+// able loading external files like css or react
 app.use(express.static(__dirname + '/client'));
 
 // parse application/x-www-form-urlencoded
