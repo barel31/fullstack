@@ -1,0 +1,32 @@
+.App {
+    max-width: 500px;
+    margin: auto;
+    border: 1px solid black;
+    text-align: center;
+}
+
+.Opening .Help {
+    height: 200px;
+    width: 200px;
+    background-color: red;
+    color: white;
+    margin: 1vh;
+}
+
+.Menu {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    height: 10%;
+    background-color: yellow;
+}
+
+.BtnMenu {
+    position: relative;
+    background-color: black;
+}
+
+.MenuContent button {
+    position: relative;
+    margin-left: 0;
+}
