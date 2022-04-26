@@ -1,5 +1,8 @@
 {
   "devDependencies": {
     "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
   }
 }
