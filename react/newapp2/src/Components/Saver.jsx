@@ -1,52 +1,16 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Header from './Header';
+import Context from '../Context';
 
-export default function Saver(props) {
+export default function Saver() {
     const navigate = useNavigate();
-    const [cancel, setCancel] = useState(false);
-    const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
-    const [tries, setTries] = useState(3);
-
-    const msg = () => {
-        if (props.type === '100') return 'Police 100';
-        return props.type === '101' ? 'Ambulance 101' : 'Fire Fighter 102';
-    };
-
-    const CancelBtnHandler = () => {
-        if (cancel) {
-            if (password !== confirmPassword) alert('Password don`t match');
-            else if (password !== props.password) {
-                setTries(tries - 1);
-                if (tries) alert('Wrong password! you have ' + (tries - 1) + ' tries more.');
-                else alert('Wrong password, you can`t cancel the call!');
-            } else navigate('/');
-        } else if (password === '') setCancel(true);
-    };
-
-    const CancelHandler = () => {
-        return cancel ? (
-            <>
-                <div>
-                    <input type='password' placeholder='Password' onChange={(e) => setPassword(e.target.value)} />
-                    <input
-                        type='password'
-                        placeholder='Confirm Password'
-                        onChange={(e) => setConfirmPassword(e.target.value)}
-                    />
-                </div>
-            </>
-        ) : null;
-    };
+    const { type } = useContext(Context);
 
     return (
         <div className='Saver'>
-            <p>{msg()}</p>
-            <p>{props.fullname}</p>
-            <button onClick={() => CancelBtnHandler()} disabled={tries ? false : true}>
-                Cancel
-            </button>
-            {CancelHandler()}
+            <Header />
+            <button className='HelpBtn' onClick={() => navigate(`/${type}`)}>Help</button>
         </div>
     );
 }
