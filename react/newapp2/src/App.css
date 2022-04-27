@@ -1,32 +1,41 @@
 .App {
-    max-width: 500px;
+    max-width: 300px;
+    min-height: 300px;
+    max-height: 500px;
     margin: auto;
     border: 1px solid black;
     text-align: center;
 }
 
-.Opening .Help {
-    height: 200px;
-    width: 200px;
-    background-color: red;
-    color: white;
-    margin: 1vh;
+.HomePage input {
+    display: block;
+    margin: auto;
 }
 
-.Menu {
+.Saver .HelpBtn {
+    width: 200px;
+    height: 200px;
+    margin: 1vh;
+    color: white;
+    background-color: red;
+}
+
+.Header {
+    height: 20%;
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
-    height: 10%;
-    background-color: yellow;
+}
+.Header p {
+    margin: 0;
+}
+.Header .MenuContent {
 }
 
-.BtnMenu {
-    position: relative;
-    background-color: black;
-}
-
-.MenuContent button {
-    position: relative;
-    margin-left: 0;
+.Message .MessageContent {
+    margin: 1vh;
+    padding: 1vh;
+    border-radius: 5%;
+    border: 1px solid blue;
+    background-color: lightblue;
 }

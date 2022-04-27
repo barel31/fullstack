@@ -1,79 +1,108 @@
-import './App.css';
 import React, { useState } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import HomePage from './Components/HomePage';
-import Signup from './Components/Signup';
-import Opening from './Components/Opening';
 import Saver from './Components/Saver';
+import Message from './Components/Message';
+import Context from './Context';
+import './App.css';
 
 export default function App() {
-    // Hooks
     const [fullname, setFullname] = useState('');
     const [password, setPassword] = useState('');
     const [type, setType] = useState('101');
-    const [menuOpen, setMenuOpen] = useState(false);
+    const [menu, setMenu] = useState(false);
+    const [cancel, setCancel] = useState(false);
+    const [cancelPassword, setCancelPassword] = useState('');
+    const [cancelPasswordConfirm, setCancelPasswordConfrim] = useState('');
+    const [cancelTries, setCancelTries] = useState(3);
+
+    const validFullname = () => {
+        if (fullname.length < 4) return false;
+        for (let i = 0; i < fullname.length; i++) {
+            if (fullname[i] >= '0' && fullname[i] <= '9') return false;
+        }
+        return true;
+    };
+
+    const validPassword = () => {
+        if (password.length < 8) return false;
+        let alpha = false;
+        let num = false;
+        for (let i = 0; i < password.length; i++) {
+            if (password[i] >= '0' && password[i] <= '9') num = true;
+            if ((password[i] >= 'a' && password[i] <= 'z') || (password[i] >= 'A' && password[i] <= 'Z')) alpha = true;
+        }
+        return alpha && num;
+    };
+
+    const validMsgs = (n) => {
+        let flag = false;
+        if (n === 1 && !validFullname() && fullname !== '') flag = true;
+        else if (n === 2 && !validPassword() && password !== '') flag = true;
+        return flag ? <p style={{ color: 'red', margin: 0 }}>Invalid input!</p> : null;
+    };
 
     const logo = () => {
         if (type === '100') return 'A';
-        return type === '101' ? 'B' : 'C';
+        if (type === '101') return 'B';
+        return 'C';
     };
 
-    const menu = () => {
-        return (
+    const cancelHandler = () => {
+        return cancel ? (
             <>
-                <div className='Menu'>
-                    <div className='MenuContent'>
-                        <button className='BtnMenu' onClick={() => setMenuOpen(!menuOpen)}>
-                            M
-                        </button>
-                        <button
-                            style={{ display: menuOpen ? 'block' : 'none', opacity: type === '101' ? 0.8 : 1.0 }}
-                            onClick={() => {
-                                setType('101');
-                                setMenuOpen(false);
-                            }}>
-                            101
-                        </button>
-                        <button
-                            style={{ display: menuOpen ? 'block' : 'none', opacity: type === '100' ? 0.8 : 1.0 }}
-                            onClick={() => {
-                                setType('100');
-                                setMenuOpen(false);
-                            }}>
-                            100
-                        </button>
-                        <button
-                            style={{ display: menuOpen ? 'block' : 'none', opacity: type === '102' ? 0.8 : 1.0 }}
-                            onClick={() => {
-                                setType('102');
-                                setMenuOpen(false);
-                            }}>
-                            102
-                        </button>
-                    </div>
-                    <p>
-                        {logo()} {type}
-                    </p>
-                </div>
+                <input type='password' placeholder='Password' onChange={(e) => setCancelPassword(e.target.value)} />
+                <input
+                    type='password'
+                    placeholder='Confrim Password'
+                    onChange={(e) => setCancelPasswordConfrim(e.target.value)}
+                />
             </>
-        );
+        ) : null;
     };
+
+    const validCancelHandler = () => {
+        if (cancelTries) {
+            if (cancelPassword !== '' && cancelPassword === cancelPasswordConfirm && cancelPassword === password)
+                return true;
+
+            setCancelTries(cancelTries - 1);
+            alert(`Incorrect password (${cancelTries}/3)`);
+        } else alert('You don`t have any tries left');
+
+        return false;
+    };
+
     return (
         <div className='App'>
-            <BrowserRouter>
+            <Context.Provider
+                value={{
+                    fullname,
+                    setFullname,
+                    password,
+                    setPassword,
+                    validFullname,
+                    validPassword,
+                    validMsgs,
+                    menu,
+                    setMenu,
+                    type,
+                    setType,
+                    logo,
+                    setCancel,
+                    cancelHandler,
+                    cancelPassword,
+                    cancelPasswordConfirm,
+                    cancelTries,
+                    validCancelHandler,
+                    cancel,
+                }}>
                 <Routes>
-                    <Route path='/' element={<HomePage fullname={fullname} password={password} />} />
-                    <Route path='/signup' element={<Signup setFullname={setFullname} setPassword={setPassword} />} />
-                    <Route
-                        path={fullname}
-                        element={<Opening fullname={fullname} password={password} type={type} menu={menu} />}
-                    />
-                    <Route
-                        path={type}
-                        element={<Saver fullname={fullname} password={password} type={type} menu={menu} />}
-                    />
+                    <Route path='/' element={<HomePage />} />
+                    <Route path={fullname} element={<Saver />} />
+                    <Route path={type} element={<Message />} />
                 </Routes>
-            </BrowserRouter>
+            </Context.Provider>
         </div>
     );
 }
