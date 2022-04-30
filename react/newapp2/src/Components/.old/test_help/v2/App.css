@@ -1,0 +1,41 @@
+.App {
+    max-width: 300px;
+    min-height: 300px;
+    max-height: 500px;
+    margin: auto;
+    border: 1px solid black;
+    text-align: center;
+}
+
+.HomePage input {
+    display: block;
+    margin: auto;
+}
+
+.Saver .HelpBtn {
+    width: 200px;
+    height: 200px;
+    margin: 1vh;
+    color: white;
+    background-color: red;
+}
+
+.Header {
+    height: 20%;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+.Header p {
+    margin: 0;
+}
+.Header .MenuContent {
+}
+
+.Message .MessageContent {
+    margin: 1vh;
+    padding: 1vh;
+    border-radius: 5%;
+    border: 1px solid blue;
+    background-color: lightblue;
+}

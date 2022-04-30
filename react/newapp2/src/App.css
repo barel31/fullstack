@@ -1,41 +1,57 @@
 .App {
-    max-width: 300px;
-    min-height: 300px;
-    max-height: 500px;
+    background-color: lightgray;
+    text-align: center;
     margin: auto;
-    border: 1px solid black;
+    min-width: 300px;
+    max-width: 500px;
+    padding: 1vh;
+}
+
+.App button {
+    background-color: blue;
+    color: white;
+    border-radius: 15%;
+    display: block;
+    margin:  1vh auto;
+}
+
+.InvalidMsgs {
+    display: block;
+    margin: 0 0 1vh 0;
+    text-align: center;
+    color: red;
+}
+
+.Signup {
+    text-align: left;
+    margin: 1vh;
+}
+.Signup h2 {
     text-align: center;
 }
-
-.HomePage input {
-    display: block;
-    margin: auto;
-}
-
-.Saver .HelpBtn {
-    width: 200px;
-    height: 200px;
-    margin: 1vh;
-    color: white;
-    background-color: red;
-}
-
-.Header {
-    height: 20%;
+.Signup div {
     display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-between;
+    justify-content: space-around;
 }
-.Header p {
-    margin: 0;
-}
-.Header .MenuContent {
+.Signup div label {
+    width: 10%;
 }
 
-.Message .MessageContent {
+.Login .Content {
+    text-align: left;
     margin: 1vh;
-    padding: 1vh;
-    border-radius: 5%;
-    border: 1px solid blue;
-    background-color: lightblue;
+}
+
+.ProductItem {
+    padding: 0 1vh;
+    margin: 1vh;
+    border: 1px solid black;
+}
+.ProductItem button {
+    margin: auto 0 1vh auto;
+}
+
+.Manager table, td {
+    margin: auto;
+    border: 1px solid black;
 }

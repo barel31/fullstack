@@ -1,108 +1,164 @@
 import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import HomePage from './Components/HomePage';
-import Saver from './Components/Saver';
-import Message from './Components/Message';
+import HomePage, { Signup, Login, Manager } from './Components/HomePage';
 import Context from './Context';
 import './App.css';
 
 export default function App() {
-    const [fullname, setFullname] = useState('');
-    const [password, setPassword] = useState('');
-    const [type, setType] = useState('101');
-    const [menu, setMenu] = useState(false);
-    const [cancel, setCancel] = useState(false);
-    const [cancelPassword, setCancelPassword] = useState('');
-    const [cancelPasswordConfirm, setCancelPasswordConfrim] = useState('');
-    const [cancelTries, setCancelTries] = useState(3);
+    const [workers, setWorkers] = useState([]);
+    const [products, setProducts] = useState([
+        new Products(11122, 'Green Box', false),
+        new Products(22554, 'Green Box', false),
+        new Products(66698, 'Blue Box', true),
+        new Products(78544, 'Red Box', false),
+        new Products(69875, 'Red Box', false),
+    ]);
+    const [signUpFullname, setSignupFullname] = useState('');
+    const [signUpId, setSignupId] = useState(0);
+    const [signUpLicense, setSignupLicense] = useState(false);
+    const [signupValidMsgs, setSignupValidMsgs] = useState([]);
+    const [activeWorker, setActiveWorker] = useState(-1);
 
-    const validFullname = () => {
-        if (fullname.length < 4) return false;
-        for (let i = 0; i < fullname.length; i++) {
-            if (fullname[i] >= '0' && fullname[i] <= '9') return false;
+    const SignupBtnHandler = () => {
+        let flag = true;
+
+        if (signUpId < 10000 || signUpId > 99999) {
+            validMsgsHandler(1);
+            flag = false;
         }
-        return true;
-    };
 
-    const validPassword = () => {
-        if (password.length < 8) return false;
-        let alpha = false;
-        let num = false;
-        for (let i = 0; i < password.length; i++) {
-            if (password[i] >= '0' && password[i] <= '9') num = true;
-            if ((password[i] >= 'a' && password[i] <= 'z') || (password[i] >= 'A' && password[i] <= 'Z')) alpha = true;
+        if (signUpFullname.length < 4) {
+            validMsgsHandler(2);
+            flag = false;
+        } else {
+            let space = false;
+            for (let i = 0; i < signUpFullname.length; i++) {
+                if (
+                    (signUpFullname[i] >= 'a' && signUpFullname[i] <= 'z') ||
+                    (signUpFullname[i] >= 'A' && signUpFullname[i] <= 'Z')
+                ) {
+                    continue;
+                }
+                if (signUpFullname[i] === ' ' && !space) {
+                    space = true;
+                    continue;
+                }
+
+                validMsgsHandler(2);
+                flag = false;
+                break;
+            }
         }
-        return alpha && num;
-    };
 
-    const validMsgs = (n) => {
-        let flag = false;
-        if (n === 1 && !validFullname() && fullname !== '') flag = true;
-        else if (n === 2 && !validPassword() && password !== '') flag = true;
-        return flag ? <p style={{ color: 'red', margin: 0 }}>Invalid input!</p> : null;
-    };
-
-    const logo = () => {
-        if (type === '100') return 'A';
-        if (type === '101') return 'B';
-        return 'C';
-    };
-
-    const cancelHandler = () => {
-        return cancel ? (
-            <>
-                <input type='password' placeholder='Password' onChange={(e) => setCancelPassword(e.target.value)} />
-                <input
-                    type='password'
-                    placeholder='Confrim Password'
-                    onChange={(e) => setCancelPasswordConfrim(e.target.value)}
-                />
-            </>
-        ) : null;
-    };
-
-    const validCancelHandler = () => {
-        if (cancelTries) {
-            if (cancelPassword !== '' && cancelPassword === cancelPasswordConfirm && cancelPassword === password)
+        if (flag) {
+            if (workers.find((v) => v.id === signUpId) === undefined) {
+                setWorkers([...workers, new Worker(signUpId, signUpFullname, signUpLicense)]);
                 return true;
+            }
+            return false;
+        }
+    };
 
-            setCancelTries(cancelTries - 1);
-            alert(`Incorrect password (${cancelTries}/3)`);
-        } else alert('You don`t have any tries left');
+    const validMsgsHandler = (n, add = true) => {
+        // 1 : signup id
+        // 2 : signup fullname
+        if (add) {
+            if (signupValidMsgs.includes(n)) return false;
+            setSignupValidMsgs([...signupValidMsgs, n]);
+            return true;
+        }
 
-        return false;
+        if (n === 1 && signupValidMsgs.includes(n)) {
+            return (
+                <>
+                    <p className='InvalidMsgs'>the number must be with 5 digits.</p>
+                </>
+            );
+        }
+        if (n === 2 && signupValidMsgs.includes(n)) {
+            return (
+                <>
+                    <p className='InvalidMsgs'>The name must contain mininmum 4 chracters.</p>
+                </>
+            );
+        }
+    };
+
+    const loginHandler = () => {
+        if (signUpId === 99999) {
+            return true;
+        }
+        const worker = workers.findIndex((v) => v.id === signUpId);
+        if (worker === -1) {
+            alert(`Worker #${signUpId} does not exist`);
+            return -1;
+        }
+        workers[worker].visits++;
+        setWorkers([...workers]);
+
+        setActiveWorker(workers[worker]);
+        return workers[worker];
+    };
+
+    const updateProduct = (worker, productId) => {
+        if (products[productId].forklift && !worker.license) {
+            alert('Forklift license needed');
+            return false;
+        }
+
+        const workerIndex = workers.findIndex((v) => v.id === worker.id);
+        workers[workerIndex].counter++;
+        setWorkers([...workers]);
+
+        products[productId].inPlace = true;
+        setProducts([...products]);
+        return true;
     };
 
     return (
         <div className='App'>
             <Context.Provider
                 value={{
-                    fullname,
-                    setFullname,
-                    password,
-                    setPassword,
-                    validFullname,
-                    validPassword,
-                    validMsgs,
-                    menu,
-                    setMenu,
-                    type,
-                    setType,
-                    logo,
-                    setCancel,
-                    cancelHandler,
-                    cancelPassword,
-                    cancelPasswordConfirm,
-                    cancelTries,
-                    validCancelHandler,
-                    cancel,
+                    workers,
+                    setWorkers,
+                    products,
+                    setProducts,
+                    setSignupId,
+                    setSignupFullname,
+                    setSignupLicense,
+                    validMsgsHandler,
+                    SignupBtnHandler,
+                    loginHandler,
+                    activeWorker,
+                    setActiveWorker,
+                    updateProduct,
                 }}>
                 <Routes>
                     <Route path='/' element={<HomePage />} />
-                    <Route path={fullname} element={<Saver />} />
-                    <Route path={type} element={<Message />} />
+                    <Route path='/signup' element={<Signup />} />
+                    <Route path='/login' element={<Login />} />
+                    <Route path='/manager' element={<Manager />} />
                 </Routes>
             </Context.Provider>
         </div>
     );
+}
+
+class Worker {
+    constructor(id, fullname, license) {
+        this.id = id;
+        this.fullname = fullname;
+        this.license = license;
+        this.visits = 0;
+        this.counter = 0;
+    }
+}
+
+class Products {
+    constructor(id, name, forklift, inPlace = false) {
+        this.id = id;
+        this.name = name;
+        this.forklift = forklift;
+        this.inPlace = inPlace;
+    }
 }

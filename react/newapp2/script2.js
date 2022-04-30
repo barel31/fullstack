@@ -1,6 +1,8 @@
 function checkArr(arr) {
     // valid
-    for (let i = 0; i < arr.length - 1; i++) {}
+    for (let i = 0; i < arr.length - 1; i++) {
+        if (typeof arr[i] !== 'number') throw 'Array is not numberic';
+    }
 
     // check for חשבוני
     let flag = true;
