@@ -1,0 +1,25 @@
+.HomePage,
+.SignUp {
+    margin: auto;
+    text-align: center;
+    max-width: 500px;
+    border: 1px solid black;
+    background-color: lightgrey;
+    display: flex;
+    flex-direction: column;
+}
+.HomePage button {
+    width: 50%;
+    margin: 1vh auto;
+}
+.SignUp form {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: auto;
+}
+.SignUp form button,
+.SignUp form input {
+    margin: 1vh;
+
+}
