@@ -1,30 +1,16 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
 const app = express();
 
 app.use(express.static('client'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://127.0.0.1:27017/SVBurgerDB', () => {
-    console.log('connected to db/SVBurgerDB');
-});
-
-const User = mongoose.Schema({
-    firstname: String,
-    lastname: String,
-    email: String,
-    password: String,
-});
-
-const UserArr = mongoose.model('userModel', User);
-
 app.post('/signin', (req, res) => {
-    const currentUser = {
-        email: req.body.email,
-        password: req.body.password,
-    };
+    const string = req.body.string;
+
+
+
 
     const findUser = async (email) => {
         const user = await UserArr.findOne({ email: email });
