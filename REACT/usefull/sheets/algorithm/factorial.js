@@ -7,3 +7,4 @@ const factorial = n1 => {
 };
 
 console.log(factorial(5));
+// 5: 1 * 2 * 3 * 4 * 5 = 120
