@@ -1,6 +1,7 @@
 body {
     text-align: center;
     background-color: #011f3f;
+    user-select: none;
 }
 
 #level-title {
@@ -23,6 +24,7 @@ body {
     width: 200px;
     border: 10px solid black;
     border-radius: 20%;
+                               
 }
 
 .game-over {
