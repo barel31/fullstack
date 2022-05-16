@@ -1,22 +1,12 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/', (req, res) => {
-    res.status(200).json({
-        message: 'Get All Articles',
-    });
-});
+const { getAllArticles, createArticle, updateArticle, deleteArticle, getArticle } = require('../controllers/articles');
 
-router.post('/', (req, res) => {
-    res.status(200).json({
-        message: 'Create new article',
-    });
-});
+router.get('/', getAllArticles);
+router.post('/', createArticle);
+router.get('/:articleId', getArticle)
+router.patch('/:articleId', updateArticle);
+router.delete('/:articleId', deleteArticle);
 
-router.patch('/:articleId', (req, res) => {
-    res.status(200).json({
-        message: 'Update article',
-    });
-});
-
-exports = router;
+module.exports = router;
