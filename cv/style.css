@@ -1,0 +1,26 @@
+.container {
+    margin: auto;
+    max-width: 600px;
+    text-align: center;
+}
+
+div {
+    margin: 4vh;
+}
+
+h3 {
+    margin-bottom: 1vh;
+}
+
+ul {
+    margin: 0;
+}
+
+ul li {
+    max-width: 20vh;
+    margin: auto;
+}
+
+p {
+    margin: 0vh;
+}
