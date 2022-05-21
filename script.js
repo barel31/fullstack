@@ -24,10 +24,11 @@ const data = [
     new Data('Sudoku', 'Play!', 'sudoku/index.html'),
     new Data('Grade Graph', 'Heroku', 'https://evening-plains-58384.herokuapp.com/'),
     new Data('class-10 Signin/Signup', 'Heroku', 'https://still-ravine-70553.herokuapp.com/'),
-    new Data('War Game React app', 'Play!', 'https://barel31.github.io/war-game/'),
-    new Data('Smart-House React app', 'Go!', 'https://barel31.github.io/smart-house/'),
-    new Data('Tenbis Wage Calculator React app', 'Go!', 'https://barel31.github.io/tenbis-calculator/'),
-    new Data('Best Movie React app', 'Go!', 'https://barel31.github.io/best-movie/'),
+    new Data('War Game', 'Play!', 'https://barel31.github.io/war-game/'),
+    new Data('Smart-House', 'Go!', 'https://barel31.github.io/smart-house/'),
+    new Data('Tenbis Wage Calculator', 'Go!', 'https://barel31.github.io/tenbis-calculator/'),
+    new Data('Best Movie', 'Go!', 'https://barel31.github.io/best-movie/'),
+    new Data('Travel Advisor', 'Go!', 'https://barel31.github.io/travel_advisor/'),
 ];
 
 const table = document.getElementById('table');
