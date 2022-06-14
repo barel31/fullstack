@@ -1,0 +1,47 @@
+.App {
+    min-width: 300px;
+    max-width: 400px;
+    height: 100%;
+    border: 1px solid black;
+    margin: auto;
+    text-align: center;
+}
+
+.HomePage {
+    display: flex;
+    flex-direction: column;
+
+}
+.HomePage p,
+.HomePage button,
+.HomePage input {
+    width: 50%;
+    margin: 1vh auto;
+}
+
+.Register {
+    display: flex;
+    flex-direction: column;
+}
+.Register button, 
+.Register input {
+    width: 50%;
+    margin: 1vh auto;
+    text-align: center;
+}
+
+.Customer button {
+    border-radius: 15%;
+    width: 100px;
+    height: 100px;
+    margin: 1vh;
+}
+
+.Manager .Details {
+    border: 1px solid black;
+}
+
+.Manager div div {
+    display: flex;
+    justify-content: space-evenly;
+}
