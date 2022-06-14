@@ -35,7 +35,7 @@ const data = [
     new Data('Best Movie', 'Go!', 'https://barel31.github.io/best-movie/', true),
     new Data('Travel Advisor', 'Go!', 'https://barel31.github.io/travel_advisor/', true),
     new Data('Portfolio', 'Go!', 'https://barel31.github.io/barel_portfolio/', true),
-    new Data('Or HaShamaim ', 'Go!', 'https://barel31.github.io/or-shamaim/'),
+    new Data('Or HaShamaim', 'Go!', 'https://barel31.github.io/or-shamaim/'),
 ];
 
 const table = document.getElementById('table');
