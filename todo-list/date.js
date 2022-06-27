@@ -1,9 +1,10 @@
-exports.getDate = getDate = function () {
-    const today = new Date();
-    return today.toLocaleString('en-US', { weekday: 'long', day: 'numeric', month: 'long' });
-}
-
-exports.getDay = getDay = function () {
-    const today = new Date();
-    return today.toLocaleString('en-US', { weekday: 'long' });;
+module.exports = {
+    getDate: () => {
+        const today = new Date();
+        return today.toLocaleString('en-US', { weekday: 'long', day: 'numeric', month: 'long' });
+    },
+    getDay:() => {
+        const today = new Date();
+        return today.toLocaleString('en-US', { weekday: 'long' });
+    },
 }
