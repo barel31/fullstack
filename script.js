@@ -36,7 +36,7 @@ const data = [
     new Data('Travel Advisor', 'GitHub Pages', 'https://barel31.github.io/travel_advisor/', true),
     new Data('Portfolio', 'Vercel', 'https://barel-portfolio.vercel.app/', true),
     new Data('Or HaShamaim', 'GitHub Pages', 'https://barel31.github.io/or-shamaim/'),
-    new Data('TODO List', 'Heroku', 'https://barel-todo.herokuapp.com/', true),
+    new Data('TODO List', 'Heroku', 'https://barel-todolist.herokuapp.com/', true),
 ];
 
 const table = document.getElementById('table');
