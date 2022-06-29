@@ -12,7 +12,7 @@ class Data {
 }
 
 const data = [
-    new Data('Trivia Game', 'Play!', 'https://evening-oasis-66395.herokuapp.com/play', true),
+    new Data('Trivia Game', 'Play!', 'https://barel-trivia.herokuapp.com/play', true),
     new Data('class-1 CV DEMO', 'index.html', 'class1_homework/index.html'),
     new Data(
         'class-2 signin/up templates',
@@ -27,8 +27,8 @@ const data = [
     new Data('Drum Kit', 'Play!', 'drum/index.html', true),
     new Data('Simon Say', 'Play!', 'simon/index.html', true),
     new Data('Sudoku', 'Play!', 'sudoku/index.html', true),
-    new Data('Grade Graph Server Side', 'Heroku', 'https://evening-plains-58384.herokuapp.com/'),
-    new Data('class-10 Signin/Signup Server Side', 'Heroku', 'https://still-ravine-70553.herokuapp.com/', true),
+    new Data('Grade Graph Server Side', 'Heroku', 'https://barel-grade-chart.herokuapp.com/'),
+    new Data('class-10 Signin/Signup Server Side', 'Heroku', 'https://backend-test-70553.herokuapp.com/', true),
     new Data('War Game', 'Play!', 'https://barel31.github.io/war-game/', true),
     new Data('Smart-House', 'Go!', 'https://barel31.github.io/smart-house/', true),
     new Data('Tenbis Wage Calculator', 'Go!', 'https://barel31.github.io/tenbis-calculator/'),
@@ -40,6 +40,7 @@ const data = [
 
 const table = document.getElementById('table');
 document.body.appendChild(table);
+
 const tbody = document.createElement('tbody');
 table.appendChild(tbody);
 

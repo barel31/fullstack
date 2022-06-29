@@ -1,0 +1,82 @@
+.App {
+    background-color: lightgray;
+    min-width: 300px;
+    max-width: 500px;
+    height: 100%;
+    border: 1px solid black;
+    margin: auto;
+    text-align: center;
+}
+
+.Top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+.Top div {
+    min-width: 20%;
+    min-height: 70px;
+    max-width: 150px;
+    max-height: 150px;
+    cursor: pointer;
+}
+
+.Contents {
+    display: flex;
+    flex-direction: row;
+}
+
+.Movies {
+    padding: 1vh;
+    border-left: 1px solid black;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+}
+.Movies div {
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    border: 1px solid blue;
+    margin: 0.5vh auto;
+    font-size: 1.5em;
+}
+.Movies p {
+    margin: 0;
+}
+
+.MovieContent {
+    background-color: lightyellow;
+    width: 80%;
+}
+.MovieContent p {
+    font-size: larger;
+}
+.MovieContent .Img {
+    width: 80%;
+    height: 150px;
+    margin: auto;
+}
+.MovieContent .Left {
+    text-align: left;
+    margin-left: 5vh;
+}
+.MovieContent .Right {
+    text-align: right;
+    margin-right: 5vh;
+}
+.MovieContent .Rates {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: lightgray;
+    font-size: 40px;
+    width: 80%;
+    min-height: 50px;
+    margin: auto;
+    border: 1px solid blue;
+    cursor: pointer;
+    margin: 1vh auto;
+}

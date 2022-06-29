@@ -1,0 +1,86 @@
+.App {
+    text-align: center;
+    border: 1px solid black;
+    max-width: 400px;
+    margin: auto;
+}
+.App button,
+.App select {
+    display: block;
+    margin: 1vh auto;
+}
+
+/*//////////*/
+/* HomePage */
+/*//////////*/
+.HomePage {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+.HomePage button {
+    display: block;
+    margin: auto;
+}
+.HomePage .ByWhat {
+    display: flex;
+    justify-content: space-evenly;
+}
+.HomePage .ByWhat label,
+.HomePage .ByWhat input {
+    display: block;
+    margin: 0.5vh auto;
+}
+
+/*//////////*/
+/* NewCustomer */
+/*//////////*/
+.NewCustomer input {
+    display: block;
+    margin: 0.5vh auto;
+}
+
+/*//////////*/
+/* Customer */
+/*//////////*/
+.Customer {
+    height: 100%
+}
+.Customer .Pages {
+    height: 20%;
+    border-bottom: 1px solid blue;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1vh;
+}
+.Customer .Pages div:first-child {
+    border-right: 1px solid blue;
+}
+.Customer .Pages div {
+    width: 50%;
+    cursor: pointer;
+}
+.Customer .Content button {
+    display: inline;
+}
+.Customer .Content table tr:last-child {
+    background-color: lightyellow;
+}
+.Customer .Content table thead {
+    background-color: lightgray;
+}
+.Customer .Content table,
+.Customer .Content td {
+    margin: auto;
+    border: 1px solid black;
+}
+.Customer .Content p {
+    margin: 0;
+}
+.Customer .FoundFaultCode {
+    border: 1px solid black;
+    height: 20%;
+    width: fit-content;
+    margin: 1vh auto;
+    padding: 1vh;
+}

@@ -1,0 +1,8 @@
+.App {
+    max-width: 500px;
+    margin: auto;
+    border: 1px solid green;
+    padding: 1vh;
+    display: flex;
+    justify-content: space-around;
+}

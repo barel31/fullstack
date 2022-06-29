@@ -1,0 +1,57 @@
+.App {
+    background-color: lightgray;
+    text-align: center;
+    margin: auto;
+    min-width: 300px;
+    max-width: 500px;
+    padding: 1vh;
+}
+
+.App button {
+    background-color: blue;
+    color: white;
+    border-radius: 15%;
+    display: block;
+    margin:  1vh auto;
+}
+
+.InvalidMsgs {
+    display: block;
+    margin: 0 0 1vh 0;
+    text-align: center;
+    color: red;
+}
+
+.Signup {
+    text-align: left;
+    margin: 1vh;
+}
+.Signup h2 {
+    text-align: center;
+}
+.Signup div {
+    display: flex;
+    justify-content: space-around;
+}
+.Signup div label {
+    width: 10%;
+}
+
+.Login .Content {
+    text-align: left;
+    margin: 1vh;
+}
+
+.ProductItem {
+    padding: 0 1vh;
+    margin: 1vh;
+    border: 1px solid black;
+}
+.ProductItem button {
+    margin: auto 0 1vh auto;
+}
+
+.Manager table, td {
+    margin: auto;
+    border: 1px solid black;
+}

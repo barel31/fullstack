@@ -1,0 +1,95 @@
+.App {
+    background-color: lightgray;
+    margin: auto;
+    max-width: 500px;
+    border: 1px solid blue;
+}
+
+/*//////////*/
+/* HomePage */
+/*//////////*/
+.HomePage {
+    text-align: center;
+}
+
+/* Top */
+.HomePage .Top {
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-evenly;
+}
+.HomePage .Top div {
+    max-height: max-content;
+    max-width: max-content;
+}
+.HomePage .Top div h2 {
+    text-align: center;
+    position: relative;
+    padding: 1vh;
+}
+
+/* Content */
+.HomePage .Content {
+    display: flex;
+}
+
+/* Movie */
+.HomePage .Movie {
+    margin: 1vh;
+    background-color: blanchedalmond;
+    width: 80%;
+}
+.HomePage .Movie h2 {
+    text-align: left;
+    margin-left: 2vh;
+}
+.HomePage .Movie .MovieImg {
+    margin: auto;
+    max-width: 300px;
+    min-height: 300px;
+}
+.HomePage .Movie p {
+    text-align: left;
+    margin: 1vh 3vh;
+}
+
+/* Rate */
+.HomePage .Movie .Rate {
+    height: 5vh;
+    width: 80%;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+}
+.HomePage .Movie .Rate div {
+    background-color: lightgray;
+    min-width: 20%;
+    max-width: max-content;
+    border: 1px solid black;
+    border-left: 0;
+    display: flex;
+    justify-content: center;
+    font-size: 2em;
+
+}
+.HomePage .Movie .Rate :first-child {
+    border-left: 1px solid black;
+}
+
+/* MovieList */
+.HomePage .MovieList {
+    background-color: blanchedalmond;
+    border: 1px solid black;
+    margin: 1vh;
+    margin-left: 0;
+    width: 20%;
+}
+.HomePage .MovieList div {
+    min-width: 100%;
+    min-height: 100px;
+    margin: 0.5vh 0;
+}
+.HomePage .MovieList :last-child,
+.HomePage .MovieList p {
+    margin: 0;
+}

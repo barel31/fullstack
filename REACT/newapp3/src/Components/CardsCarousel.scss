@@ -1,0 +1,35 @@
+.CardsCarousel {
+    // .cards {
+    //     .previous-card, .prior-card {
+    //         opacity: 0.6;
+    //         transform: scale(0.8);
+    //     }
+
+    //     .prior-card {
+
+    //     }
+    // }
+
+    .cards-btns {
+        margin: 1rem auto;
+        display: flex;
+        justify-content: space-around;
+        width: 30vw;
+
+        div {
+            background-color: rgb(225, 225, 236);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            &:hover {
+                color: #fff;
+                background-color: rgb(69, 68, 99);
+            }
+        }
+    }
+}

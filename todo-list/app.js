@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const date = require(__dirname + '/date.js');
+const _ = require('lodash');
 
 const app = express();
 
@@ -11,7 +12,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
 //? Mongoose
-mongoose.connect('mongodb://localhost:27017/todolistDB', { useNewUrlParser: true });
+// mongoose.connect('mongodb://localhost:27017/todolistDB', { useNewUrlParser: true });
+mongoose.connect('mongodb+srv://admin:qAaNxxRkWFdrhzev@cluster0.jc46m.mongodb.net/todolistDB', { useNewUrlParser: true });
 
 const itemsSchema = mongoose.Schema({
     name: { type: String, required: true },
@@ -36,11 +38,11 @@ const defaultItems = [
 
 app.get('/', (req, res) => {
     Item.find({}, (err, found) => {
-        if (err) console.log(err);
+        if (err) console.error(err);
         else {
             if (!found.length) {
                 Item.insertMany(defaultItems, (e) => {
-                    if (e) console.log(e);
+                    if (e) console.error(e);
                     res.redirect('/');
                 });
             } else res.render('list', { listTitle: 'Today', listItems: found });
@@ -49,16 +51,15 @@ app.get('/', (req, res) => {
 });
 
 app.get('/:customListName', (req, res) => {
-    const customListName = req.params.customListName;
+    const customListName = _.capitalize(req.params.customListName);
 
     if (customListName === 'favicon.ico') return;
 
     if (customListName === 'today') res.redirect('/');
     else {
         List.findOne({ name: customListName }, (e, found) => {
-            if (e) console.log(e);
+            if (e) console.error(e);
             else if (!found) {
-                console.log(customListName + " doesn't exists");
                 new List({ name: customListName, items: defaultItems }).save();
                 res.redirect(`/${customListName}`);
             } else {
@@ -72,18 +73,15 @@ app.post('/', (req, res) => {
     const newItem = req.body.newItem;
     const listName = req.body.listName;
 
-    console.log({ listName });
-
     if (newItem.length) {
         const item = new Item({ name: newItem });
 
         if (listName === 'Today') {
-            console.log('Added to Today ' + newItem);
             item.save();
             res.redirect('/');
         } else {
             List.findOne({ name: listName }, (e, found) => {
-                if (e) console.log(e);
+                if (e) console.error(e);
                 else {
                     found.items.push(item);
                     found.save();
@@ -98,24 +96,19 @@ app.post('/delete', (req, res) => {
     const listName = req.body.listName;
     const checkboxId = req.body.checkbox;
 
-    console.log({ listName, checkboxId });
 
     if (!checkboxId) return;
 
     if (listName === 'Today') {
         Item.deleteOne({ _id: checkboxId }, (e) => {
-            if (e) console.log(e);
+            if (e) console.error(e);
             else res.redirect('/');
         });
     } else {
         List.findOneAndUpdate({ name: listName }, { $pull: { items: { _id: checkboxId } } }, (e) => {
-            if (e) console.log(e);
+            if (e) console.error(e);
             else res.redirect('/' + listName);
         });
-        // found.items.filter((v) => v._id === checkboxId);
-        // found.items.findbyIdAndRemove(checkboxId, (e) => {
-        //     if (e) console.log(e);
-        // });
     }
 });
 
