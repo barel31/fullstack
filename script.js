@@ -28,14 +28,15 @@ const data = [
     new Data('Simon Say', 'Play!', 'simon/index.html', true),
     new Data('Sudoku', 'Play!', 'sudoku/index.html', true),
     new Data('Grade Graph Server Side', 'Heroku', 'https://barel-grade-chart.herokuapp.com/'),
-    new Data('class-10 Signin/Signup Server Side', 'Heroku', 'https://backend-test-70553.herokuapp.com/', true),
+    new Data('class-10 Signin/Signup Server Side', 'Heroku', 'https://backend-test-70553.herokuapp.com/'),
     new Data('War Game', 'Play!', 'https://barel31.github.io/war-game/', true),
-    new Data('Smart-House', 'Go!', 'https://barel31.github.io/smart-house/', true),
-    new Data('Tenbis Wage Calculator', 'Go!', 'https://barel31.github.io/tenbis-calculator/'),
-    new Data('Best Movie', 'Go!', 'https://barel31.github.io/best-movie/', true),
-    new Data('Travel Advisor', 'Go!', 'https://barel31.github.io/travel_advisor/', true),
-    new Data('Portfolio', 'Go!', 'https://barel-portfolio.vercel.app/', true),
-    new Data('Or HaShamaim', 'Go!', 'https://barel31.github.io/or-shamaim/'),
+    new Data('Smart-House', 'GitHub Pages', 'https://barel31.github.io/smart-house/', true),
+    new Data('Tenbis Wage Calculator', 'GitHub Pages', 'https://barel31.github.io/tenbis-calculator/'),
+    new Data('Best Movie', 'GitHub Pages', 'https://barel31.github.io/best-movie/'),
+    new Data('Travel Advisor', 'GitHub Pages', 'https://barel31.github.io/travel_advisor/', true),
+    new Data('Portfolio', 'Vercel', 'https://barel-portfolio.vercel.app/', true),
+    new Data('Or HaShamaim', 'GitHub Pages', 'https://barel31.github.io/or-shamaim/'),
+    new Data('TODO List', 'Heroku', 'https://barel-todo.herokuapp.com/', true),
 ];
 
 const table = document.getElementById('table');
