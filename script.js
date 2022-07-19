@@ -14,11 +14,7 @@ class Data {
 const data = [
     new Data('Trivia Game', 'Play!', 'https://barel-trivia.herokuapp.com/play', true),
     new Data('class-1 CV DEMO', 'index.html', 'class1_homework/index.html'),
-    new Data(
-        'class-2 signin/up templates',
-        'signin.html signup.html',
-        'class2_homework/signin.html class2_homework/signup.html'
-    ),
+    new Data('class-2 signin/up templates', 'signin.html signup.html', 'class2_homework/signin.html class2_homework/signup.html'),
     new Data('class-3 Bootstrap template', 'index.html', 'class3_homework/index.html', true),
     new Data('class-4 Summary of compiler and interpreter', 'index.html', 'class4_homework/index.html'),
     new Data('class-5 - DEMO Exchanger', 'index.html', 'class5_homework/index.html'),
@@ -37,6 +33,7 @@ const data = [
     new Data('Portfolio', 'Vercel', 'https://barel-portfolio.vercel.app/', true),
     new Data('Or HaShamaim', 'GitHub Pages', 'https://barel31.github.io/or-shamaim/'),
     new Data('TODO List', 'Heroku', 'https://barel-todolist.herokuapp.com/', true),
+    new Data('Blog website', 'Vercel', 'https://blog-barel31.vercel.app/', true),
 ];
 
 const table = document.getElementById('table');

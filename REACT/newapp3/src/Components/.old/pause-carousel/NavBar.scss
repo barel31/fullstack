@@ -1,0 +1,124 @@
+.NavBar {
+    z-index: 5;
+    height: 6vh;
+    width: 100vw;
+    position: fixed;
+
+    display: flex;
+    justify-content: space-between;
+
+    background-color: #1e1c1c;
+
+    a {
+        color: #fff;
+        cursor: pointer;
+        text-decoration: none;
+        font-size: 1.1rem;
+        font-weight: 600;
+
+        span {
+            width: 15%;
+            height: 15%;
+
+            position: relative;
+            bottom: 1px;
+        }
+    }
+
+    .nav-logo {
+        flex: 1;
+        display: flex;
+        justify-content: baseline;
+        align-items: center;
+
+        padding-left: 3rem;
+
+        a {
+            display: flex;
+            align-items: center;
+
+            
+            svg {
+                width: 100px;
+                height: 100px;
+                
+                path {
+                    transition: all 0.3s ease-in-out;
+                }
+            }
+
+            svg:nth-child(2) {
+                width: 20%;
+                height: 20%;
+                padding-left: 0.5rem;
+            }
+
+            &:hover {
+                path {
+                    fill: #fff;
+                }
+            }
+        }
+    }
+
+    .nav-links {
+        flex: 0.5;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        justify-items: baseline;
+        position: relative;
+        right: 40%;
+    }
+
+    .nav-right {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 15%;
+        position: relative;
+        right: 2%;
+
+        svg {
+            width: 20%;
+            height: 20%;
+        }
+    }
+}
+
+.hover-pink {
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+        color: pink;
+    }
+}
+
+.hover-blue {
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+        color: #2b4e87;
+    }
+}
+
+.hover-orange {
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+        color: #ee8067;
+    }
+}
+
+.nav-arrow-animation {
+    &:hover {
+        span {
+            transform: rotate(180deg) translateX(-5px);
+        }
+    }
+
+    span {
+        display: inline-block;
+        transition: transform 0.2s;
+    }
+}

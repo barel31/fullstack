@@ -1,0 +1,35 @@
+.App {
+    height: 200vh;
+    background-color: #fefefd;
+    text-align: center;
+
+    .title {
+        text-transform: uppercase;
+        font-weight: 900;
+        font-size: 3rem;
+        color: rgb(30, 30, 30);
+        margin: 0;
+        padding: 0;
+    }
+
+    .content {
+        position: relative;
+        top: 5vh;
+
+        .p-text {
+            padding-bottom: 2rem;
+
+            font-weight: 600;
+            span {
+                font-weight: 900;
+            }
+        }
+
+        .cards {
+            display: flex;
+            justify-content: space-around;
+            width: 70vw;
+            margin: auto;
+        }
+    }
+}
